@@ -62,4 +62,5 @@ group :development do
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint'
+  gem 'html2slim'
 end
