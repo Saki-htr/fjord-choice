@@ -61,4 +61,5 @@ group :development do
   # For Rails projects
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
+  gem 'slim_lint'
 end
