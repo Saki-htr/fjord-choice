@@ -190,6 +190,10 @@ GEM
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.5.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
     slim_lint (0.22.1)
       rubocop (>= 0.78.0)
       slim (>= 3.0, < 5.0)
@@ -238,6 +242,7 @@ DEPENDENCIES
   rails (~> 7.0.3, >= 7.0.3.1)
   rubocop-fjord
   rubocop-rails
+  slim-rails
   slim_lint
   sprockets-rails
   stimulus-rails
