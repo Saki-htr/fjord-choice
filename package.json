@@ -1,0 +1,29 @@
+{
+  "name": "fjord_choice",
+  "version": "0.1.0",
+  "description": "このサービスは、フィヨルドブートキャンプのシステム開発プラクティスに取り組んでいる受講生のうち、開発メンバーの状況を知った上で誰にPullRequestのレビューを依頼するか決めたい方向けの、開発メンバーの状況を見える化するサービスです。",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saki-htr/fjord-choice.git"
+  },
+  "author": "saki-htr <saki.hattori0116@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saki-htr/fjord-choice/issues"
+  },
+  "homepage": "https://github.com/Saki-htr/fjord-choice#readme",
+  "devDependencies": {
+    "eslint": "^8.20.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0"
+  }
+}
