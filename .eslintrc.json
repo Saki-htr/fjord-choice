@@ -1,0 +1,19 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+      "no-unused-vars": ["error", {
+      "args": "all",
+      "argsIgnorePattern": "^_"
+    }]
+  }
+}
