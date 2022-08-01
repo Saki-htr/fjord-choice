@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bundle exec rubocop
+bundle exec slim-lint app/views
+npx eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0
