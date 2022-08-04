@@ -1,0 +1,2 @@
+class RawPullRequest < ApplicationRecord
+end
