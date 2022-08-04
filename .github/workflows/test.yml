@@ -55,9 +55,9 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@v2.1.4
         with:
-          node-version: '16.13.0'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          path: node_modules
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
 
       - name: npm ci
         run: npm ci
