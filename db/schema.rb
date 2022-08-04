@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_123130) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_04_123817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_123130) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "review_requested_pull_requests", force: :cascade do |t|
+    t.bigint "raw_pull_request_id", null: false
+    t.string "title", null: false
+    t.integer "number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["raw_pull_request_id"], name: "index_review_requested_pull_requests_on_raw_pull_request_id"
+  end
+
   create_table "user_assigned_issues", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "assigned_issues_id", null: false
@@ -54,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_123130) do
   end
 
   add_foreign_key "assigned_issues", "raw_issues"
+  add_foreign_key "review_requested_pull_requests", "raw_pull_requests"
   add_foreign_key "user_assigned_issues", "assigned_issues", column: "assigned_issues_id"
   add_foreign_key "user_assigned_issues", "users"
 end
