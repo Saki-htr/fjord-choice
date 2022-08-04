@@ -60,7 +60,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
-      - name: npm install
+      - name: npm ci
         run: npm ci
 
       - name: Setup test DB

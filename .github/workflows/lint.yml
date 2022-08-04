@@ -24,7 +24,7 @@ jobs:
         node-version: '16.13.0'
         cache: 'npm'
 
-    - name: npm install
+    - name: npm ci
       run:  npm ci
 
     - name: Rubocop
