@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_102409) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_04_114048) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,9 +23,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_102409) do
   end
 
   create_table "raw_issues", force: :cascade do |t|
-    t.jsonb "raw_issue", null: false
+    t.jsonb "issue", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_assigned_issues", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "assigned_issues_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_issues_id"], name: "index_user_assigned_issues_on_assigned_issues_id"
+    t.index ["user_id"], name: "index_user_assigned_issues_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_102409) do
   end
 
   add_foreign_key "assigned_issues", "raw_issues"
+  add_foreign_key "user_assigned_issues", "assigned_issues", column: "assigned_issues_id"
+  add_foreign_key "user_assigned_issues", "users"
 end
