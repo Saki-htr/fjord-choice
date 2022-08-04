@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_123817) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_04_135225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_123817) do
     t.index ["user_id"], name: "index_user_assigned_issues_on_user_id"
   end
 
+  create_table "user_pull_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_requested_pull_request_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_requested_pull_request_id"], name: "index_user_pull_requests_on_review_requested_pull_request_id"
+    t.index ["user_id"], name: "index_user_pull_requests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.integer "github_id", null: false
@@ -66,4 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_123817) do
   add_foreign_key "review_requested_pull_requests", "raw_pull_requests"
   add_foreign_key "user_assigned_issues", "assigned_issues", column: "assigned_issues_id"
   add_foreign_key "user_assigned_issues", "users"
+  add_foreign_key "user_pull_requests", "review_requested_pull_requests"
+  add_foreign_key "user_pull_requests", "users"
 end
