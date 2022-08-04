@@ -1,0 +1,2 @@
+class RawIssue < ApplicationRecord
+end
