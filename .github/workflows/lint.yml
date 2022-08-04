@@ -11,12 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.1.2
         bundler-cache: true
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.13.0'
+        cache: 'npm'
 
     - name: npm install
       run:  npm ci
