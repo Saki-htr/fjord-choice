@@ -1,2 +1,17 @@
-h1 Home#index
+h1 Fjord Choice
+
 p Find me in app/views/home/index.html.slim
+
+table border="1"
+  thead
+    tr
+      th colspan="2" メンバー
+      th Issue合計pt
+      th レビュー依頼されているPullRequest
+      th 合計数
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.github_id
+        td = user.name
