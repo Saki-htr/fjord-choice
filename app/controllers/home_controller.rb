@@ -10,12 +10,12 @@ class HomeController < ApplicationController
     @users = User.all
 
     client = Octokit::Client.new \
-    :client_id     => ENV['GITHUB_KEY'],
-    :client_secret => ENV['GITHUB_SECRET']
+      client_id: ENV['GITHUB_KEY'],
+      client_secret: ENV['GITHUB_SECRET']
 
     # ✅ issue
     issues = (1..3).map do |page|
-      client.list_issues("fjordllc/bootcamp", options = {:state =>'all', :sort =>'updated', :per_page =>100, :page =>page})
+      client.list_issues('fjordllc/bootcamp', options = { state: 'all', sort: 'updated', per_page: 100, page: page })
     end
     issues.flatten! # 1番外側の配列を削除
 
@@ -26,11 +26,11 @@ class HomeController < ApplicationController
 
     # レスポンスに混ざっているPRの要素を削除
     issues.delete_if do |issue|
-      issue.has_key?(:pull_request)
+      issue.key?(:pull_request)
     end
 
     # ✅ PR
-    pulls = client.pull_requests("fjordllc/bootcamp", options = {:state =>'open', :per_page =>100}) #openなPRしか取得しないので最大100件で充分
+    pulls = client.pull_requests('fjordllc/bootcamp', options = { state: 'open', per_page: 100 }) # openなPRしか取得しないので最大100件で充分
     pulls.flatten!
 
     # pull[:requested_reviewers][0][:login]がnilの要素を削除
@@ -55,7 +55,7 @@ class HomeController < ApplicationController
 
     # raw_issueテーブルに保存
     results.each do |result|
-      result[:assigned_issues].each do|i|
+      result[:assigned_issues].each do |i|
         raw_issue = RawIssue.new
         raw_issue.issue = i.to_hash.to_json
         raw_issue.save!
