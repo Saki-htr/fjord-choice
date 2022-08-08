@@ -10,8 +10,7 @@ class HomeController < ApplicationController
 
     # ✅ issue
     issues = (1..5).map do |page| # 500件取得
-      JSON.parse(Net::HTTP.get(URI.parse("https://api.github.com/repos/fjordllc/bootcamp/issues?state=all&sort=updated&per_page=100&page=#{page}")),
-                 symbolize_names: true)
+      JSON.parse(Net::HTTP.get(URI.parse("https://api.github.com/repos/fjordllc/bootcamp/issues?state=all&sort=updated&per_page=100&page=#{page}")), symbolize_names: true)
     end
     issues.flatten! # 1番外側の配列を削除
 
@@ -26,7 +25,7 @@ class HomeController < ApplicationController
     end
 
     # ✅ PR
-    pulls_uri = URI.parse('https://api.github.com/repos/fjordllc/bootcamp/pulls?state=all&') # 100件
+    pulls_uri = URI.parse("https://api.github.com/repos/fjordllc/bootcamp/pulls?state=all") # 100件
     raw_pulls = Net::HTTP.get(pulls_uri)
     pulls = JSON.parse(raw_pulls, symbolize_names: true)
 
@@ -48,6 +47,5 @@ class HomeController < ApplicationController
       pulls_of_registered_users = pulls_of_registered_users.to_json # もしかしたら .to_json しなくてもよしなにjson型にしてくれるかも?
       results << { user: user, assigned_issues: issues_of_registered_users, review_requested_pull_requests: pulls_of_registered_users }
     end
-
   end
 end
