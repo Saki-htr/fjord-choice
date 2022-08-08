@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class RawIssue < ApplicationRecord
-  belongs_to :assigned_issue
+  has_one :assigned_issue
 end

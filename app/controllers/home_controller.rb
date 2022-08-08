@@ -53,5 +53,13 @@ class HomeController < ApplicationController
       results << { user: user, assigned_issues: issues_of_registered_users, review_requested_pull_requests: pulls_of_registered_users }
     end
 
+    # raw_issueテーブルに保存
+    results.each do |result|
+      result[:assigned_issues].each do|i|
+        raw_issue = RawIssue.new
+        raw_issue.issue = i.to_hash.to_json
+        raw_issue.save!
+      end
+    end
   end
 end
