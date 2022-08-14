@@ -61,9 +61,9 @@ class HomeController < ApplicationController
     end
 
     # PRテーブルにレコードをCreateする
-    ReviewRequestedPullRequest.delete_all
     pulls.each do |pull|
       # 既に保存してるissueの番号と同じ場合、繰り返し処理を抜ける
+      next if ReviewRequestedPullRequest.exists?(number: pull[:number])
 
       pull_request = ReviewRequestedPullRequest.new
       # number
