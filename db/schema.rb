@@ -10,16 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_135225) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_14_090142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assigned_issues", force: :cascade do |t|
-    t.bigint "raw_issue_id", null: false
     t.integer "point", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["raw_issue_id"], name: "index_assigned_issues_on_raw_issue_id"
   end
 
   create_table "raw_issues", force: :cascade do |t|
@@ -35,12 +33,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_135225) do
   end
 
   create_table "review_requested_pull_requests", force: :cascade do |t|
-    t.bigint "raw_pull_request_id", null: false
     t.string "title", null: false
     t.integer "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["raw_pull_request_id"], name: "index_review_requested_pull_requests_on_raw_pull_request_id"
   end
 
   create_table "user_assigned_issues", force: :cascade do |t|
@@ -71,8 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_135225) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
-  add_foreign_key "assigned_issues", "raw_issues"
-  add_foreign_key "review_requested_pull_requests", "raw_pull_requests"
   add_foreign_key "user_assigned_issues", "assigned_issues", column: "assigned_issues_id"
   add_foreign_key "user_assigned_issues", "users"
   add_foreign_key "user_pull_requests", "review_requested_pull_requests"
