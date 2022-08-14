@@ -25,24 +25,23 @@ class HomeController < ApplicationController
 
         assigned_issue = AssignedIssue.new
 
-        # numberカラムの保存
+        # number
         assigned_issue.number = i[:number]
 
-        # pointカラムの保存
+        # point
         i[:labels].each do |label|
           next if label[:name].to_i == 0 #ここで繰り返しを抜ける
           #nextの条件がfalseの時だけ以下を実行
           assigned_issue.point = label[:name].to_i
         end
 
-        # assigneesの保存
+        # assignees
         if i[:assignees].empty?
           assigned_issue.assignees = []
         else
           i[:assignees].each do |assignee|
             assigned_issue.assignees = []
             assigned_issue.assignees << assignee[:id]
-            assigned_issue.assignees
           end
         end
 
@@ -51,42 +50,38 @@ class HomeController < ApplicationController
     end
 
     # ✅ PR
-    pulls = client.pull_requests('fjordllc/bootcamp', options = { state: 'open', per_page: 100 }) # openなPRしか取得しないので最大100件で充分
+    pulls = client.pull_requests('fjordllc/bootcamp', options = { state: 'open', per_page: 20 }) # openなPRしか取得しないので最大100件で充分
     pulls.flatten!
 
-    # pull[:requested_reviewers][0][:login]がnilの要素を削除
-    # pulls.delete_if do |pull|
-    #   pull[:requested_reviewers].empty?
-    # end
+    # releaseブランチ削除
+    pulls.delete_if do |pull|
+      unless pull[:labels].empty? #nil避け
+        pull[:labels][0][:name] == "release"
+      end
+    end
 
-      # userがreviewerとして登録されているPRを、userごとに抽出する
-      # 変数に入れることで、破壊的変更メソッドでなくてもselect後の状態を使える
-    #   pulls_of_registered_users = pulls.select do |pull|
-    #     pull[:requested_reviewers][0][:login] == user.name
-    #   end
-    #   pulls_of_registered_users = pulls_of_registered_users.to_json # もしかしたら .to_json しなくてもよしなにjson型にしてくれるかも?
-    #   results << { user: user, assigned_issues: issues_of_registered_users, review_requested_pull_requests: pulls_of_registered_users }
-    # end
+    # PRテーブルにレコードをCreateする
+    ReviewRequestedPullRequest.delete_all
+    pulls.each do |pull|
+      # 既に保存してるissueの番号と同じ場合、繰り返し処理を抜ける
 
-    # raw_issueテーブルに保存
-    # AssignedIssue.destroy_all
-    # RawIssue.destroy_all #AssignedIssueと紐づいてるのでdeleteでもdestroyでも削除できない
+      pull_request = ReviewRequestedPullRequest.new
+      # number
+      pull_request.number = pull[:number]
+      # title
+      pull_request.title = pull[:title]
 
-    # results.each do |result|
-    #   result[:assigned_issues].each do |i|
-    #     raw_issue = RawIssue.new
-    #     raw_issue.issue = i.to_hash.to_json
-    #     raw_issue.save!
-
-    #     i[:labels].each do |n|
-    #       next if n[:name].to_i == 0 #ここで繰り返しを抜ける
-    #       AssignedIssue.create!( #nextの条件がfalseの時だけ実行
-    #         point: n[:name].to_i,
-    #         raw_issue_id: raw_issue.id
-    #       )
-    #     end
-    #   end
-    # end
+      # reviewers
+      if pull[:requested_reviewers].empty?
+        pull_request.reviewers = []
+      else
+        pull[:requested_reviewers].each do |reviewer|
+          pull_request.reviewers = []
+          pull_request.reviewers << reviewer[:id]
+        end
+      end
+      pull_request.save!
+    end
   end
 end
 
