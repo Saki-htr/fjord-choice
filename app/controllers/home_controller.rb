@@ -51,19 +51,13 @@ class HomeController < ApplicationController
     end
 
     # ✅ PR
-    # pulls = client.pull_requests('fjordllc/bootcamp', options = { state: 'open', per_page: 100 }) # openなPRしか取得しないので最大100件で充分
-    # pulls.flatten!
+    pulls = client.pull_requests('fjordllc/bootcamp', options = { state: 'open', per_page: 100 }) # openなPRしか取得しないので最大100件で充分
+    pulls.flatten!
 
     # pull[:requested_reviewers][0][:login]がnilの要素を削除
     # pulls.delete_if do |pull|
     #   pull[:requested_reviewers].empty?
     # end
-
-    # results = []
-    # @users.each do |user|
-    #   issues_of_registered_users = issues.select do |issue|
-    #     issue[:assignee][:login] == user.name
-    #   end
 
       # userがreviewerとして登録されているPRを、userごとに抽出する
       # 変数に入れることで、破壊的変更メソッドでなくてもselect後の状態を使える
