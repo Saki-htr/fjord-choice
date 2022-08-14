@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_14_091737) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_14_100145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_091737) do
     t.integer "point", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "assignees", null: false, array: true
+    t.index ["assignees"], name: "index_assigned_issues_on_assignees"
   end
 
   create_table "review_requested_pull_requests", force: :cascade do |t|
@@ -25,6 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_091737) do
     t.integer "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reviewers", null: false, array: true
+    t.index ["reviewers"], name: "index_review_requested_pull_requests_on_reviewers"
   end
 
   create_table "user_assigned_issues", force: :cascade do |t|
