@@ -17,12 +17,12 @@ class HomeController < ApplicationController
     end
     issues.flatten! # 1番外側の配列を削除
 
-    # AssignedIssue全削除
-    AssignedIssue.delete_all
-
     # AssignedIssueにレコードをCreateする
     issues.each do |issue|
-      issue[:items].each do |i| #iの中身はhash
+      issue[:items].each do |i|
+        # 既に保存してるissueの番号と同じ場合、繰り返し処理を抜ける
+        next if AssignedIssue.exists?(number: i[:number])
+
         assigned_issue = AssignedIssue.new
 
         # numberカラムの保存
