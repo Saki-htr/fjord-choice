@@ -54,12 +54,24 @@ class HomeController < ApplicationController
     end
 
     # raw_issueテーブルに保存
+    AssignedIssue.destroy_all
+    RawIssue.destroy_all #AssignedIssueと紐づいてるのでdeleteでもdestroyでも削除できない
+
     results.each do |result|
       result[:assigned_issues].each do |i|
         raw_issue = RawIssue.new
         raw_issue.issue = i.to_hash.to_json
         raw_issue.save!
+
+        i[:labels].each do |n|
+          next if n[:name].to_i == 0 #ここで繰り返しを抜ける
+          AssignedIssue.create!( #nextの条件がfalseの時だけ実行
+            point: n[:name].to_i,
+            raw_issue_id: raw_issue.id
+          )
+        end
       end
     end
   end
 end
+
