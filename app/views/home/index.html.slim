@@ -10,8 +10,13 @@ table border="1"
       th レビュー依頼されているPullRequest
       th 合計数
 
-  tbody
-    - @users.each do |user|
-      tr
-        td = user.github_id
-        td = user.name
+  / tbody
+  /   - @users.each do |user|
+  /     tr
+  /       td = user.github_id
+  /       td = user.name
+
+/ = client.last_response.headers["x-ratelimit-remaining"]
+
+/ = "@issuesの中身"
+/ = @issues
