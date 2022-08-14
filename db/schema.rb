@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_14_100145) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_14_130709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_100145) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "assignees", null: false, array: true
+    t.integer "number", null: false
     t.index ["assignees"], name: "index_assigned_issues_on_assignees"
+    t.index ["number"], name: "index_assigned_issues_on_number", unique: true
   end
 
   create_table "review_requested_pull_requests", force: :cascade do |t|
