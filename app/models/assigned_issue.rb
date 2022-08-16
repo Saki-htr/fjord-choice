@@ -21,12 +21,10 @@ class AssignedIssue < ApplicationRecord
       api_request.each do |issue|
         issue[:items].each do |i|
           next if AssignedIssue.exists?(number: i[:number])
-
           assigned_issue = AssignedIssue.new
           assigned_issue.number = i[:number]
           i[:labels].each do |label|
             next if label[:name].to_i.zero?
-
             assigned_issue.point = label[:name].to_i
           end
           if i[:assignees].empty?

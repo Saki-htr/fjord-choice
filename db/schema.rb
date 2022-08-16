@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_14_144037) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_16_140915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assigned_issues", force: :cascade do |t|
-    t.integer "point", null: false
+    t.integer "point", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "assignees", null: false, array: true
+    t.integer "assignees", default: [], null: false, array: true
     t.integer "number", null: false
     t.index ["assignees"], name: "index_assigned_issues_on_assignees"
     t.index ["number"], name: "index_assigned_issues_on_number", unique: true
