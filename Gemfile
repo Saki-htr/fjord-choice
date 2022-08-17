@@ -44,6 +44,7 @@ gem 'bootsnap', require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
+gem 'octokit', '~> 4.0'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
@@ -65,6 +66,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   # For Rails projects
+  gem 'byebug'
   gem 'html2slim'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
