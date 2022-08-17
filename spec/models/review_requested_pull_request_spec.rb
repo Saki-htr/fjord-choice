@@ -2,6 +2,6 @@
 
 require 'rails_helper'
 
-RSpec.describe ReviewRequestedPullRequest, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+# RSpec.describe ReviewRequestedPullRequest, type: :model do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end
