@@ -40,5 +40,29 @@ class AssignedIssue < ApplicationRecord
       end
     end
     # rubocop:enable Metrics/MethodLength
+
+    def api_request_for_update
+      # client.issue('fjordllc/bootcamp', '5381')
+      AssignedIssue.pluck(:number).map do |number|
+        client.issue('fjordllc/bootcamp', number)
+      end
+    end
+
+    def update
+      api_request_for_update.each do |issue|
+        assigned_issue = AssignedIssue.find_by(number: issue[:number])
+
+        issue[:labels].each do |label|
+          next if label[:name].to_i.zero?
+
+          assigned_issue.point = label[:name].to_i
+        end
+        issue[:assignees].each do |assignee|
+          assigned_issue.assignees = []
+          assigned_issue.assignees << assignee[:id]
+        end
+        assigned_issue.save!
+      end
+    end
   end
 end

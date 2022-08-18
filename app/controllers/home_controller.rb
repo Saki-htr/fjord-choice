@@ -8,6 +8,9 @@ class HomeController < ApplicationController
 
   def index
     AssignedIssue.create
+    AssignedIssue.update
     ReviewRequestedPullRequest.create
+    ReviewRequestedPullRequest.update
+    # テスト
   end
 end

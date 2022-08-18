@@ -41,5 +41,28 @@ class ReviewRequestedPullRequest < ApplicationRecord
       end
     end
     # rubocop:enable Metrics/MethodLength
+
+    def api_request_for_update
+      # client.issue('fjordllc/bootcamp', '5381')
+      ReviewRequestedPullRequest.pluck(:number).map do |number|
+        client.pull_request('fjordllc/bootcamp', number)
+      end
+    end
+
+    def update
+      api_request_for_update.each do |pull|
+        pull_request = ReviewRequestedPullRequest.find_by(number: pull[:number])
+        pull_request.title = pull[:title]
+        if pull[:requested_reviewers].empty?
+          pull_request.reviewers = []
+        else
+          pull[:requested_reviewers].each do |reviewer|
+            pull_request.reviewers = []
+            pull_request.reviewers << reviewer[:id]
+          end
+        end
+        pull_request.save!
+      end
+    end
   end
 end
