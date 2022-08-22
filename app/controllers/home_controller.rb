@@ -6,10 +6,5 @@ class HomeController < ApplicationController
   require 'json'
   require 'octokit'
 
-  def index
-    AssignedIssue.create
-    AssignedIssue.update
-    ReviewRequestedPullRequest.create
-    ReviewRequestedPullRequest.update
-  end
+  def index; end
 end
