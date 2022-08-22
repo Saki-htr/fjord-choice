@@ -5,6 +5,11 @@ class ReviewRequestedPullRequest < ApplicationRecord
   has_many :user_pull_requests, dependent: :destroy
   has_many :users, through: :user_pull_requests
 
+  enum state: {
+    open: 0,
+    closed: 1
+  }
+
   class << self
     def client
       Octokit::Client.new(client_id: ENV['GITHUB_KEY'],
@@ -27,6 +32,7 @@ class ReviewRequestedPullRequest < ApplicationRecord
 
         pull_request = ReviewRequestedPullRequest.new
         pull_request.number = pull[:number]
+        pull_request.state = pull[:state]
         pull_request.title = pull[:title]
         pull_request.reviewers = pull[:requested_reviewers].map(&:id)
         pull_request.save!
@@ -42,6 +48,7 @@ class ReviewRequestedPullRequest < ApplicationRecord
     def update
       api_request_for_update.each do |pull|
         pull_request = ReviewRequestedPullRequest.find_by(number: pull[:number])
+        pull_request.state = pull[:state]
         pull_request.title = pull[:title]
         pull_request.reviewers = pull[:requested_reviewers].map(&:id)
         pull_request.save!
