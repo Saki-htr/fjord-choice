@@ -7,7 +7,7 @@ class ReviewRequestedPullRequest < ApplicationRecord
 
   enum state: {
     open: 0,
-    closed: 1,
+    closed: 1
   }
 
   class << self
