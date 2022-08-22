@@ -11,6 +11,5 @@ class HomeController < ApplicationController
     AssignedIssue.update
     ReviewRequestedPullRequest.create
     ReviewRequestedPullRequest.update
-    # テスト
   end
 end

@@ -11,7 +11,7 @@ class AssignedIssue < ApplicationRecord
                           client_secret: ENV['GITHUB_SECRET'])
     end
 
-    def api_request
+    def api_request_for_create
       (1..1).map do |page|
         client.search_issues('repo:fjordllc/bootcamp is:issue', { state: 'all', sort: 'updated', per_page: 10, page: page })
       end
@@ -19,22 +19,18 @@ class AssignedIssue < ApplicationRecord
 
     # rubocop:disable Metrics/MethodLength
     def create
-      api_request.each do |issue|
+      api_request_for_create.each do |issue|
         issue[:items].each do |i|
           next if AssignedIssue.exists?(number: i[:number])
 
           assigned_issue = AssignedIssue.new
           assigned_issue.number = i[:number]
-
           i[:labels].each do |label|
             next if label[:name].to_i.zero?
 
             assigned_issue.point = label[:name].to_i
           end
-          i[:assignees].each do |assignee|
-            assigned_issue.assignees = []
-            assigned_issue.assignees << assignee[:id]
-          end
+          assigned_issue.assignees = i[:assignees].map(&:id)
           assigned_issue.save!
         end
       end
@@ -42,7 +38,6 @@ class AssignedIssue < ApplicationRecord
     # rubocop:enable Metrics/MethodLength
 
     def api_request_for_update
-      # client.issue('fjordllc/bootcamp', '5381')
       AssignedIssue.pluck(:number).map do |number|
         client.issue('fjordllc/bootcamp', number)
       end
@@ -57,10 +52,7 @@ class AssignedIssue < ApplicationRecord
 
           assigned_issue.point = label[:name].to_i
         end
-        issue[:assignees].each do |assignee|
-          assigned_issue.assignees = []
-          assigned_issue.assignees << assignee[:id]
-        end
+        assigned_issue.assignees = issue[:assignees].map(&:id)
         assigned_issue.save!
       end
     end
