@@ -4,15 +4,15 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = ENV['RAILS_ENV'] || :development
 # 通常だと、production環境でしか処理が走らない
 # cronを実行する環境変数をセットし、dev環境のみで処理が走るようにする
-set :environment, :development
+set :environment, rails_env
 # cronのログの吐き出し場所
 set :output, "#{Rails.root}/log/cron.log"
 
 every 1.minute do
-  runner "AssignedIssue.create"
-  runner "AssignedIssue.update"
-  runner "ReviewRequestedPullRequest.create"
-  runner "ReviewRequestedPullRequest.update"
+  rake 'issues:create'
+  rake 'issues:update'
+  rake 'pull_requests:create'
+  rake 'pull_requests:update'
 end
 
 
