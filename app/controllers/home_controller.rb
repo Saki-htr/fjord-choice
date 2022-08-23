@@ -6,5 +6,8 @@ class HomeController < ApplicationController
   require 'json'
   require 'octokit'
 
-  def index; end
+  def index
+    @issues = AssignedIssue.all
+    @pulls = ReviewRequestedPullRequest.all
+  end
 end
