@@ -11,9 +11,8 @@ set :output, "#{Rails.root}/log/cron.log"
 every 1.minute do
   runner "AssignedIssue.create"
   runner "AssignedIssue.update"
-end
-every 1.minute do
   runner "ReviewRequestedPullRequest.create"
   runner "ReviewRequestedPullRequest.update"
 end
+
 
