@@ -18,6 +18,9 @@ table border="1"
 
 / = client.last_response.headers["x-ratelimit-remaining"]
 
+= '残りrate-limit'
+= AssignedIssue.client
+
 = '@issuesの中身'
 = @issues.pluck(:number).count
 = @issues.pluck(:number)

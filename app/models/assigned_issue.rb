@@ -12,9 +12,8 @@ class AssignedIssue < ApplicationRecord
     end
 
     def api_request_for_create
-      (1..1).map do |page|
-        client.search_issues('repo:fjordllc/bootcamp is:issue', { state: 'all', sort: 'updated', per_page: 100, page: page })
-      end
+      request = []
+      request << client.search_issues('repo:fjordllc/bootcamp is:issue', { state: 'all', sort: 'updated', per_page: 100})
     end
 
     # rubocop:disable Metrics/MethodLength
