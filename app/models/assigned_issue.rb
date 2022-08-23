@@ -13,7 +13,7 @@ class AssignedIssue < ApplicationRecord
 
     def api_request_for_create
       request = []
-      request << client.search_issues('repo:fjordllc/bootcamp is:issue', { state: 'all', sort: 'updated', per_page: 100})
+      request << client.search_issues('repo:fjordllc/bootcamp is:issue', { state: 'all', sort: 'updated', per_page: 100 })
     end
 
     # rubocop:disable Metrics/MethodLength
