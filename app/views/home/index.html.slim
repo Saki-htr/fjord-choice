@@ -1,6 +1,10 @@
 h1 Fjord Choice
 
-= button_to "利用規約に同意して、メンバーに自分を追加する", "/auth/github", method: :post, data: { turbo: false }
+- if logged_in?
+  = button_to "メンバーから外れる", logout_path, method: :delete, data: { turbo: false }
+- else
+  = button_to "利用規約に同意して、メンバーに自分を追加する", "/auth/github", method: :post, data: { turbo: false }
+
 - if flash.notice
   = flash.notice
 
@@ -20,10 +24,10 @@ table border="1"
 
 / = client.last_response.headers["x-ratelimit-remaining"]
 
-= '@issuesの中身'
+= '取得したissue'
 = @issues.pluck(:number).count
 = @issues.pluck(:number)
 
-= '@pullsの中身'
+= '取得したPR'
 = @pulls.pluck(:number).count
 = @pulls.pluck(:number)
