@@ -13,8 +13,8 @@ class User < ApplicationRecord
     name = auth_hash[:info][:nickname]
     image_url = auth_hash[:info][:image]
 
-   # 引数に渡したproviderとuidがUserのレコードに有れば、そのオブジェクトを返す
-   # 無ければ、引数に渡したproviderとuidに加えて、nameとavatar_urlを設定してレコード作成&そのオブジェクトを返す
+    # 引数に渡したproviderとuidがUserのレコードに有れば、そのオブジェクトを返す
+    # 無ければ、引数に渡したproviderとuidに加えて、nameとavatar_urlを設定してレコード作成&そのオブジェクトを返す
 
     User.find_or_create_by!(provider: provider, uid: uid) do |user|
       user.name = name

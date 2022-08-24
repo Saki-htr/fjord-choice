@@ -36,7 +36,6 @@ class AssignedIssue < ApplicationRecord
     end
     # rubocop:enable Metrics/MethodLength
 
-    
     def api_request_for_update
       AssignedIssue.pluck(:number).map do |number|
         client.issue('fjordllc/bootcamp', number)
