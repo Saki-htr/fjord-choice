@@ -1,6 +1,8 @@
 h1 Fjord Choice
 
-p Find me in app/views/home/index.html.slim
+= button_to "利用規約に同意して、メンバーに自分を追加する", "/auth/github", method: :post, data: { turbo: false }
+- if flash.notice
+  = flash.notice
 
 table border="1"
   thead
