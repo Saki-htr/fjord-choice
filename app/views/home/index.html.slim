@@ -1,17 +1,16 @@
 h1 Fjord Choice
 
 - if logged_in?
-  = button_to "メンバーから外れる", logout_path, method: :delete, data: { turbo: false }
+  = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
 - else
-  = button_to "利用規約に同意して、メンバーに自分を追加する", "/auth/github", method: :post, data: { turbo: false }
+  = button_to '利用規約に同意して、メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
 
-- if flash.notice
-  = flash.notice
+= flash.notice
 
-table border="1"
+table border='1'
   thead
     tr
-      th colspan="2" メンバー
+      th colspan='2' メンバー
       th Issue合計pt
       th レビュー依頼されているPullRequest
       th 合計数

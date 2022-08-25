@@ -11,9 +11,4 @@ class SessionsController < ApplicationController
     # トップページへリダイレクト & #flashメッセージ "ログインしました"
     redirect_to root_path, notice: 'メンバーに追加されました'
   end
-
-  def destroy
-    reset_session
-    redirect_to root_path, notice: 'ログアウトしました'
-  end
 end
