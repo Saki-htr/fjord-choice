@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
-          MESSAGE: ${{ github.event }}
-        run: echo  $MESSAGE >> .github/workflows/issue.md
+          EVENT: ${{ github.event }}
+        run: echo $EVENT
