@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: see payload
-        shell: /usr/bin/bash -e {0}
+        shell: bash -xe {0}
         run: echo ${{ github }}
       - run: echo ${{ github.event_path }}
-      - run: echo ${{ github.api_url }}
