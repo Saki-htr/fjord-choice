@@ -1,0 +1,14 @@
+on:
+  repository_dispatch:
+    types:
+      - bootcamp-issue-assigned# repository_dispatch送出時のevent_typeの名前と揃える
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+        run: |
+          echo "bootcampでissueがアサインされた"
