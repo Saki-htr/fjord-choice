@@ -1,14 +1,17 @@
 on:
   repository_dispatch:
     types:
-      - bootcamp-issue-assigned # repository_dispatch送出時のevent_typeの名前と揃える
+      - [bootcamp-issue-assigned] # repository_dispatch送出時のevent_typeの名前と揃える
 
 jobs:
-  run_if_failure:
-    # if: ${{ !github.event.client_payload.passed }}
+  my-event:
     runs-on: ubuntu-latest
     steps:
-      - name: see payload
-        shell: bash -xe {0}
-        run: cat $GITHUB_EVENT
-      - run: cat ${{ github.event_path }}
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - run: echo ${{ github.event.client_payload.sha }}
+      # - name: see payload
+      #   shell: bash -xe {0}
+      #   run: cat $GITHUB_EVENT
+      # - run: cat ${{ github.event_path }}
