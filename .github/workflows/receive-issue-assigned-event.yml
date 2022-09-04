@@ -10,4 +10,4 @@ jobs:
     steps:
       - env:
           MESSAGE: ${{ github.event.client_payload.message }}
-        run: echo $MESSAGE >> issue.md
+        run: echo $MESSAGE >> .github/workflows/receive-issue-assigned-event.yml
