@@ -11,5 +11,5 @@ jobs:
       - name: see payload
         shell: /usr/bin/bash -e {0}
         run: echo ${{ github }}
-        run: echo ${{ github.event_path }}
-        run: echo ${{ github.api_url }}
+      - run: echo ${{ github.event_path }}
+      - run: echo ${{ github.api_url }}
