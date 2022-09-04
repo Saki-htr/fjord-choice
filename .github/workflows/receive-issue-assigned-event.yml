@@ -4,11 +4,10 @@ on:
       - bootcamp-issue-assigned # repository_dispatch送出時のevent_typeの名前と揃える
 
 jobs:
-  build:
-    name: Build
+  run_if_failure:
+    if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps:
-      - name: make file & write
-        uses: actions/checkout@v3
-        run: |
-          echo -e "bootcampでissueがアサインされた" >> issue.md
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: echo $MESSAGE >> issue.md
