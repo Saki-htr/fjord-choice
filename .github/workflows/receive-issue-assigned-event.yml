@@ -11,4 +11,4 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
         run: |
-          echo "bootcampでissueがアサインされた"
+          echo -e "bootcampでissueがアサインされた" >> issue.md
