@@ -8,7 +8,8 @@ jobs:
     if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps:
-      - shell: /usr/bin/bash -e {0}
-      - run: echo ${{ github }}
-      - run: echo ${{ github.event_path }}
-      - run: echo ${{ github.api_url }}
+      - name: see payload
+        shell: /usr/bin/bash -e {0}
+        run: echo ${{ github }}
+        run: echo ${{ github.event_path }}
+        run: echo ${{ github.api_url }}
