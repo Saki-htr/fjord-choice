@@ -8,4 +8,4 @@ jobs:
     if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event }}
+      - run: cat ${{ github.event_path }}
