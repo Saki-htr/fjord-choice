@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
-          MESSAGE: ${{ github.event.client_payload.message }}
-        run: echo $MESSAGE >> .github/workflows/receive-issue-assigned-event.yml
+          MESSAGE: ${{ github.event }}
+        run: echo  $MESSAGE >> .github/workflows/issue.md
