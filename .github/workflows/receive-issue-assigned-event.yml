@@ -8,6 +8,6 @@ jobs:
     if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ github.event }} >> issue.md
       - run: cat ${{ github.event_path }}
-      - run: cat ${{ github.event }}
       - run: cat ${{ github.api_url }}
