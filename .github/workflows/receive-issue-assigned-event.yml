@@ -1,7 +1,8 @@
+name: Create GitHub dispatch event
 on:
   repository_dispatch:
     types:
-      - [bootcamp-issue-assigned] # repository_dispatch送出時のevent_typeの名前と揃える
+      - bootcamp-issue-assigned # repository_dispatch送出時のevent_typeの名前と揃える
 
 jobs:
   my-event:
