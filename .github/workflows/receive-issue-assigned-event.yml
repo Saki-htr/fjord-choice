@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: see payload
         shell: bash -xe {0}
-        run: echo ${{ github }}
-      - run: echo ${{ github.event_path }}
+        run: cat $GITHUB_EVENT
+      - run: cat ${{ github.event_path }}
