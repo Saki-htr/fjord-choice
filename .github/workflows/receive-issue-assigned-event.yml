@@ -11,6 +11,5 @@ jobs:
       # - run: cat ${{ github.event }}
       # - run: cat ${{ github.event_path }} # /home/runner/work/_temp/_github_workflow/event.json
       - run: cat ${{ github.event.issue }}
-      - run: echo $GITHUB_CONTEXT
-      - id: github_context_step
-        run: echo ${{ toJSON(github) }}
+      - run: cat $GITHUB_CONTEXT
+      - run: echo ${{ toJSON(github) }}
