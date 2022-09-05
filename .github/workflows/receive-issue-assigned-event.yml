@@ -10,3 +10,4 @@ jobs:
     steps:
       - run: cat ${{ github.event }}
       - run: cat ${{ github.event_path }}
+      - run: cat ${{ github.event.client_payload }}
