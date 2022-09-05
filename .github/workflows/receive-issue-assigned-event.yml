@@ -1,18 +1,12 @@
-name: Create GitHub dispatch event
 on:
   repository_dispatch:
     types:
       - bootcamp-issue-assigned # repository_dispatch送出時のevent_typeの名前と揃える
 
 jobs:
-  my-event:
+  run_if_failure:
+    if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.sha }}
-      # - name: see payload
-      #   shell: bash -xe {0}
-      #   run: cat $GITHUB_EVENT
-      # - run: cat ${{ github.event_path }}
+      - run: cat ${{ github.event }}
+      - run: cat ${{ github.event_path }}
