@@ -10,7 +10,7 @@ jobs:
     steps:
       # - run: cat ${{ github.event }}
       # - run: cat ${{ github.event_path }} # /home/runner/work/_temp/_github_workflow/event.json
-      # - run: cat ${{ github.event.client_payload }} #何も表示されない
+      - run: cat ${{ github.event.issue }}
       - run: echo ${{ GITHUB_CONTEXT }}
       - id: github_context_step
         run: echo ${{ toJSON(github) }}
