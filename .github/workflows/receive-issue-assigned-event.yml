@@ -10,6 +10,7 @@ jobs:
     steps:
       # - run: cat ${{ github.event }}
       # - run: cat ${{ github.event_path }} # /home/runner/work/_temp/_github_workflow/event.json
+      - uses: actions/checkout@v2
       - run: cat ${{ github.event.issue }}
       - run: cat $GITHUB_CONTEXT
       - run: echo ${{ toJSON(github) }}
