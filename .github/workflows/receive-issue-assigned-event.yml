@@ -5,9 +5,9 @@ on:
 
 jobs:
   hoge:
-    if: ${{ !github.event.client_payload.passed }}
+    # if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps:
-      - run: cat ${{ github.event }}
+      # - run: cat ${{ github.event }}
       - run: cat ${{ github.event_path }}
       - run: cat ${{ github.event.client_payload }}
