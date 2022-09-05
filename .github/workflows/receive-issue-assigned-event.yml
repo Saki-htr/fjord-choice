@@ -4,8 +4,7 @@ on:
       - bootcamp-issue-assigned # repository_dispatch送出時のevent_typeの名前と揃える
 
 jobs:
-  run_if_failure:
-    if: ${{ !github.event.client_payload.passed }}
+  hoge:
     runs-on: ubuntu-latest
     steps:
       - run: cat ${{ github.event }}
