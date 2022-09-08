@@ -23,10 +23,10 @@ table border='1'
 
 / = client.last_response.headers["x-ratelimit-remaining"]
 
-= '取得したissue'
-= @issues.pluck(:number).count
-= @issues.pluck(:number)
+/ = '取得したissue'
+/ = @issues.pluck(:number).count
+/ = @issues.pluck(:number)
 
-= '取得したPR'
-= @pulls.pluck(:number).count
-= @pulls.pluck(:number)
+/ = '取得したPR'
+/ = @pulls.pluck(:number).count
+/ = @pulls.pluck(:number)

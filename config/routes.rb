@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create"
 
   resource :retirements, only: %i(create)
+  post "/" => "home#create"
 end
