@@ -11,48 +11,48 @@ class ReviewRequestedPullRequest < ApplicationRecord
   }
 
   class << self
-    def client
-      Octokit::Client.new(client_id: ENV['GITHUB_KEY'],
-                          client_secret: ENV['GITHUB_SECRET'])
-    end
+    # def client
+    #   Octokit::Client.new(client_id: ENV['GITHUB_KEY'],
+    #                       client_secret: ENV['GITHUB_SECRET'])
+    # end
 
-    def api_request_for_create
-      client.pull_requests('fjordllc/bootcamp', { state: 'open', per_page: 100 })
-    end
+    # def api_request_for_create
+    #   client.pull_requests('fjordllc/bootcamp', { state: 'open', per_page: 100 })
+    # end
 
-    def delete_release_branch
-      api_request_for_create.delete_if do |pull|
-        pull[:labels][0][:name] == 'release' unless pull[:labels].empty?
-      end
-    end
+    # def delete_release_branch
+    #   api_request_for_create.delete_if do |pull|
+    #     pull[:labels][0][:name] == 'release' unless pull[:labels].empty?
+    #   end
+    # end
 
-    def create
-      delete_release_branch.each do |pull|
-        next if ReviewRequestedPullRequest.exists?(number: pull[:number])
+    # def create
+    #   delete_release_branch.each do |pull|
+    #     next if ReviewRequestedPullRequest.exists?(number: pull[:number])
 
-        pull_request = ReviewRequestedPullRequest.new
-        pull_request.number = pull[:number]
-        pull_request.state = pull[:state]
-        pull_request.title = pull[:title]
-        pull_request.reviewers = pull[:requested_reviewers].map(&:id)
-        pull_request.save!
-      end
-    end
+    #     pull_request = ReviewRequestedPullRequest.new
+    #     pull_request.number = pull[:number]
+    #     pull_request.state = pull[:state]
+    #     pull_request.title = pull[:title]
+    #     pull_request.reviewers = pull[:requested_reviewers].map(&:id)
+    #     pull_request.save!
+    #   end
+    # end
 
-    def api_request_for_update
-      ReviewRequestedPullRequest.pluck(:number).map do |number|
-        client.pull_request('fjordllc/bootcamp', number)
-      end
-    end
+    # def api_request_for_update
+    #   ReviewRequestedPullRequest.pluck(:number).map do |number|
+    #     client.pull_request('fjordllc/bootcamp', number)
+    #   end
+    # end
 
-    def update
-      api_request_for_update.each do |pull|
-        pull_request = ReviewRequestedPullRequest.find_by(number: pull[:number])
-        pull_request.state = pull[:state]
-        pull_request.title = pull[:title]
-        pull_request.reviewers = pull[:requested_reviewers].map(&:id)
-        pull_request.save!
-      end
-    end
+    # def update
+    #   api_request_for_update.each do |pull|
+    #     pull_request = ReviewRequestedPullRequest.find_by(number: pull[:number])
+    #     pull_request.state = pull[:state]
+    #     pull_request.title = pull[:title]
+    #     pull_request.reviewers = pull[:requested_reviewers].map(&:id)
+    #     pull_request.save!
+    #   end
+    # end
   end
 end
