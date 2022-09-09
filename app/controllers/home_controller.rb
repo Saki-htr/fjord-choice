@@ -18,9 +18,10 @@ class HomeController < ApplicationController
     json_request = JSON.parse(request.body.read)
 
     # パース後のデータを表示
+    p "json_request"
     p json_request
+    p "params"
     p params
-    p params[:assignees]
     # 各要素へのアクセス方法
     # p "glossary => #{json_request["glossary"]}"
     # p "glossary.title => #{json_request["glossary"]["title"]}"
