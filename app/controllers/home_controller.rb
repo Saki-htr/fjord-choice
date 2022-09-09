@@ -4,7 +4,5 @@ class HomeController < ApplicationController
   require 'json'
   require 'octokit'
 
-
-  def index
-  end
+  def index; end
 end

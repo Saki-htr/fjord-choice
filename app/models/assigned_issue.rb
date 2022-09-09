@@ -16,7 +16,7 @@ class AssignedIssue < ApplicationRecord
   #     request << client.search_issues('repo:fjordllc/bootcamp is:issue', { state: 'all', sort: 'updated', per_page: 100 })
   #   end
 
-  #   # rubocop:disable Metrics/MethodLength
+  #
   #   def create
   #     api_request_for_create.each do |issue|
   #       issue[:items].each do |i|
@@ -34,9 +34,7 @@ class AssignedIssue < ApplicationRecord
   #       end
   #     end
   #   end
-  #   # rubocop:enable Metrics/MethodLength
-
-  #   def api_request_for_update
+  #     #   def api_request_for_update
   #     AssignedIssue.pluck(:number).map do |number|
   #       client.issue('fjordllc/bootcamp', number)
   #     end
