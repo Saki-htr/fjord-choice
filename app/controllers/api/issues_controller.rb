@@ -1,12 +1,7 @@
 class Api::IssuesController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
-    # 読み込み時に一度パースが必要
-    # json_request = JSON.parse(request.body.read)
-
-    # パース後のデータを表示
-    # p "json_request"
-    # p json_request
+    # デバッグ
     p "params"
     p params
 
