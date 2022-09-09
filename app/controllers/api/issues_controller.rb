@@ -21,7 +21,7 @@ class Api::IssuesController < ApplicationController
 
   private
 
-  def issue_params
-    params.require(:issue).permit(:number, :labels, :assignees)
-  end
+  # def issue_params
+  #   params.require(:issue).permit(:number, :labels, :assignees)
+  # end
 end
