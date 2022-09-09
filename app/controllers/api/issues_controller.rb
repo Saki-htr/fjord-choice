@@ -14,6 +14,8 @@ class Api::IssuesController < ApplicationController
       assignees: params[:assignees].map(&:to_s)
     )
     assigned_issue.save!
+
+    redirect_to root_path
   end
 
   # def issue_params
