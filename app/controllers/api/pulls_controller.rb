@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class Api::PullsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
-    # デバッグ
-    Rails.logger.debug 'params'
-    Rails.logger.debug params
+    Rails.logger.debug params # paramsの中身デバッグ
 
     # レコード作成or更新
     review_requested_pr = ReviewRequestedPullRequest.find_or_initialize_by(number: params[:number])
