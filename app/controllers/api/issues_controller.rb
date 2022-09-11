@@ -3,10 +3,6 @@
 class Api::IssuesController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
-    # デバッグ
-    Rails.logger.debug 'params'
-    Rails.logger.debug params
-
     assigned_issue = AssignedIssue.find_or_initialize_by(number: params[:number])
     assigned_issue.update!(
       number: params[:number],
