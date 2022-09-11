@@ -15,18 +15,27 @@ table border='1'
       th レビュー依頼されているPullRequest
       th 合計数
 
-  / tbody
-  /   - @users.each do |user|
-  /     tr
-  /       td = user.github_id
-  /       td = user.name
+/   tbody
+/     - @users.each do |user|
+/       tr
+/         td rowspan='2' = image_tag user.image_url, size: '30x30'
+/         td rowspan='2' = user.name
+/       tr
+/         td = "#{AssignedIssue.where("#{user.uid} = ANY(assignees)").sum(:point)}/20"
+/         - ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").each do |p|
+/           td = p.title
+/       tr
+/         td = ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count
 
-/ = client.last_response.headers["x-ratelimit-remaining"]
-
-/ = '取得したissue'
-/ = @issues.pluck(:number).count
-/ = @issues.pluck(:number)
-
-/ = '取得したPR'
-/ = @pulls.pluck(:number).count
-/ = @pulls.pluck(:number)
+= '<userの情報>'
+br
+- @users.each do |user|
+  = image_tag user.image_url, size: '30x30'
+  = user.name
+  br
+  = "#{AssignedIssue.where("#{user.uid} = ANY(assignees)").sum(:point)}/20"
+  br
+  - ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").each do |p|
+    = "PRのタイトル:#{p.title}"
+    br
+  = "#{ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count}個"
