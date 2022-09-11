@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_085128) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_11_052414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_085128) do
     t.integer "point", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "assignees", default: [], null: false, array: true
     t.integer "number", null: false
+    t.integer "assignees", default: [], null: false, array: true
     t.index ["assignees"], name: "index_assigned_issues_on_assignees"
     t.index ["number"], name: "index_assigned_issues_on_number", unique: true
   end
@@ -29,8 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_085128) do
     t.integer "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "reviewers", null: false, array: true
     t.integer "state", null: false
+    t.integer "reviewers", default: [], null: false, array: true
     t.index ["number"], name: "index_review_requested_pull_requests_on_number", unique: true
     t.index ["reviewers"], name: "index_review_requested_pull_requests_on_reviewers"
   end
@@ -56,10 +56,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_085128) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "provider", null: false
-    t.string "uid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url", null: false
+    t.integer "uid", null: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
