@@ -26,5 +26,3 @@ table border='1'
           td = p.title
       tr
         td = ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count
-
-
