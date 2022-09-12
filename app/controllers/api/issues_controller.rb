@@ -12,21 +12,7 @@ class Api::IssuesController < ApplicationController
     )
 
     user = User.find_by(uid: params[:assignees])
-    assigned_issue.users << user
-
-    # assigned_issue.number = params[:number]
-    # assigned_issue.point = params[:labels].map(&:to_i).sum
-    # assigned_issue.assignees = params[:assignees].map(&:to_s)
-
-    # 中間テーブルのレコード作成
-    # user =  User.find_by(uid: params[:assignees])
-    # pp user.id
-    # pp assigned_issue.id
-    # UserAssignedIssue.create!(
-    #   # byebug
-    #   user_id: user.id,
-    #   assigned_issues_id: assigned_issue.id
-    # )
+    assigned_issue.users << user #中間テーブルのレコード作成
 
     redirect_to root_path
   end
