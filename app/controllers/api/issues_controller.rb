@@ -8,7 +8,7 @@ class Api::IssuesController < ApplicationController
     assigned_issue.update!(
       number: params[:number],
       point: params[:labels].map(&:to_i).sum,
-      assignees: params[:assignees].map(&:to_i)
+      assignees: params[:assignees]
     )
 
     user = User.find_by(uid: params[:assignees])
