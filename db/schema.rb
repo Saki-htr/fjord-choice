@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_042452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assigned_issue_id"], name: "index_user_assigned_issues_on_assigned_issue_id"
+    t.index ["user_id", "assigned_issue_id"], name: "index_user_assigned_issues_on_user_id_and_assigned_issue_id", unique: true
     t.index ["user_id"], name: "index_user_assigned_issues_on_user_id"
   end
 

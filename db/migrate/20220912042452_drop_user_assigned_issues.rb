@@ -13,5 +13,6 @@ class DropUserAssignedIssues < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :user_assigned_issues, [:user_id, :assigned_issue_id], unique: true
   end
 end
