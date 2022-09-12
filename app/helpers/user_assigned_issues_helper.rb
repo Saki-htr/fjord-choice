@@ -1,0 +1,2 @@
+module UserAssignedIssuesHelper
+end
