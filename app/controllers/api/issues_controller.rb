@@ -7,7 +7,7 @@ class Api::IssuesController < ApplicationController
     assigned_issue.update!(
       number: params[:number],
       point: params[:labels].map(&:to_i).sum,
-      assignees: params[:assignees].map(&:to_s)
+      assignees: params[:assignees]
     )
     assigned_issue.save!
 
