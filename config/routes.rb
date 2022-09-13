@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   root 'home#index'
   get "/auth/:provider/callback" => "sessions#create"
   resource :retirements, only: %i(create)
-  resources :user_assigned_issues, only: %I[create destroy]
 end
