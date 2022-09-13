@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_11_052414) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_13_084611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,10 +37,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_11_052414) do
 
   create_table "user_assigned_issues", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "assigned_issues_id", null: false
+    t.bigint "assigned_issue_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assigned_issues_id"], name: "index_user_assigned_issues_on_assigned_issues_id"
+    t.index ["assigned_issue_id"], name: "index_user_assigned_issues_on_assigned_issue_id"
+    t.index ["user_id", "assigned_issue_id"], name: "index_user_assigned_issues_on_user_id_and_assigned_issue_id", unique: true
     t.index ["user_id"], name: "index_user_assigned_issues_on_user_id"
   end
 
@@ -50,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_11_052414) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["review_requested_pull_request_id"], name: "index_user_pull_requests_on_review_requested_pull_request_id"
+    t.index ["user_id", "review_requested_pull_request_id"], name: "index_user_pull_requests_on_user_id_and_pull_request_id", unique: true
     t.index ["user_id"], name: "index_user_pull_requests_on_user_id"
   end
 
@@ -63,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_11_052414) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
-  add_foreign_key "user_assigned_issues", "assigned_issues", column: "assigned_issues_id"
+  add_foreign_key "user_assigned_issues", "assigned_issues"
   add_foreign_key "user_assigned_issues", "users"
   add_foreign_key "user_pull_requests", "review_requested_pull_requests"
   add_foreign_key "user_pull_requests", "users"
