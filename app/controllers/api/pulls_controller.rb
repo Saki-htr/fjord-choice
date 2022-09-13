@@ -8,7 +8,7 @@ class Api::PullsController < ApplicationController
       title: params[:title],
       number: params[:number],
       state: params[:state],
-      reviewers: params[:reviewers].map(&:to_s)
+      reviewers: params[:reviewers]
     )
     review_requested_pr.save!
 
