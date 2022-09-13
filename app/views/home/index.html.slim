@@ -27,15 +27,15 @@ table border='1'
 /       tr
 /         td = ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count
 
-= '<userの情報>'
-br
-- @users.each do |user|
-  = image_tag user.image_url, size: '30x30'
-  = user.name
-  br
-  = "#{AssignedIssue.where("#{user.uid} = ANY(assignees)").sum(:point)}/20"
-  br
-  - ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").each do |p|
-    = "PRのタイトル:#{p.title}"
-    br
-  = "#{ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count}個"
+/ = '<userの情報>'
+/ br
+/ - @users.each do |user|
+/   = image_tag user.image_url, size: '30x30'
+/   = user.name
+/   br
+/   = "#{AssignedIssue.where("#{user.uid} = ANY(assignees)").sum(:point)}/20"
+/   br
+/   - ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").each do |p|
+/     = "PRのタイトル:#{p.title}"
+/     br
+/   = "#{ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count}個"

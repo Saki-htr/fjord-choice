@@ -12,7 +12,7 @@ class Api::IssuesController < ApplicationController
     )
 
     user = User.find_by(uid: params[:assignees])
-    assigned_issue.users << user #中間テーブルのレコード作成
+    assigned_issue.users << user # 中間テーブルのレコード作成
 
     redirect_to root_path
   end
