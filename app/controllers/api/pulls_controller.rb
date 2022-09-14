@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
 class Api::PullsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  protect_from_forgery except: :create
   def create
     review_requested_pr = ReviewRequestedPullRequest.find_or_initialize_by(number: params[:number])
-    review_requested_pr.update!(
-      title: params[:title],
-      number: params[:number],
-      state: params[:state],
-      reviewers: params[:reviewers]
-    )
-    review_requested_pr.save!
-
+    review_requested_pr.update!(pull_params)
     redirect_to root_path
+  end
+
+  private
+  def pull_params
+    params.require(:pull).permit(:title, :number, :state, :reviewers)
   end
 end
