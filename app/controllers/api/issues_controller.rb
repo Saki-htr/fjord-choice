@@ -15,6 +15,12 @@ class Api::IssuesController < ApplicationController
     redirect_to root_path
   end
 
+  def require_token
+    return if ENV['FJORD_CHOICE_TOKEN'] == params[:token]
+
+    head :unauthorized
+  end
+
   # def issue_params
   #   params.require(:issue).permit(:number, :labels, :assignees)
   # end
