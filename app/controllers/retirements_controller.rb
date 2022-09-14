@@ -2,8 +2,8 @@
 
 class RetirementsController < ApplicationController
   def create
-    current_user.destroy!
     reset_session
+    # current_user.destroy!
     redirect_to root_path, notice: 'メンバーから外れました'
   end
 end
