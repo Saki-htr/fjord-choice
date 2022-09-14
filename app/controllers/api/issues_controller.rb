@@ -12,8 +12,6 @@ class Api::IssuesController < ApplicationController
       assignees: params[:assignees]
     )
 
-    user = User.find_by(uid: params[:assignees])
-
     redirect_to root_path
   end
 
