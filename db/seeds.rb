@@ -6,3 +6,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.create!(
+   name: "garammasala29",
+   provider: "github",
+   uid: 69446373,
+   image_url: "https://avatars.githubusercontent.com/u/69446373?v=4"
+)
+User.create!(
+   name: "yocajii",
+   provider: "github",
+   uid: 33394676,
+   image_url: "https://avatars.githubusercontent.com/u/33394676?v=4"
+)
