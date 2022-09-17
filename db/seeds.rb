@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -7,14 +8,43 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 User.create!(
-   name: "garammasala29",
-   provider: "github",
-   uid: 69446373,
-   image_url: "https://avatars.githubusercontent.com/u/69446373?v=4"
+  name: 'garammasala29',
+  provider: 'github',
+  uid: 69_446_373,
+  image_url: 'https://avatars.githubusercontent.com/u/69446373?v=4'
 )
 User.create!(
-   name: "yocajii",
-   provider: "github",
-   uid: 33394676,
-   image_url: "https://avatars.githubusercontent.com/u/33394676?v=4"
+  name: 'yocajii',
+  provider: 'github',
+  uid: 33_394_676,
+  image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
+)
+
+AssignedIssue.create!(
+  point: 1,
+  number: 1,
+  assignees: [58_052_292]
+)
+AssignedIssue.create!(
+  point: 1,
+  number: 2,
+  assignees: [69_446_373]
+)
+AssignedIssue.create!(
+  point: 3,
+  number: 4,
+  assignees: [58_052_292]
+)
+
+ReviewRequestedPullRequest.create!(
+  title: 'reviewerにSakiが登録された',
+  number: 8,
+  state: 'open',
+  reviewers: [58_052_292]
+)
+ReviewRequestedPullRequest.create!(
+  title: 'Sakiが通常commentした',
+  number: 14,
+  state: 'open',
+  reviewers: [58_052_292]
 )
