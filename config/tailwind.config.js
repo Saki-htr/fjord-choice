@@ -7,7 +7,6 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}'
   ],
-  darkMode: false,
   theme: {
     extend: {
       fontFamily: {
@@ -20,5 +19,14 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('daisyui')
-  ]
+  ],
+  daisyui: {
+    styled: true,
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    darkTheme: "light"
+  }
 }
