@@ -9,7 +9,6 @@ class ReviewRequestedPullRequest < ApplicationRecord
     closed: 1
   }
 
-
   class << self
     def review_requested(user)
       ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)")
