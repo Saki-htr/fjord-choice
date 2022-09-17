@@ -8,14 +8,7 @@ class PullRequest < ApplicationRecord
 
   class << self
     def review_requested(user)
-      ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)")
+      PullRequest.where("#{user.uid} = ANY(reviewers)")
     end
-    # def requested?(user)
-    #   if ReviewRequestedPullRequest.review_requested(user).count >= 1
-    #     ReviewRequestedPullRequest.review_requested(user)
-    #   else
-    #     false
-    #   end
-    # end
   end
 end
