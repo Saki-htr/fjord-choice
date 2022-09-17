@@ -329,7 +329,7 @@ DEPENDENCIES
   slim_lint
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console

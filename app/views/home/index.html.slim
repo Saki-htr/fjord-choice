@@ -20,14 +20,15 @@ table border='1'
       tr
         td = image_tag user.image_url, size: '30x30'
         td = user.name
-        td =  "#{AssignedIssue.where("#{user.uid} = ANY(assignees)").sum(:point)}/20"
-        - ReviewRequestedPullRequest.review_requested(user).each do |pull|
-          - if ReviewRequestedPullRequest.review_requested(user).count == 0
-            td =
+        td = "#{AssignedIssue.total_points(user)}/20"
+        td
+          ul
+          - if ReviewRequestedPullRequest.review_requested(user).empty?
+            | ありません
           - else
-            td = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
-
-        td = ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count
+            - ReviewRequestedPullRequest.review_requested(user).each do |pull|
+              li = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+        td = ReviewRequestedPullRequest.review_requested(user).count
 
 / = '<userの情報>'
 / br
@@ -41,3 +42,14 @@ table border='1'
 /     = "PRのタイトル:#{p.title}"
 /     br
 /   = "#{ReviewRequestedPullRequest.where("#{user.uid} = ANY(reviewers)").count}個"
+
+/ table border='1'
+/   thead
+/     tr
+/       th 見出し
+
+/   tbody
+/   td
+/     ul
+/       li = '1つめ'
+/       li = '2つめ'

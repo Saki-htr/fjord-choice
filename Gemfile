@@ -75,4 +75,4 @@ group :development do
   gem 'slim_lint'
 end
 
-gem 'tailwindcss-rails'
+gem "tailwindcss-rails", "~> 2.0"
