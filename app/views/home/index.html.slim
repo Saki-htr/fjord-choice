@@ -29,4 +29,3 @@ table border='1'
             - PullRequest.review_requested(user).each do |pull|
               li = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
         td = PullRequest.review_requested(user).count
-
