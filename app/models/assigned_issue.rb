@@ -15,7 +15,6 @@ class AssignedIssue < ApplicationRecord
   #     request << client.search_issues('repo:fjordllc/bootcamp is:issue', { state: 'all', sort: 'updated', per_page: 100 })
   #   end
 
-  #
   #   def create
   #     api_request_for_create.each do |issue|
   #       issue[:items].each do |i|
