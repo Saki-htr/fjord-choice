@@ -1,7 +1,7 @@
 h1.text-5xl Fjord Choice
 
-- if logged_in? # 条件がlogged_in?でいいか要検討
-  = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true, class: 'btn btn-info'
+- if logged_in?
+  = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
 - else
   = button_to '利用規約に同意して、メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
 
@@ -15,15 +15,15 @@ table border='1'
       th レビュー依頼されているPullRequest
       th 合計数
 
-  / tbody
-  /   - @users.each do |user|
-  /     tr
-  /       td = image_tag user.image_url, size: '30x30'
-  /       td = user.name
-  /       td =  "#{Issue.where("#{user.uid} = ANY(assignees)").sum(:point)}/20"
-  /       - PullRequest.where("#{user.uid} = ANY(reviewers)").each do |pull|
-  /           td = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pulls/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
-  /       td = PullRequest.where("#{user.uid} = ANY(reviewers)").count
+  tbody
+    - @users.each do |user|
+      tr
+        td = image_tag user.image_url, size: '30x30'
+        td = user.name
+        td = "#{Issue.where("#{user.uid} = ANY(assignees)").sum(:point)}/20"
+        - PullRequest.where("#{user.uid} = ANY(reviewers)").each do |pull|
+            td = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pulls/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+        td = PullRequest.where("#{user.uid} = ANY(reviewers)").count
 
 / = '<userの情報>'
 / br
