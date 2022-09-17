@@ -1,7 +1,7 @@
-h1 Fjord Choice
+h1.text-5xl Fjord Choice
 
-- if logged_in? # 条件がlogged_in?でいいか要検討
-  = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
+- if logged_in?
+  = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true, class: 'btn btn-info'
 - else
   = button_to '利用規約に同意して、メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
 
