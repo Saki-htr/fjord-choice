@@ -10,29 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_17_081506) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_17_081945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assigned_issues", force: :cascade do |t|
+  create_table "issues", force: :cascade do |t|
     t.integer "point", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number", null: false
     t.integer "assignees", default: [], null: false, array: true
-    t.index ["assignees"], name: "index_assigned_issues_on_assignees"
-    t.index ["number"], name: "index_assigned_issues_on_number", unique: true
+    t.index ["assignees"], name: "index_issues_on_assignees"
+    t.index ["number"], name: "index_issues_on_number", unique: true
   end
 
-  create_table "review_requested_pull_requests", force: :cascade do |t|
+  create_table "pull_requests", force: :cascade do |t|
     t.string "title", null: false
     t.integer "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "state", null: false
     t.integer "reviewers", default: [], null: false, array: true
-    t.index ["number"], name: "index_review_requested_pull_requests_on_number", unique: true
-    t.index ["reviewers"], name: "index_review_requested_pull_requests_on_reviewers"
+    t.index ["number"], name: "index_pull_requests_on_number", unique: true
+    t.index ["reviewers"], name: "index_pull_requests_on_reviewers"
   end
 
   create_table "users", force: :cascade do |t|
