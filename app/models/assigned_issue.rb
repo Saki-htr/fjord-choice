@@ -4,7 +4,7 @@ class Issue < ApplicationRecord
 
   class << self
     def total_points(user)
-      AssignedIssue.where("#{user.uid} = ANY(assignees)").sum(:point)
+      Issue.where("#{user.uid} = ANY(assignees)").sum(:point)
     end
 
   end

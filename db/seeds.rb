@@ -20,29 +20,29 @@ User.create!(
   image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
 )
 
-AssignedIssue.create!(
+Issue.create!(
   point: 1,
   number: 1,
   assignees: [58_052_292]
 )
-AssignedIssue.create!(
+Issue.create!(
   point: 1,
   number: 2,
   assignees: [69_446_373]
 )
-AssignedIssue.create!(
+Issue.create!(
   point: 3,
   number: 4,
   assignees: [58_052_292]
 )
 
-ReviewRequestedPullRequest.create!(
+PullRequest.create!(
   title: 'reviewerにSakiが登録された',
   number: 8,
   state: 'open',
   reviewers: [58_052_292]
 )
-ReviewRequestedPullRequest.create!(
+PullRequest.create!(
   title: 'Sakiが通常commentした',
   number: 14,
   state: 'open',
