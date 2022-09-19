@@ -1,0 +1,11 @@
+/ slim-lint:disable LineLength
+header.bg-primary
+  h1.text-5xl Fjord Choice
+
+  - if logged_in?
+    .btn
+      = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
+  - else
+    = button_to '利用規約に同意して、メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
+
+  = flash.notice

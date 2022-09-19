@@ -1,31 +1,23 @@
-h1.text-5xl Fjord Choice
-
-- if logged_in?
-  = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true, class: 'btn btn-info'
-- else
-  = button_to '利用規約に同意して、メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
-
-= flash.notice
-
-table border='1'
-  thead
-    tr
-      th colspan='2' メンバー
-      th Issue合計pt
-      th レビュー依頼されているPullRequest
-      th 合計数
-
-  tbody
-    - @users.each do |user|
+.overflow-x-auto
+  table.table.w-full border='1'
+    thead
       tr
-        td = image_tag user.image_url, size: '30x30'
-        td = user.name
-        td = "#{Issue.total_points(user)}/20"
-        td
-          ul
-          - if PullRequest.review_requested(user).empty?
-            | ありません
-          - else
-            - PullRequest.review_requested(user).each do |pull|
-              li = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
-        td = PullRequest.review_requested(user).count
+        th colspan='2' メンバー
+        th Issue合計pt
+        th レビュー依頼されているPullRequest
+        th 合計数
+
+    tbody
+      - @users.each do |user|
+        tr
+          td = image_tag user.image_url, size: '30x30'
+          td = user.name
+          td = "#{Issue.total_points(user)}/20"
+          td
+            ul
+            - if PullRequest.review_requested(user).empty?
+              | ありません
+            - else
+              - PullRequest.review_requested(user).each do |pull|
+                li = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+          td = PullRequest.review_requested(user).count

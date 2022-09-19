@@ -20,13 +20,7 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('daisyui')
   ],
-  daisyui: {
-    styled: true,
-    themes: true,
-    base: true,
-    utils: true,
-    logs: true,
-    rtl: false,
-    darkTheme: "light"
+   daisyui: {
+    themes: false //falseの場合、ライト（デフォルト）テーマのみ使用可能
   }
 }
