@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_17_081945) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_145237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "issues", force: :cascade do |t|
-    t.integer "point", default: 0, null: false
+    t.integer "point", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number", null: false
-    t.integer "assignees", default: [], null: false, array: true
+    t.integer "assignees", null: false, array: true
     t.index ["assignees"], name: "index_issues_on_assignees"
     t.index ["number"], name: "index_issues_on_number", unique: true
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_17_081945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "state", null: false
-    t.integer "reviewers", default: [], null: false, array: true
+    t.integer "reviewers", null: false, array: true
     t.index ["number"], name: "index_pull_requests_on_number", unique: true
     t.index ["reviewers"], name: "index_pull_requests_on_reviewers"
   end
