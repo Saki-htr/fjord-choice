@@ -56,11 +56,9 @@ RSpec.describe User, type: :model do
       expect { User.find_or_create_from_auth_hash!(new_user_auth_hash) }.to change(User, :count).from(0).to(1)
     end
 
-    it '無効なuidが渡されると、nilが返ること' do
+    it '無効なuidが渡されると、エラーが返ること' do
       auth_hash = { provider: user.provider, uid: nil, info: { nickname: user.name, image: user.image_url } }
-      expect(User.find_or_create_from_auth_hash!(auth_hash)).to be nil
       expect { User.find_or_create_from_auth_hash!(auth_hash) }.to raise_error ActiveRecord::RecordInvalid
-      expect(nil). to be nil
     end
   end
 end
