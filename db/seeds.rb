@@ -7,44 +7,46 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# User.create!(
-#   name: 'garammasala29',
-#   provider: 'github',
-#   uid: 69_446_373,
-#   image_url: 'https://avatars.githubusercontent.com/u/69446373?v=4'
-# )
-# User.create!(
-#   name: 'yocajii',
-#   provider: 'github',
-#   uid: 33_394_676,
-#   image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
-# )
+if Rails.env.development?
+  User.create!(
+    name: 'garammasala29',
+    provider: 'github',
+    uid: 69_446_373,
+    image_url: 'https://avatars.githubusercontent.com/u/69446373?v=4'
+  )
+  User.create!(
+    name: 'yocajii',
+    provider: 'github',
+    uid: 33_394_676,
+    image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
+  )
 
-# Issue.create!(
-#   point: 1,
-#   number: 1,
-#   assignees: [58_052_292]
-# )
-# Issue.create!(
-#   point: 1,
-#   number: 2,
-#   assignees: [69_446_373]
-# )
-# Issue.create!(
-#   point: 3,
-#   number: 4,
-#   assignees: [58_052_292]
-# )
+  Issue.create!(
+    point: 1,
+    number: 1,
+    assignees: [58_052_292]
+  )
+  Issue.create!(
+    point: 1,
+    number: 2,
+    assignees: [69_446_373]
+  )
+  Issue.create!(
+    point: 3,
+    number: 4,
+    assignees: [58_052_292]
+  )
 
-# PullRequest.create!(
-#   title: 'reviewerにSakiが登録された',
-#   number: 8,
-#   state: 'open',
-#   reviewers: [58_052_292]
-# )
-# PullRequest.create!(
-#   title: 'Sakiが通常commentした',
-#   number: 14,
-#   state: 'open',
-#   reviewers: [58_052_292]
-# )
+  PullRequest.create!(
+    title: 'reviewerにSakiが登録された',
+    number: 8,
+    state: 'open',
+    reviewers: [58_052_292]
+  )
+  PullRequest.create!(
+    title: 'Sakiが通常commentした',
+    number: 14,
+    state: 'open',
+    reviewers: [58_052_292]
+  )
+end
