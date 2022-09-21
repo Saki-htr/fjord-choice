@@ -12,9 +12,7 @@ class PullRequest < ApplicationRecord
     closed: 1
   }
 
-
   def self.review_requested(user)
     PullRequest.where("#{user.uid} = ANY(reviewers)").where(state: 'open')
   end
-
 end
