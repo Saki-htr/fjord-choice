@@ -36,9 +36,9 @@ RSpec.describe Issue, type: :model do
 
   describe '#total_points' do
     it 'ユーザーにアサインされたissueの合計pointを返すこと' do
-      create(:issue)
-      create(:issue2)
       user = create(:user)
+      create(:issue, assignees: [user.uid]) # assigneesとuserのuidの値が同じことを明示すべきか?
+      create(:issue2, assignees: [user.uid])
       expect(Issue.total_points(user)).to eq 3
     end
   end
