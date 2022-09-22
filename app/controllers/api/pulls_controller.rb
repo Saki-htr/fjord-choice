@@ -7,7 +7,8 @@ class Api::PullsController < ApplicationController
   def create
     review_requested_pr = PullRequest.find_or_initialize_by(number: params[:number])
     review_requested_pr.update!(pull_params)
-    redirect_to root_path
+
+    if assigned_issue.save
   end
 
   protected

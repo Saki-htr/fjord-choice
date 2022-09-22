@@ -4,18 +4,12 @@ class Api::IssuesController < ApplicationController
   protect_from_forgery except: :create
   before_action :require_token, only: [:create]
   def create
-    assigned_issue = Issue.find_or_initialize_by(number: params[:number]) # 引数に渡した条件でレコードを探し、そのレコードがあればそれを返し、無ければ新しくインスタンス作成する(saveはしない)
+    issue = Issue.find_or_create_by(number: params[:number])
 
-    assigned_issue.update!(
-      number: params[:number],
-      point: params[:labels].map(&:to_i).sum,
-      assignees: params[:assignees]
-    )
-
-    if assigned_issue.save
-      render json: { status: :created }
+    if issue.update!(point: params[:labels].map(&:to_i).sum, assignees: params[:assignees])
+      head :created
     else
-      render json: assigned_issue.errors, status: :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 
