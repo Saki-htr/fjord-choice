@@ -86,6 +86,11 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.11.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faraday (2.5.2)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -303,6 +308,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+  ruby
   x86_64-darwin-21
   x86_64-linux
 
@@ -311,6 +317,7 @@ DEPENDENCIES
   byebug
   debug
   dotenv-rails
+  factory_bot_rails
   html2slim
   importmap-rails
   jbuilder
