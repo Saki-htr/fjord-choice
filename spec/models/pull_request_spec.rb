@@ -40,7 +40,7 @@ RSpec.describe PullRequest, type: :model do
     end
   end
   describe '#review_requested' do
-    it 'ユーザーがレビュワーになっているプルリクエストを返すこと' do
+    it 'ユーザーがレビュワーになっているかつopenな状態のプルリクエストを返すこと' do
       user = create(:user)
       pull = create(:pull_request, reviewers: [user.uid])
       expect(PullRequest.review_requested(user)).to include(pull)

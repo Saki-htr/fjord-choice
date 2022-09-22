@@ -20,6 +20,12 @@ if Rails.env.development?
     uid: 33_394_676,
     image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
   )
+  User.create!(
+    name: 'Saki-htr',
+    provider: 'github',
+    uid: 58_052_292,
+    image_url: 'https://avatars.githubusercontent.com/u/58052292?v=4'
+  )
 
   Issue.create!(
     point: 1,
@@ -46,7 +52,7 @@ if Rails.env.development?
   PullRequest.create!(
     title: 'Sakiが通常commentした',
     number: 14,
-    state: 'open',
+    state: 'closed',
     reviewers: [58_052_292]
   )
 end
