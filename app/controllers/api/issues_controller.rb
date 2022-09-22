@@ -12,7 +12,11 @@ class Api::IssuesController < ApplicationController
       assignees: params[:assignees]
     )
 
-    redirect_to root_path
+    if assigned_issue.save
+      render json: { status: :created }
+    else
+      render json: assigned_issue.errors, status: :unprocessable_entity
+    end
   end
 
   def require_token
