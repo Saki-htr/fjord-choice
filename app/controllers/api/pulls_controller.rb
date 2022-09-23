@@ -2,24 +2,25 @@
 
 class Api::PullsController < ApplicationController
   protect_from_forgery except: :create
-  before_action :require_token, only: [:create]
+  before_action :authenticate, only: [:create]
 
   def create
-    review_requested_pr = PullRequest.find_or_initialize_by(number: params[:number])
-    review_requested_pr.update!(pull_params)
+    pull_request = PullRequest.find_or_create_by(number: params[:number])
 
-    if assigned_issue.save
-  end
-
-  protected
-
-  def require_token
-    return if ENV['FJORD_CHOICE_TOKEN'] == params[:token]
-
-    head :unauthorized
+    if pull_request.update!(pull_params)
+      head :created
+    else
+      head :unprocessable_entity
+    end
   end
 
   private
+
+  def authenticate
+    authenticate_or_request_with_http_token do |token, _options|
+      token == ENV['FJORD_CHOICE_TOKEN']
+    end
+  end
 
   def pull_params
     params.require(:pull).permit(:title, :number, :state, reviewers: [])
