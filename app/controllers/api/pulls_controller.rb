@@ -5,9 +5,10 @@ class Api::PullsController < ApplicationController
   before_action :authenticate, only: [:create]
 
   def create
-    pull_request = PullRequest.find_or_create_by(number: params[:number])
+    pull_request = PullRequest.find_or_create_by(number_params)
 
     if pull_request.update!(pull_params)
+      byebug
       head :created
     else
       head :unprocessable_entity
@@ -25,4 +26,9 @@ class Api::PullsController < ApplicationController
   def pull_params
     params.require(:pull).permit(:title, :number, :state, reviewers: [])
   end
+
+  def number_params
+    params.require(:pull).permit(:number)
+  end
+
 end
