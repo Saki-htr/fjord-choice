@@ -3,21 +3,30 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::Pulls', type: :request do
+  before do
+    @token = ENV['FJORD_CHOICE_TOKEN']
+  end
+
   describe 'POST /api/pulls' do
     context 'POSTされたPullRequestと同じnumberのPullRequestが、作成されていないとき' do
       it 'PullRequestを作成できること' do
-        params = {
+        # pull_params = FactoryBot.attributes_for(:pull_request)
+        # credentials = authenticate_with_token("secret")
+        pull_params = {
           pull: {
-          number: 1,
-          title: 'タイトル',
-          state: 'open',
-          reviewers: [12_345_678],
-          },
-          token: ENV['FJORD_CHOICE_TOKEN']
+
+          }
         }
+        # byebug
+        headers = {
+        "Content-Type" => "application/json",
+        "Authorization" => "Token #{@token}"
+        }
+
         expect {
-          post api_pulls_path, params: params
+          post api_pulls_path, headers: headers, params: {pull: pull_params }
         }.to change(PullRequest, :count).by(1)
+
         expect(response).to have_http_status(:created)
       end
     end

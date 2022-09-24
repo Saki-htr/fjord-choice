@@ -5,30 +5,27 @@ class Api::PullsController < ApplicationController
   before_action :authenticate, only: [:create]
 
   def create
-    pull_request = PullRequest.find_or_create_by(number_params)
-
+    pull_request = PullRequest.find_or_create_by(number: pull_params[:number])
     if pull_request.update!(pull_params)
-      byebug
       head :created
     else
-      head :unprocessable_entity
+      head :unprocessable_entity #=> 422
     end
   end
 
   private
 
+  def fjord_choice_token
+    ENV['FJORD_CHOICE_TOKEN']
+  end
+
   def authenticate
     authenticate_or_request_with_http_token do |token, _options|
-      token == ENV['FJORD_CHOICE_TOKEN']
+      ActiveSupport::SecurityUtils.secure_compare(token, fjord_choice_token)
     end
   end
 
   def pull_params
     params.require(:pull).permit(:title, :number, :state, reviewers: [])
   end
-
-  def number_params
-    params.require(:pull).permit(:number)
-  end
-
 end
