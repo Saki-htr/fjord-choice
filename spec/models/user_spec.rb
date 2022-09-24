@@ -41,7 +41,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#find_or_create_from_auth_hash!' do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { create(:user) }
 
     it 'uidに対応するユーザーが既に作成されている場合、引数で設定した属性のUserオブジェクトが返ること' do
       # userはcreateされた状態
