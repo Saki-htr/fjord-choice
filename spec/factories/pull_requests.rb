@@ -8,7 +8,7 @@ FactoryBot.define do
     reviewers { [12_345_678] } # Aliceのuid
   end
 
-  factory :pull_request2, class: PullRequest do
+  factory :pull_request2, class: 'PullRequest' do
     number { 2 }
     title { 'closeされたPR' }
     state { 'closed' }

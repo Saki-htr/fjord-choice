@@ -28,7 +28,7 @@ RSpec.describe 'Api::Issues', type: :request do
             assignees: [23_456_789],
             token: ENV['FJORD_CHOICE_TOKEN']
           }
-        end.to_not change(Issue, :count)
+        end.not_to change(Issue, :count)
       end
 
       it '同じnumberのissueを更新できること' do

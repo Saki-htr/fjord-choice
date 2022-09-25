@@ -38,18 +38,25 @@ RSpec.describe PullRequest, type: :model do
       pull.valid?
       expect(pull.errors[:reviewers]).to include("can't be blank")
     end
+
+    it 'reviewersに空配列が渡されたとき、空配列を値として保存すること' do
+      pull = build(:pull_request, reviewers: [])
+      expect(pull).to be_valid
+      expect(pull.reviewers).to eq []
+    end
   end
+
   describe '#review_requested' do
     it 'ユーザーがレビュワーになっているかつopenな状態のプルリクエストを返すこと' do
       user = create(:user)
       pull = create(:pull_request, reviewers: [user.uid])
-      expect(PullRequest.review_requested(user)).to include(pull)
+      expect(described_class.review_requested(user)).to include(pull)
     end
 
     it 'ユーザーがレビュワーになっているが、ステータスがcloseのプルリクエストは返さないこと' do
       user = create(:user)
       pull = create(:pull_request2, reviewers: [user.uid])
-      expect(PullRequest.review_requested(user)).not_to include(pull)
+      expect(described_class.review_requested(user)).not_to include(pull)
     end
   end
 end

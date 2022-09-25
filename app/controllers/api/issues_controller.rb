@@ -27,11 +27,10 @@ class Api::IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:number, :point => [], :assignees => [])
+    params.require(:issue).permit(:number, point: [], assignees: [])
   end
 
   def point
     issue_params[:point].map(&:to_i).sum
   end
-
 end

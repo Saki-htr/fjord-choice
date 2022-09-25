@@ -46,19 +46,19 @@ RSpec.describe User, type: :model do
     it 'uidに対応するユーザーが既に作成されている場合、引数で設定した属性のUserオブジェクトが返ること' do
       # userはcreateされた状態
       auth_hash = { provider: user.provider, uid: user.uid, info: { nickname: user.name, image: user.image_url } }
-      expect(User.find_or_create_from_auth_hash!(auth_hash)).to eq user
+      expect(described_class.find_or_create_from_auth_hash!(auth_hash)).to eq user
     end
 
     it 'uidに対応するユーザーがレコードに無い場合、新しいユーザーを作成すること' do
       # userはnew(まだDB保存されてない)状態
       new_user = build(:user)
       new_user_auth_hash = { provider: new_user.provider, uid: new_user.uid, info: { nickname: new_user.name, image: new_user.image_url } }
-      expect { User.find_or_create_from_auth_hash!(new_user_auth_hash) }.to change(User, :count).from(0).to(1)
+      expect { described_class.find_or_create_from_auth_hash!(new_user_auth_hash) }.to change(described_class, :count).from(0).to(1)
     end
 
     it '無効なuidが渡されると、エラーが返ること' do
       auth_hash = { provider: user.provider, uid: nil, info: { nickname: user.name, image: user.image_url } }
-      expect { User.find_or_create_from_auth_hash!(auth_hash) }.to raise_error ActiveRecord::RecordInvalid
+      expect { described_class.find_or_create_from_auth_hash!(auth_hash) }.to raise_error ActiveRecord::RecordInvalid
     end
   end
 end
