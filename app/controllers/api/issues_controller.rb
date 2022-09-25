@@ -2,24 +2,36 @@
 
 class Api::IssuesController < ApplicationController
   protect_from_forgery except: :create
-  before_action :require_token, only: [:create]
-  def create
-    issue = Issue.find_or_create_by(number: params[:number])
+  before_action :authenticate, only: [:create]
 
-    if issue.update!(point: params[:labels].map(&:to_i).sum, assignees: params[:assignees])
-      head :created
+  def create
+    # assigneesが[]の時の処理が未対応
+    issue = Issue.find_or_create_by(number: issue_params[:number])
+    if issue.update!(point: point, assignees: issue_params[:assignees])
+      head :created #=> 201
     else
-      head :unprocessable_entity
+      head :unprocessable_entity #=> 422
     end
   end
 
-  def require_token
-    return if ENV['FJORD_CHOICE_TOKEN'] == params[:token]
+  private
 
-    head :unauthorized
+  def fjord_choice_token
+    ENV['FJORD_CHOICE_TOKEN']
   end
 
-  # def issue_params
-  #   params.require(:issue).permit(:number, :labels, :assignees)
-  # end
+  def authenticate
+    authenticate_or_request_with_http_token do |token, _options|
+      ActiveSupport::SecurityUtils.secure_compare(token, fjord_choice_token)
+    end
+  end
+
+  def issue_params
+    params.require(:issue).permit(:number, :point => [], :assignees => [])
+  end
+
+  def point
+    issue_params[:point].map(&:to_i).sum
+  end
+
 end

@@ -5,8 +5,8 @@ class PullRequest < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :state
-    validates :reviewers
   end
+  validates :reviewers, empty_array_check: true
   enum state: {
     open: 0,
     closed: 1
