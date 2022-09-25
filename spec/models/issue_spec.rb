@@ -32,6 +32,12 @@ RSpec.describe Issue, type: :model do
       issue.valid?
       expect(issue.errors[:assignees]).to include("can't be blank")
     end
+
+    it 'assigneesに空配列が渡されたとき、空配列を値として保存すること' do
+      issue = build(:issue, assignees: [])
+      expect(issue).to be_valid
+      expect(issue.assignees).to eq []
+    end
   end
 
   describe '#total_points' do
