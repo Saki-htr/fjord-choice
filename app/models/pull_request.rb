@@ -6,7 +6,7 @@ class PullRequest < ApplicationRecord
     validates :title
     validates :state
   end
-  validates :reviewers, empty_array_check: true
+  validates :reviewers, length: { minimum: 0, allow_nil: false }
   enum state: {
     open: 0,
     closed: 1

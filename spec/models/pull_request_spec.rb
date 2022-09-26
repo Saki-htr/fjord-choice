@@ -36,7 +36,7 @@ RSpec.describe PullRequest, type: :model do
     it 'reviewersが無ければ、レコード作成が無効であること' do
       pull = build(:pull_request, reviewers: nil)
       pull.valid?
-      expect(pull.errors[:reviewers]).to include("can't be blank")
+      expect(pull.errors[:reviewers]).to include("is too short (minimum is 0 characters)")
     end
 
     it 'reviewersに空配列が渡されたとき、空配列を値として保存すること' do

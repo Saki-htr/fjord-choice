@@ -3,7 +3,7 @@
 class Issue < ApplicationRecord
   validates :number, presence: true, uniqueness: true
   validates :point, presence: true
-  validates :assignees, empty_array_check: true
+  validates :assignees, length: { minimum: 0, allow_nil: false }
 
   def self.total_points(user)
     Issue.where("#{user.uid} = ANY(assignees)").sum(:point)

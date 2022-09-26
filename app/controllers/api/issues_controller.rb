@@ -5,7 +5,6 @@ class Api::IssuesController < ApplicationController
   before_action :authenticate, only: [:create]
 
   def create
-    # assigneesが[]の時の処理が未対応
     issue = Issue.find_or_create_by(number: issue_params[:number])
     if issue.update!(point: point, assignees: issue_params[:assignees])
       head :created #=> 201
