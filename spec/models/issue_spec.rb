@@ -30,7 +30,7 @@ RSpec.describe Issue, type: :model do
     it 'assigneesが無ければ、レコード作成が無効であること' do
       issue = build(:issue, assignees: nil)
       issue.valid?
-      expect(issue.errors[:assignees]).to include("is too short (minimum is 0 characters)")
+      expect(issue.errors[:assignees]).to include('is too short (minimum is 0 characters)')
     end
 
     it 'assigneesに空配列が渡されたとき、空配列を値として保存すること' do
