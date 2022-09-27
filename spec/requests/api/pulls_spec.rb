@@ -52,7 +52,7 @@ RSpec.describe 'Api::Pulls', type: :request do
 
         it 'PullRequestモデルのレコード件数が変化していないこと' do
           expect do
-            post api_pulls_path, headers: {'Content-Type' => 'application/json', 'Authorization' => authenticate_with_token(token) }, params: update_params
+            post api_pulls_path, headers: { 'Content-Type' => 'application/json', 'Authorization' => authenticate_with_token(token) }, params: update_params
           end.not_to change(PullRequest, :count)
         end
       end
