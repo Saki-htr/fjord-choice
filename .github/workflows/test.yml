@@ -19,6 +19,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://postgres:postgres@localhost/ci_test"
+      FJORD_CHOICE_TOKEN: ${{ secrets.FJORD_CHOICE_TOKEN }}
 
     services:
       postgres:
