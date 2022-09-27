@@ -35,11 +35,8 @@ RSpec.describe 'Api::Pulls', type: :request do
 
       context '無効なトークンが渡されたとき' do
         it 'プルリクエストを更新できないこと' do
-          expect do
-            post api_pulls_path, headers: { 'Content-Type' => 'application/json', 'Authorization' => authenticate_with_token(invalid_token) },
-                                 params: pull_params
-            expect(response).to have_http_status(:unauthorized)
-          end
+          post api_pulls_path, headers: { 'Content-Type' => 'application/json', 'Authorization' => authenticate_with_token(invalid_token) }, params: pull_params
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
