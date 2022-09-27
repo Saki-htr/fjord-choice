@@ -16,7 +16,7 @@ RSpec.describe 'Api::Issues', type: :request do
   describe 'POSTされたイシューと同じnumberのイシューが作成されていない場合、イシューを新規作成する' do
     context '無効なトークンが渡されたとき' do
       it 'イシューを作成できないこと' do
-        post api_pulls_path, headers: { 'Content-Type' => 'application/json', 'Authorization' => "Token #{invalid_token}" }, params: issue_params
+        post api_pulls_path, headers: { 'Content-Type' => 'application/json', 'Authorization' => "Token '無効なトークン'" }, params: issue_params
         expect(response).to have_http_status(:unauthorized)
       end
     end
