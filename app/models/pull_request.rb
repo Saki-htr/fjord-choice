@@ -6,7 +6,8 @@ class PullRequest < ApplicationRecord
     validates :title
     validates :state
   end
-  validates :reviewers, length: { minimum: 0 } # 空配列がきた時バリデーションエラーを発生させず値として保存する
+  # 空配列がきた時バリデーションエラーを発生させず値として保存する
+  validates :reviewers, length: { minimum: 0 }
   enum state: {
     open: 0,
     closed: 1
