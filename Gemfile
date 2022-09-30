@@ -73,7 +73,6 @@ group :development do
   gem 'html2slim'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
   gem 'slim_lint'
 end
 
