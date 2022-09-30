@@ -9,6 +9,7 @@ ruby '3.1.2'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+
 gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
@@ -72,7 +73,6 @@ group :development do
   gem 'html2slim'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
   gem 'slim_lint'
 end
 

@@ -30,16 +30,22 @@ RSpec.describe Issue, type: :model do
     it 'assigneesが無ければ、レコード作成が無効であること' do
       issue = build(:issue, assignees: nil)
       issue.valid?
-      expect(issue.errors[:assignees]).to include("can't be blank")
+      expect(issue.errors[:assignees]).to include('is too short (minimum is 0 characters)')
+    end
+
+    it 'assigneesに空配列が渡されたとき、空配列を値として保存すること' do
+      issue = build(:issue, assignees: [])
+      expect(issue).to be_valid
+      expect(issue.assignees).to eq []
     end
   end
 
   describe '#total_points' do
     it 'ユーザーにアサインされたissueの合計pointを返すこと' do
       user = create(:user)
-      create(:issue, assignees: [user.uid]) # assigneesとuserのuidの値が同じことを明示すべきか?
+      create(:issue, assignees: [user.uid])
       create(:issue2, assignees: [user.uid])
-      expect(Issue.total_points(user)).to eq 3
+      expect(described_class.total_points(user)).to eq 3
     end
   end
 end

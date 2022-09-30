@@ -2,26 +2,34 @@
 
 class Api::IssuesController < ApplicationController
   protect_from_forgery except: :create
-  before_action :require_token, only: [:create]
+  before_action :authenticate, only: [:create]
+
   def create
-    assigned_issue = Issue.find_or_initialize_by(number: params[:number]) # 引数に渡した条件でレコードを探し、そのレコードがあればそれを返し、無ければ新しくインスタンス作成する(saveはしない)
-
-    assigned_issue.update!(
-      number: params[:number],
-      point: params[:labels].map(&:to_i).sum,
-      assignees: params[:assignees]
-    )
-
-    redirect_to root_path
+    issue = Issue.find_or_create_by(number: issue_params[:number])
+    if issue.update!(point: point, assignees: issue_params[:assignees])
+      head :created #=> 201
+    else
+      head :unprocessable_entity #=> 422
+    end
   end
 
-  def require_token
-    return if ENV['FJORD_CHOICE_TOKEN'] == params[:token]
+  private
 
-    head :unauthorized
+  def fjord_choice_token
+    ENV['FJORD_CHOICE_TOKEN']
   end
 
-  # def issue_params
-  #   params.require(:issue).permit(:number, :labels, :assignees)
-  # end
+  def authenticate
+    authenticate_or_request_with_http_token do |token, _options|
+      ActiveSupport::SecurityUtils.secure_compare(token, fjord_choice_token)
+    end
+  end
+
+  def issue_params
+    params.require(:issue).permit(:number, point: [], assignees: [])
+  end
+
+  def point
+    issue_params[:point].map(&:to_i).sum
+  end
 end
