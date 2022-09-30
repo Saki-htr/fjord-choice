@@ -42,17 +42,4 @@ if Rails.env.development?
     number: 4,
     assignees: [58_052_292]
   )
-
-  PullRequest.create!(
-    title: 'reviewerにSakiが登録された',
-    number: 8,
-    state: 'open',
-    reviewers: [58_052_292]
-  )
-  PullRequest.create!(
-    title: 'Sakiが通常commentした',
-    number: 14,
-    state: 'closed',
-    reviewers: [58_052_292]
-  )
 end

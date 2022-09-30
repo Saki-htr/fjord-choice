@@ -6,11 +6,11 @@ RSpec.describe 'Api::Pulls', type: :request do
   let(:token) { ENV['FJORD_CHOICE_TOKEN'] }
   let(:invalid_token) { '無効なトークン' }
   let(:pull_params) do
-    { pull: FactoryBot.attributes_for(:pull_request) }.to_json
+    { pull: attributes_for(:pull_request) }.to_json
   end
 
   let(:update_params) do
-    { pull: FactoryBot.attributes_for(:pull_request, title: '新しいタイトル', state: 'closed', reviewers: [23_456_789]) }.to_json
+    { pull: attributes_for(:pull_request, title: '新しいタイトル', state: 'closed', reviewers: [23_456_789]) }.to_json
   end
 
   describe 'POSTされたプルリクエストと同じnumberのプルリクエストが作成されていない場合、プルリクエストを新規作成する' do

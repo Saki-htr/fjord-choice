@@ -6,11 +6,11 @@ RSpec.describe 'Api::Issues', type: :request do
   let(:token) { ENV['FJORD_CHOICE_TOKEN'] }
   let(:invalid_token) { '無効なトークン' }
   let(:issue_params) do
-    { issue: FactoryBot.attributes_for(:issue, point: ['1']) }.to_json
+    { issue: attributes_for(:issue, point: ['1']) }.to_json
   end
 
   let(:update_params) do
-    { issue: FactoryBot.attributes_for(:issue, point: ['2'], assignees: [23_456_789]) }.to_json
+    { issue: attributes_for(:issue, point: ['2'], assignees: [23_456_789]) }.to_json
   end
 
   describe 'POSTされたイシューと同じnumberのイシューが作成されていない場合、イシューを新規作成する' do
