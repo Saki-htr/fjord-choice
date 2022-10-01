@@ -7,10 +7,12 @@ header
     p.flex-none.text-3xl
       | このサービスについて
     - if logged_in?
-      = image_tag current_user.image_url, size: '30x30'
-      = current_user.name
-      = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
+        = image_tag current_user.image_url, size: '30x30'
+        = current_user.name
+        .btn
+          = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
     - else
-      = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
+      .btn
+        = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
 
-    = flash.notice
+      = flash.notice
