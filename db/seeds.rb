@@ -9,12 +9,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 if Rails.env.development?
   User.create!(
-    name: 'Saki-htr',
-    provider: 'github',
-    uid: 58_052_292,
-    image_url: 'https://avatars.githubusercontent.com/u/58052292?v=4'
-  )
-  User.create!(
     name: 'garammasala29',
     provider: 'github',
     uid: 69_446_373,
@@ -26,7 +20,14 @@ if Rails.env.development?
     uid: 33_394_676,
     image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
   )
-
+  12.times do |n|
+    User.create!(
+      name: "テスト太郎#{n + 1}",
+      provider: 'github',
+      uid: 1111111111 + n,
+      image_url: "https://avatars.githubusercontent.com/u/#{9999999999 + n}?v=4"
+    )
+  end
   Issue.create!(
     point: 1,
     number: 1,
@@ -66,4 +67,12 @@ if Rails.env.development?
     state: 'closed',
     reviewers: [69_446_373]
   )
+  5.times do |n|
+    PullRequest.create!(
+    title: "プルリクエストのタイトル#{n}",
+    number: 1000 + n,
+    state: 'open',
+    reviewers: [1111111111 + n]
+  )
+  end
 end

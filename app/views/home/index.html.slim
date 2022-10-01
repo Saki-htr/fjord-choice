@@ -1,5 +1,5 @@
-.overflow-x-auto
-  table.table.w-full border='1'
+div.overflow-x-auto
+  table.table.table-zebra.w-full
     thead
       tr
         th colspan='2' メンバー
@@ -22,5 +22,6 @@
               | ありません
             - else
               - PullRequest.review_requested(user).each do |pull|
-                li = link_to truncate(pull.title, length:40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+                li
+                  = link_to truncate(pull.title, length:40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
           td = PullRequest.review_requested(user).count
