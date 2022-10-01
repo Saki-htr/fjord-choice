@@ -3,6 +3,8 @@ header
   h1.text-5xl Fjord Choice
 
   - if logged_in?
+    = image_tag current_user.image_url, size: '30x30'
+    = current_user.name
     .btn
       = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
   - else
