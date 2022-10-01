@@ -22,5 +22,5 @@
               | ありません
             - else
               - PullRequest.review_requested(user).each do |pull|
-                li = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+                li = link_to truncate(pull.title, length:40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
           td = PullRequest.review_requested(user).count

@@ -3,8 +3,8 @@ header
   .flex
     .flex-none
 
-    h1.text-5xl Fjord Choice
-    p.flex-none
+    h1.flex-none Fjord Choice
+    p.flex-none.text-3xl
       | このサービスについて
     - if logged_in?
       = image_tag current_user.image_url, size: '30x30'
