@@ -1,25 +1,16 @@
-h1.text-5xl Fjord Choice
-
-- if logged_in?
-  = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true, class: 'btn btn-info'
-- else
-  = button_to '利用規約に同意して、メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
-
-= flash.notice
-
-table border='1'
+table
   thead
     tr
       th colspan='2' メンバー
       th Issue合計pt
       th レビュー依頼されているPullRequest
       th 合計数
-
   tbody
     - @users.each do |user|
       tr
-        td = image_tag user.image_url, size: '30x30'
-        td = user.name
+        td = link_to "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
+             = image_tag user.image_url, size: '30x30'
+        td = link_to user.name, "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
         td = "#{Issue.total_points(user)}/20"
         td
           ul
@@ -27,5 +18,5 @@ table border='1'
             | ありません
           - else
             - PullRequest.review_requested(user).each do |pull|
-              li = link_to pull.title, "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+              li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
         td = PullRequest.review_requested(user).count
