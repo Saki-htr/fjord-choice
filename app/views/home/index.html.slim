@@ -1,27 +1,26 @@
-div.overflow-x-auto
-  table.table.w-full
-    thead
-      tr
-        th colspan='2' メンバー
-        th Issue合計pt
-        th レビュー依頼されているPullRequest
-        th 合計数
+table
+  thead
+    tr
+      th colspan='2' メンバー
+      th Issue合計pt
+      th レビュー依頼されているPullRequest
+      th 合計数
 
-    tbody
-      - @users.each do |user|
-        tr
-          td
-            = link_to "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'do
-              = image_tag user.image_url, size: '30x30'
-          td
-            = link_to user.name, "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
-          td = "#{Issue.total_points(user)}/20"
-          td
-            ul
-            - if PullRequest.review_requested(user).empty?
-              | ありません
-            - else
-              - PullRequest.review_requested(user).each do |pull|
-                li
-                  = link_to truncate(pull.title, length:40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
-          td = PullRequest.review_requested(user).count
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = link_to "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'do
+            = image_tag user.image_url, size: '30x30'
+        td
+          = link_to user.name, "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
+        td = "#{Issue.total_points(user)}/20"
+        td
+          ul
+          - if PullRequest.review_requested(user).empty?
+            | ありません
+          - else
+            - PullRequest.review_requested(user).each do |pull|
+              li
+                = link_to truncate(pull.title, length:40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+        td = PullRequest.review_requested(user).count

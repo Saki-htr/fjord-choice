@@ -17,10 +17,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography'),
-    require('daisyui')
-  ],
-   daisyui: {
-    themes: false //falseの場合、ライト（デフォルト）テーマのみ使用可能
-  }
+    require('@tailwindcss/typography')
+  ]
 }
