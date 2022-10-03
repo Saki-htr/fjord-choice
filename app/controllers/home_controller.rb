@@ -8,4 +8,3 @@ class HomeController < ApplicationController
     @users = User.order(:created_at)
   end
 end
-

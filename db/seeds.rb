@@ -24,8 +24,8 @@ if Rails.env.development?
     User.create!(
       name: "テスト太郎#{n + 1}",
       provider: 'github',
-      uid: 1111111111 + n,
-      image_url: "https://avatars.githubusercontent.com/u/#{9999999999 + n}?v=4"
+      uid: 1_111_111_111 + n,
+      image_url: "https://avatars.githubusercontent.com/u/#{9_999_999_999 + n}?v=4"
     )
   end
   Issue.create!(
@@ -69,10 +69,10 @@ if Rails.env.development?
   )
   5.times do |n|
     PullRequest.create!(
-    title: "プルリクエストのタイトル#{n}",
-    number: 1000 + n,
-    state: 'open',
-    reviewers: [1111111111 + n]
-  )
+      title: "プルリクエストのタイトル#{n}",
+      number: 1000 + n,
+      state: 'open',
+      reviewers: [1_111_111_111 + n]
+    )
   end
 end
