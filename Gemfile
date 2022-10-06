@@ -74,4 +74,5 @@ group :development do
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint'
+  gem "bulma-rails", "~> 0.9.3"
 end
