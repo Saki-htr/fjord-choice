@@ -1,7 +1,7 @@
 nav.navbar.has-background-grey-lighter
   .navbar-brand
     .navbar-item
-      = image_tag 'logo.png', alt: 'logo', class: "py-2 px-2", style: "max-width: 300px; max-height: 200px;"
+      = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2', style: 'max-width: 300px; max-height: 200px;'
   .navbar-menu
     .navbar-start
       .navbar-item
@@ -11,7 +11,7 @@ nav.navbar.has-background-grey-lighter
         - if logged_in?
           = image_tag current_user.image_url, size: '30x30'
           = current_user.name
-          = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れてもいいですか?' }}, remote: true
+          = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れてもいいですか?' } }, remote: true
           = flash.notice
         - else
           = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
@@ -48,4 +48,3 @@ footer.footer.has-background-grey-lighter
     = link_to 'https://twitter.com/Saki_ht3150', class: 'mx-3' do
       i.fab.fa-twitter
     | 2022 ©Saki
-
