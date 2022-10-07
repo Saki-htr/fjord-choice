@@ -12,8 +12,9 @@ nav.navbar.has-background-grey-lighter
           = image_tag current_user.image_url, size: '30x30'
           = current_user.name
           = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れてもいいですか?' }}, remote: true
+          = flash.notice
         - else
-          = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, form: {data: { turbo_confirm: 'メンバーに自分を追加しますか?' }}, remote: true
+          = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
           = flash.notice
 main
   table
