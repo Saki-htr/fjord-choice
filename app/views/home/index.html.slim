@@ -41,13 +41,11 @@ main
               - PullRequest.review_requested(user).each do |pull|
                 li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
           td = PullRequest.review_requested(user).count
-footer
-  | 2022 ©Saki
-  / | 利用規約
-  / |プライバシーポリシー
-  a href="https://twitter.com/Saki_ht3150"
-    = image_tag "twitter.png", size: '30x30'
-  a href ="https://github.com/Saki-htr/fjord-choice"
-    = image_tag "github.png", size: '30x30'
-
+footer.footer.has-background-grey-lighter
+  .has-text-centered
+    = link_to 'https://github.com/Saki-htr/fjord-choice', class: 'mx-3' do
+      i.fab.fa-github
+    = link_to 'https://twitter.com/Saki_ht3150', class: 'mx-3' do
+      i.fab.fa-twitter
+    | 2022 ©Saki
 
