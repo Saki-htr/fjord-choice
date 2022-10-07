@@ -1,11 +1,12 @@
-nav.navbar.has-background-grey-lighter
+nav.navbar.has-shadow
   .navbar-brand
     .navbar-item
       = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2', style: 'max-width: 300px; max-height: 200px;'
   .navbar-menu
     .navbar-start
       .navbar-item
-        h1 ?このサービスについて
+        i.fas.fa-question-circle
+        h1 このサービスについて
     .navbar-end
       .navbar-item
         - if logged_in?
@@ -21,8 +22,12 @@ main
     thead.is-size-5
       tr
         th colspan='2' メンバー
-        th Issue合計pt
-        th レビュー依頼されているPullRequest
+        th
+          i.fas.fa-question-circle
+          | Issue合計pt
+        th
+          i.fas.fa-question-circle
+          | レビュー依頼されているPullRequest
         th 合計数
     tbody
       - @users.each do |user|
@@ -41,7 +46,7 @@ main
               - PullRequest.review_requested(user).each do |pull|
                 li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
           td = PullRequest.review_requested(user).count
-footer.footer.has-background-grey-lighter
+footer.footer
   .has-text-centered
     = link_to 'https://github.com/Saki-htr/fjord-choice', class: 'mx-3' do
       i.fab.fa-github
