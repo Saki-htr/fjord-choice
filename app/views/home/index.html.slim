@@ -1,43 +1,49 @@
-header
-
-    h1 Fjord Choice
-    p
-      | このサービスについて
-    - if logged_in?
-      = image_tag current_user.image_url, size: '30x30'
-      = current_user.name
-      = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
-    - else
-      = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
-      = flash.notice
-
-
-table
-  thead
-    tr
-      th colspan='2' メンバー
-      th Issue合計pt
-      th レビュー依頼されているPullRequest
-      th 合計数
-  tbody
-    - @users.each do |user|
+nav.navbar.has-background-grey-lighter
+  .navbar-brand
+    .navbar-item
+      = image_tag 'logo.png', alt: 'logo', class: "py-2 px-2", style: "max-width: 300px; max-height: 200px;"
+  .navbar-menu
+    .navbar-start
+      .navbar-item
+        h1 ?このサービスについて
+    .navbar-end
+      .navbar-item
+        - if logged_in?
+          = image_tag current_user.image_url, size: '30x30'
+          = current_user.name
+          = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
+        - else
+          = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false, turbo_confirm: '本当にメンバーに自分を追加しますか?' }
+          = flash.notice
+main
+  table
+    thead.is-size-5
       tr
-        td = link_to "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
-             = image_tag user.image_url, size: '30x30'
-        td = link_to user.name, "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
-        td
-          = "#{Issue.total_points(user)}/20"
-          progress id="file" max="20" value="#{Issue.total_points(user)}"
-        td
-          ul
-          - if PullRequest.review_requested(user).empty?
-            | ありません
-          - else
-            - PullRequest.review_requested(user).each do |pull|
-              li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
-        td = PullRequest.review_requested(user).count
+        th colspan='2' メンバー
+        th Issue合計pt
+        th レビュー依頼されているPullRequest
+        th 合計数
+    tbody
+      - @users.each do |user|
+        tr
+          td = link_to "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
+              = image_tag user.image_url, size: '30x30'
+          td = link_to user.name, "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
+          td
+            = "#{Issue.total_points(user)}/20"
+            progress id="file" max="20" value="#{Issue.total_points(user)}"
+          td
+            ul
+            - if PullRequest.review_requested(user).empty?
+              | ありません
+            - else
+              - PullRequest.review_requested(user).each do |pull|
+                li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+          td = PullRequest.review_requested(user).count
 footer
   | 2022 ©Saki
+  / | 利用規約
+  / |プライバシーポリシー
   a href="https://twitter.com/Saki_ht3150"
     = image_tag "twitter.png", size: '30x30'
   a href ="https://github.com/Saki-htr/fjord-choice"
