@@ -6,21 +6,7 @@
     .navbar-menu
       .navbar-start
         .navbar-item
-          .dropdown.is-hoverable
-            .dropdown-trigger
-              span.icon.is-small
-                i.fas.fa-question-circle.mr-3 aria-hidden="true"
-            .dropdown-menu id="dropdown-menu5" role="menu"
-              .dropdown-content
-                .dropdown-item
-                  p Fjord Choiceは、フィヨルドブートキャンプのシステム開発プラクティスに取り組んでいる開発メンバーの状況を見える化するサービスです。<br>
-                    他の開発メンバーの、
-                  .content
-                    ul style='list-style-type: square;'
-                      li これまで作成したPull Requestの一覧
-                      li これまでアサインされたIssueの合計ポイント
-                      li 現在レビュー依頼されているPull Request
-                  p を知ることができます。
+          i.fas.fa-question-circle.mr-1.js-modal-trigger data-target="show-modal"
           h1 このサービスについて
       .navbar-end
         .navbar-item
@@ -91,9 +77,9 @@ main
 footer.footer style='bottom: 0; left: 0;position: fixed; right: 0; z-index: 30;'
   .container
    .has-text-centered
-      = link_to 'https://github.com/Saki-htr/fjord-choice' do
+      = link_to 'https://github.com/Saki-htr/fjord-choice', class:'mr-2' do
         i.fab.fa-github
-      = link_to 'https://twitter.com/Saki_ht3150' do
+      = link_to 'https://twitter.com/Saki_ht3150',class:'mr-2' do
         i.fab.fa-twitter
       | 2022 ©Saki-htr
 
