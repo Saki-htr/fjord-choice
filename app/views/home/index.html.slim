@@ -39,10 +39,10 @@ main
                   = link_to user.name, "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer'
               td
                 = "#{Issue.total_points(user)}/20"
-                / progress id="file" max="20" value="#{Issue.total_points(user)}"
+                progress.progress id="file" max="20" value="#{Issue.total_points(user)}"
               td
                 .content
-                  ul class='list-style-type'
+                  ul
                     - if PullRequest.review_requested(user).empty?
                       | −
                     - else
