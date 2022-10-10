@@ -6,7 +6,7 @@
     .navbar-menu
       .navbar-start
         .navbar-item
-          i.fas.fa-question-circle
+          i.fas.fa-question-circle.mr-1
           h1 このサービスについて
       .navbar-end
         .navbar-item
@@ -23,16 +23,33 @@ main
         .notification.has-text-right
           = flash.notice
       - if User.exists?
-        table.table.is-bordered.mx-auto.mt-6.mb-6
+        table.table.is-bordered.mx-auto style='margin: 100px 0;'
           thead
             tr
               th member
               th
-                i.fas.fa-question-circle
-                | pt
+                .dropdown.is-hoverable.is-up
+                  .dropdown-trigger
+                    span.icon.is-small
+                      i.fas.fa-question-circle.mr-2 aria-hidden="true"
+                  .dropdown-menu id="dropdown-menu5" role="menu"
+                    .dropdown-content
+                      .dropdown-item
+                        p これまでアサインされたIssueの合計pt<br>
+                          (※openもclosedも合わせて)
+                span pt
               th
-                i.fas.fa-question-circle
-                | レビュー依頼されているPR
+                .dropdown.is-hoverable.is-up
+                  .dropdown-trigger
+                    span.icon.is-small
+                      i.fas.fa-question-circle.mr-2 aria-hidden="true"
+                  / span レビュー依頼されているPR
+                  .dropdown-menu id="dropdown-menu5" role="menu"
+                    .dropdown-content
+                      .dropdown-item
+                        p 現在、レビューを依頼されているPull Request<br>
+                          (※Approveしたものは表示されません)
+                span レビュー依頼されているPR
               th 合計
           tbody
             - @users.each do |user|
