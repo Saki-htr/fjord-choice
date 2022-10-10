@@ -1,22 +1,23 @@
-nav.navbar
-  .navbar-brand
-    .navbar-item
-      = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2', style: 'max-width: 300px; max-height: 200px;'
-  .navbar-menu
-    .navbar-start
+.container
+  nav.navbar
+    .navbar-brand
       .navbar-item
-        i.fas.fa-question-circle
-        h1 このサービスについて
-    .navbar-end
-      .navbar-item
-        - if logged_in?
-          = image_tag current_user.image_url, size: '30x30'
-          = current_user.name
-          = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れてもいいですか?' } }, remote: true
-          = flash.notice
-        - else
-          = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
-          = flash.notice
+        = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2', style: 'max-width: 300px; max-height: 200px;'
+    .navbar-menu
+      .navbar-start
+        .navbar-item
+          i.fas.fa-question-circle
+          h1 このサービスについて
+      .navbar-end
+        .navbar-item
+          - if logged_in?
+            = image_tag current_user.image_url, size: '30x30'
+            = current_user.name
+            = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れてもいいですか?' } }, remote: true
+            = flash.notice
+          - else
+            = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
+            = flash.notice
 main
   section
     .container
@@ -50,9 +51,10 @@ main
                         li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
               td = PullRequest.review_requested(user).count
 footer.footer
-  .has-text-centered
-    = link_to 'https://github.com/Saki-htr/fjord-choice', class: 'mx-3' do
-      i.fab.fa-github
-    = link_to 'https://twitter.com/Saki_ht3150', class: 'mx-3' do
-      i.fab.fa-twitter
-    | 2022 ©Saki
+  .container
+   .has-text-centered
+      = link_to 'https://github.com/Saki-htr/fjord-choice' do
+        i.fab.fa-github
+      = link_to 'https://twitter.com/Saki_ht3150' do
+        i.fab.fa-twitter
+      | 2022 ©Saki-htr
