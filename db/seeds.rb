@@ -67,6 +67,12 @@ if Rails.env.development? || Rails.env.production?
     state: 'closed',
     reviewers: [69_446_373]
   )
+  PullRequest.create!(
+    title: '管理者画面のボタンを変更した',
+    number: 5,
+    state: 'open',
+    reviewers: [69_446_373]
+  )
   5.times do |n|
     PullRequest.create!(
       title: "プルリクエストのタイトル#{n}",
