@@ -43,7 +43,7 @@ main
                 progress.progress max='20' value='#{Issue.total_points(user)}' style="width: 100px; height: 10px;"
               td
                 .content
-                  ul
+                  ul style='list-style-type: square;'
                     - if PullRequest.review_requested(user).empty?
                       | −
                     - else
