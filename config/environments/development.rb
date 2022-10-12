@@ -59,4 +59,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # sassc-railsの設定
+  config.sass.inline_source_maps = true
 end
