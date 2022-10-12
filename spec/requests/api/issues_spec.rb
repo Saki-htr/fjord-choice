@@ -57,12 +57,9 @@ RSpec.describe 'Api::Issues', type: :request do
     end
   end
 
-<<<<<<< Updated upstream
   private
 
   def authenticate_with_token(token)
     ActionController::HttpAuthentication::Token.encode_credentials(token)
   end
-=======
->>>>>>> Stashed changes
 end
