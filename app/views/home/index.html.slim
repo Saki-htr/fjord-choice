@@ -42,7 +42,7 @@ main
                 td style='vertical-align: middle;'
                   .has-text-centered
                     = "#{Issue.total_points(user)}/20"
-                  progress.progress max='20' value='#{Issue.total_points(user)}' style="width: 100px; height: 10px;"
+                  progress.progress.is-small max='20' value='#{Issue.total_points(user)}'
                 td style='vertical-align: middle;'
                   ul.square.ml-5.mt-1
                     - PullRequest.review_requested(user).each do |pull|
