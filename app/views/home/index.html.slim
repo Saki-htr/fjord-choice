@@ -13,9 +13,9 @@
           - if logged_in?
             = image_tag current_user.image_url, size: '30x30'
             = current_user.name
-            = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button is-primary'
+            = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button'
           - else
-            = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }, class: 'button is-primary'
+            = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }, class: 'button'
 main
   section
     .container
@@ -60,13 +60,12 @@ main
                   .has-text-centered = "#{Issue.total_points(user)}/20"
                   progress.progress max='20' value='#{Issue.total_points(user)}' style="width: 100px; height: 10px;"
                 td
-                  .content
-                    ul style='list-style-type: square;'
-                      - if PullRequest.review_requested(user).empty?
-                        | −
-                      - else
-                        - PullRequest.review_requested(user).each do |pull|
-                          li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
+                  ul.square.ml-4.mt-1
+                    - if PullRequest.review_requested(user).empty?
+                      | −
+                    - else
+                      - PullRequest.review_requested(user).each do |pull|
+                        li = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
                 td = PullRequest.review_requested(user).count
       - else
         .has-text-centered style='margin: 100px 0;'
