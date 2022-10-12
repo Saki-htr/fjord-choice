@@ -49,7 +49,7 @@ main
                         li style='line-height: 2;' = link_to truncate(pull.title, length:40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
                 td.has-text-centered style='vertical-align: middle;' = PullRequest.review_requested(user).count
       - else
-        .has-text-centered style='margin: 100px 0;'
+        .has-text-centered.no-user-message
           .is-size-1
             i.far.fa-sad-tear
           | まだ誰も登録していません
