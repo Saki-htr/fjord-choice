@@ -35,19 +35,19 @@ main
           tbody
             - @users.each do |user|
               tr
-                td style='vertical-align: middle;' = link_to "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer', style: 'vertical-align: middle;'
+                td.cell-center = link_to "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer', class: 'cell-center'
                   figure.image.is-48x48.is-inline-block
                     = image_tag user.image_url, size: '30x30', class:'is-rounded'
                   = link_to user.name, "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+", target: :_blank, rel: 'noopener noreferrer', class:'ml-2'
-                td style='vertical-align: middle;'
+                td.cell-center
                   .has-text-centered
                     = "#{Issue.total_points(user)}/20"
                   progress.progress.is-small max='20' value='#{Issue.total_points(user)}'
-                td style='vertical-align: middle;'
+                td.cell-center
                   ul.square.ml-5.mt-1
                     - PullRequest.review_requested(user).each do |pull|
                         li style='line-height: 2;' = link_to truncate(pull.title, length:40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
-                td.has-text-centered style='vertical-align: middle;' = PullRequest.review_requested(user).count
+                td.has-text-centered.cell-center = PullRequest.review_requested(user).count
       - else
         .has-text-centered.no-user-message
           .is-size-1

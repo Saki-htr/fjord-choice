@@ -16,10 +16,9 @@ main {
   width: 19rem;
 }
 
-// td {
-//   vertical-align: middle;
-// }
-
+.cell-center {
+  vertical-align: middle !important;
+}
 
 .square {
   list-style-type: square;
@@ -28,5 +27,3 @@ main {
 .no-user-message {
   margin: 200px 0;
 }
-
-
