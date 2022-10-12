@@ -44,7 +44,7 @@ if Rails.env.development? || Rails.env.production?
     assignees: [58_052_292]
   )
   PullRequest.create!(
-    title: 'js-choices-single-selectを使っている箇所において、Railsで渡したデータの並び順がJavaScriptに渡っても保持されるようにした。',
+    title: '私は今単にこのお話院というもののために帰ったます。もし今に煩悶家も無論その誤認ですたまでの信ずるてい',
     number: 1,
     state: 'open',
     reviewers: [69_446_373]
@@ -65,6 +65,12 @@ if Rails.env.development? || Rails.env.production?
     title: 'マージされたPR',
     number: 4,
     state: 'closed',
+    reviewers: [69_446_373]
+  )
+  PullRequest.create!(
+    title: '管理者画面のボタンを変更した',
+    number: 5,
+    state: 'open',
     reviewers: [69_446_373]
   )
   5.times do |n|

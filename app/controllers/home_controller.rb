@@ -5,6 +5,6 @@ class HomeController < ApplicationController
   require 'octokit'
 
   def index
-    @users = User.order(:created_at)
+    @users = User.order('LOWER(name)')
   end
 end

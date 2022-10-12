@@ -1,13 +1,20 @@
-/ slim-lint:disable LineLength
 header
-
-    h1 Fjord Choice
-    p
-      | このサービスについて
-    - if logged_in?
-      = image_tag current_user.image_url, size: '30x30'
-      = current_user.name
-      = button_to 'メンバーから外れる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーから外れていいですか?' } }, remote: true
-    - else
-      = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }
-      = flash.notice
+  .container
+    nav.navbar
+      .navbar-brand
+        .navbar-item
+          = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
+      .navbar-menu
+        .navbar-start
+          .navbar-item
+            i.fas.fa-question-circle.mr-1.js-modal-trigger data-target="show-modal"
+            h1.is-size-6 このサービスについて
+        .navbar-end
+          .navbar-item
+            - if logged_in?
+              figure.image.is-48x48.mr-1
+                = image_tag current_user.image_url, class: 'is-rounded'
+              .mr-6.my-auto = current_user.name
+              = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button'
+            - else
+              = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }, class: 'button'

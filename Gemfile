@@ -70,10 +70,9 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   # For Rails projects
+  gem 'bulma-rails', '~> 0.9.3'
   gem 'html2slim'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint'
 end
-
-gem 'tailwindcss-rails', '~> 2.0'
