@@ -5,7 +5,7 @@ main
         .notification.has-text-right
           = flash.notice
       - if User.exists?
-        table.table.is-bordered.mx-auto style='margin: 100px 0;'
+        table.table.is-bordered.mx-auto.dropdown-margin
           thead
             tr.is-size-5
               th チームメンバー
@@ -15,11 +15,11 @@ main
                     span.icon.is-small
                       i.fas.fa-question-circle.mr-2 aria-hidden="true"
                   .dropdown-menu id="dropdown-menu5" role="menu"
-                    .dropdown-content
+                    .dropdown-content style='width: 17rem'
                       .dropdown-item
                         p これまでアサインされたIssueの合計pt<br>
                           (※openもclosedも合わせて)
-                span pt
+                span ポイント
               th
                 .dropdown.is-hoverable.is-up
                   .dropdown-trigger
@@ -28,9 +28,9 @@ main
                   .dropdown-menu id="dropdown-menu5" role="menu"
                     .dropdown-content
                       .dropdown-item
-                        p 現在、レビューを依頼されているPull Request<br>
+                        p 現在、レビューを依頼されているプルリクエスト<br>
                           (※Approveしたものは表示されません)
-                span レビュー依頼されているPR
+                span レビュー依頼されているプルリクエスト
               th 合計
           tbody
             - @users.each do |user|
