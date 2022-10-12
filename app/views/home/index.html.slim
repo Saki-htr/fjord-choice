@@ -1,22 +1,3 @@
-.container
-  nav.navbar
-    .navbar-brand
-      .navbar-item
-        = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2', style: 'max-width: 300px; max-height: 200px;'
-    .navbar-menu
-      .navbar-start
-        .navbar-item
-          i.fas.fa-question-circle.mr-1.js-modal-trigger data-target="show-modal"
-          h1.is-size-6 このサービスについて
-      .navbar-end
-        .navbar-item
-          - if logged_in?
-            figure.image.is-48x48.mr-1
-              = image_tag current_user.image_url, class:'is-rounded'
-            .mr-6.my-auto = current_user.name
-            = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button'
-          - else
-            = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }, class: 'button'
 main
   section
     .container
@@ -72,13 +53,3 @@ main
           .is-size-1
             i.far.fa-sad-tear
           | まだ誰も登録していません
-
-footer.footer
-  .container
-   .has-text-centered
-      = link_to 'https://github.com/Saki-htr/fjord-choice', class:'mr-2' do
-        i.fab.fa-github
-      = link_to 'https://twitter.com/Saki_ht3150',class:'mr-2' do
-        i.fab.fa-twitter
-      | 2022 ©Saki-htr
-
