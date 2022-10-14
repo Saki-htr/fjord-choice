@@ -31,7 +31,7 @@ main
                         p 現在、レビューを依頼されているプルリクエスト<br>
                           (※Approveしたものは表示されません)
                 span レビュー依頼されているプルリクエスト
-              th 合計
+              / th 合計(個)
           tbody
             - @users.each do |user|
               tr
@@ -47,7 +47,7 @@ main
                   ul.square.ml-5.mt-1
                     - PullRequest.review_requested(user).each do |pull|
                       li.line-height = link_to truncate(pull.title, length: 40), "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}", target: :_blank, rel: 'noopener noreferrer'
-                td.has-text-centered.cell-center = PullRequest.review_requested(user).count
+                / td.has-text-centered.cell-center = PullRequest.review_requested(user).count
       - else
         .has-text-centered.no-user-message
           .is-size-1
