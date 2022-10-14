@@ -20,6 +20,11 @@ main {
   vertical-align: middle !important;
 }
 
+.img_wrap:hover img{
+  opacity: 0.5;
+  transition-duration: 0.2s;
+}
+
 .square {
   list-style-type: square;
 }
