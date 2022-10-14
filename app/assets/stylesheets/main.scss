@@ -5,7 +5,7 @@ main {
 }
 
 .dropdown-margin {
-  margin: 65px 0;
+  margin: 70px 0;
 }
 
 .pt-description-width {
@@ -32,6 +32,16 @@ main {
   line-height: 2;
 }
 
-a:hover{
+
+a:hover {
   text-decoration: underline;
 }
+
+.text-color {
+  color: #363636;
+}
+
+.text-color:hover {
+  color: #009982;
+}
+
