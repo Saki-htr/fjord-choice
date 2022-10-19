@@ -10,7 +10,7 @@ RSpec.describe 'Api::Issues', type: :request do
   end
 
   let(:update_params) do
-    { issue: attributes_for(:issue, point: ['2'], assignees: [23_456_789]) }.to_json
+    { issue: attributes_for(:issue, point: ['2'], assignee_uids: [23_456_789]) }.to_json
   end
 
   describe 'POSTされたイシューと同じnumberのイシューが作成されていない場合、イシューを新規作成する' do
@@ -46,7 +46,7 @@ RSpec.describe 'Api::Issues', type: :request do
         post api_issues_path, headers: { 'Content-Type' => 'application/json', 'Authorization' => authenticate_with_token(token) }, params: update_params
         expect(created_issue.reload.number).to eq 1
         expect(created_issue.reload.point).to eq 2
-        expect(created_issue.reload.assignees).to eq [23_456_789]
+        expect(created_issue.reload.assignee_uids).to eq [23_456_789]
       end
 
       it 'Issueモデルのレコード件数が変化していないこと' do

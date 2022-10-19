@@ -28,23 +28,23 @@ RSpec.describe Issue, type: :model do
     end
 
     it 'assigneesが無ければ、レコード作成が無効であること' do
-      issue = build(:issue, assignees: nil)
+      issue = build(:issue, assignee_uids: nil)
       issue.valid?
-      expect(issue.errors[:assignees]).to include('is too short (minimum is 0 characters)')
+      expect(issue.errors[:assignee_uids]).to include('is too short (minimum is 0 characters)')
     end
 
     it 'assigneesに空配列が渡されたとき、空配列を値として保存すること' do
-      issue = build(:issue, assignees: [])
+      issue = build(:issue, assignee_uids: [])
       expect(issue).to be_valid
-      expect(issue.assignees).to eq []
+      expect(issue.assignee_uids).to eq []
     end
   end
 
   describe '#total_points' do
     it 'ユーザーにアサインされたissueの合計pointを返すこと' do
       user = create(:user)
-      create(:issue, assignees: [user.uid])
-      create(:issue2, assignees: [user.uid])
+      create(:issue, assignee_uids: [user.uid])
+      create(:issue2, assignee_uids: [user.uid])
       expect(described_class.total_points(user)).to eq 3
     end
   end

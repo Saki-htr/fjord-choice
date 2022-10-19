@@ -6,7 +6,7 @@ class Api::IssuesController < ApplicationController
 
   def create
     issue = Issue.find_or_create_by(number: issue_params[:number])
-    if issue.update!(point: point, assignees: issue_params[:assignees])
+    if issue.update!(point: point, assignee_uids: issue_params[:assignee_uids])
       head :created #=> 201
     else
       head :unprocessable_entity #=> 422
@@ -26,7 +26,7 @@ class Api::IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:number, point: [], assignees: [])
+    params.require(:issue).permit(:number, point: [], assignee_uids: [])
   end
 
   def point

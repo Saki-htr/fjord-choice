@@ -31,17 +31,17 @@ if Rails.env.development? || Rails.env.production?
   Issue.create!(
     point: 1,
     number: 1,
-    assignees: [58_052_292]
+    assignee_uids: [58_052_292]
   )
   Issue.create!(
     point: 1,
     number: 2,
-    assignees: [69_446_373]
+    assignee_uids: [69_446_373]
   )
   Issue.create!(
     point: 3,
     number: 4,
-    assignees: [58_052_292]
+    assignee_uids: [58_052_292]
   )
   PullRequest.create!(
     title: '私は今単にこのお話院というもののために帰ったます。もし今に煩悶家も無論その誤認ですたまでの信ずるてい',
