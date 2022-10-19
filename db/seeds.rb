@@ -47,38 +47,38 @@ if Rails.env.development? || Rails.env.production?
     title: '私は今単にこのお話院というもののために帰ったます。もし今に煩悶家も無論その誤認ですたまでの信ずるてい',
     number: 1,
     state: 'open',
-    reviewers: [69_446_373]
+    reviewer_uids: [69_446_373]
   )
   PullRequest.create!(
     title: '未完了の提出物一覧を担当メンターで絞り込めるようにした',
     number: 2,
     state: 'open',
-    reviewers: [69_446_373]
+    reviewer_uids: [69_446_373]
   )
   PullRequest.create!(
     title: '管理者の場合、ユーザー情報変更ページでコース変更できるようにした',
     number: 3,
     state: 'open',
-    reviewers: [33_394_676]
+    reviewer_uids: [33_394_676]
   )
   PullRequest.create!(
     title: 'マージされたPR',
     number: 4,
     state: 'closed',
-    reviewers: [69_446_373]
+    reviewer_uids: [69_446_373]
   )
   PullRequest.create!(
     title: '管理者画面のボタンを変更した',
     number: 5,
     state: 'open',
-    reviewers: [69_446_373]
+    reviewer_uids: [69_446_373]
   )
   5.times do |n|
     PullRequest.create!(
       title: "プルリクエストのタイトル#{n}",
       number: 1000 + n,
       state: 'open',
-      reviewers: [1_111_111_111 + n]
+      reviewer_uids: [1_111_111_111 + n]
     )
   end
 end
