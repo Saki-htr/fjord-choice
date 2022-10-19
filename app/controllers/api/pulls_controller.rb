@@ -26,6 +26,6 @@ class Api::PullsController < ApplicationController
   end
 
   def pull_params
-    params.require(:pull).permit(:title, :number, :state, reviewers: [])
+    params.require(:pull).permit(:title, :number, :state, reviewer_uids: [])
   end
 end

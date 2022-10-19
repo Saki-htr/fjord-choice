@@ -5,13 +5,13 @@ FactoryBot.define do
     number { 1 }
     title { 'openになっているPR' }
     state { 'open' }
-    reviewers { [12_345_678] } # Aliceのuid
+    reviewer_uids { [12_345_678] } # Aliceのuid
   end
 
   factory :pull_request2, class: 'PullRequest' do
     number { 2 }
     title { 'closeされたPR' }
     state { 'closed' }
-    reviewers { [12_345_678] } # Aliceのuid
+    reviewer_uids { [12_345_678] } # Aliceのuid
   end
 end

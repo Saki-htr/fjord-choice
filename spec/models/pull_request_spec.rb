@@ -34,28 +34,28 @@ RSpec.describe PullRequest, type: :model do
     end
 
     it 'reviewersが無ければ、レコード作成が無効であること' do
-      pull = build(:pull_request, reviewers: nil)
+      pull = build(:pull_request, reviewer_uids: nil)
       pull.valid?
-      expect(pull.errors[:reviewers]).to include('is too short (minimum is 0 characters)')
+      expect(pull.errors[:reviewer_uids]).to include('is too short (minimum is 0 characters)')
     end
 
     it 'reviewersに空配列が渡されたとき、空配列を値として保存すること' do
-      pull = build(:pull_request, reviewers: [])
+      pull = build(:pull_request, reviewer_uids: [])
       expect(pull).to be_valid
-      expect(pull.reviewers).to eq []
+      expect(pull.reviewer_uids).to eq []
     end
   end
 
   describe '#review_requested' do
     it 'ユーザーがレビュワーになっているかつopenな状態のプルリクエストを返すこと' do
       user = create(:user)
-      pull = create(:pull_request, reviewers: [user.uid])
+      pull = create(:pull_request, reviewer_uids: [user.uid])
       expect(described_class.review_requested(user)).to include(pull)
     end
 
     it 'ユーザーがレビュワーになっているが、ステータスがcloseのプルリクエストは返さないこと' do
       user = create(:user)
-      pull = create(:pull_request2, reviewers: [user.uid])
+      pull = create(:pull_request2, reviewer_uids: [user.uid])
       expect(described_class.review_requested(user)).not_to include(pull)
     end
   end

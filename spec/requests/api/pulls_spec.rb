@@ -10,7 +10,7 @@ RSpec.describe 'Api::Pulls', type: :request do
   end
 
   let(:update_params) do
-    { pull: attributes_for(:pull_request, title: '新しいタイトル', state: 'closed', reviewers: [23_456_789]) }.to_json
+    { pull: attributes_for(:pull_request, title: '新しいタイトル', state: 'closed', reviewer_uids: [23_456_789]) }.to_json
   end
 
   describe 'POSTされたプルリクエストと同じnumberのプルリクエストが作成されていない場合、プルリクエストを新規作成する' do
@@ -47,7 +47,7 @@ RSpec.describe 'Api::Pulls', type: :request do
           expect(created_pull_request.reload.number).to eq 1
           expect(created_pull_request.reload.title).to eq '新しいタイトル'
           expect(created_pull_request.reload.state).to eq 'closed'
-          expect(created_pull_request.reload.reviewers).to eq [23_456_789]
+          expect(created_pull_request.reload.reviewer_uids).to eq [23_456_789]
         end
 
         it 'PullRequestモデルのレコード件数が変化していないこと' do
