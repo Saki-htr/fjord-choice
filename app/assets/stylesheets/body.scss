@@ -5,3 +5,12 @@ body {
   flex-flow: column;
   min-height: 100vh;
 }
+
+.icon-color {
+  color: #363636;
+}
+
+.icon-color:hover {
+  color: #00D1B2;
+  cursor: pointer;
+}

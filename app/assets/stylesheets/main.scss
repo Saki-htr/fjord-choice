@@ -5,7 +5,7 @@ main {
 }
 
 .dropdown-margin {
-  margin: 65px 0;
+  margin: 70px 0;
 }
 
 .pt-description-width {
@@ -20,6 +20,11 @@ main {
   vertical-align: middle !important;
 }
 
+.img_wrap:hover img{
+  opacity: 0.5;
+  transition-duration: 0.2s;
+}
+
 .square {
   list-style-type: square;
 }
@@ -31,3 +36,17 @@ main {
 .line-height {
   line-height: 2;
 }
+
+
+a:hover {
+  text-decoration: underline;
+}
+
+.text-color {
+  color: #363636;
+}
+
+.text-color:hover {
+  color: #009982;
+}
+

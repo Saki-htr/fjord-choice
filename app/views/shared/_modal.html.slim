@@ -1,13 +1,26 @@
 .modal id="show-modal"
   .modal-background
-  .modal-content
-    .box
-      p Fjord Choiceは、フィヨルドブートキャンプのシステム開発プラクティスに取り組んでいる開発メンバーの状況を見える化するサービスです。<br>
-        <br>
-        他の開発メンバーの、
-      ul.has-text-weight-semibold.square.ml-5.my-2
-        li これまで作成したPull Requestの一覧
-        li これまでアサインされたIssueの合計ポイント
-        li 現在レビュー依頼されているPull Request
-      p を知ることができます。
-  button.modal-close.is-large aria-label="close"
+  .modal-card
+    header.modal-card-head
+      h1.modal-card-title
+        .flex
+          = image_tag 'logo.png', alt: 'logo', class: 'pr-1 modal-logo-width '
+          p.is-size-6.ml-1.mt-2 とは
+      button.delete aria-label="close"
+    section.modal-card-body
+      .content
+        p
+          | フィヨルドブートキャンプのシステム開発プラクティスに取り組んでいるチームメンバーの状況を見える化するサービスです。<br>
+          <br>
+          | 他のチームメンバーの、
+        .notification.is-primary.is-light.has-text-weight-semibold
+          ul.square.ml-5.my-2
+            li これまで作成したPull Requestの一覧のGitHubリンク
+            li これまでアサインされたIssueの合計ポイント
+            li 現在レビュー依頼されているPull Request
+        p を知ることができます。<br>
+        p
+          i.fas.fa-exclamation-triangle.has-text-danger.mr-1
+          = link_to 'こちらのリポジトリ', 'https://github.com/fjordllc/bootcamp', class: 'repo-link-color'
+          | のコラボレーターの方のみ、メンバーに自分を追加することができます。
+          button.modal-close.is-large aria-label="close"
