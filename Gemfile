@@ -50,6 +50,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'slim-rails'
+gem 'bulma-rails', '~> 0.9.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -70,7 +71,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   # For Rails projects
-  gem 'bulma-rails', '~> 0.9.3'
   gem 'html2slim'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
