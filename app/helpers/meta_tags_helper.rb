@@ -28,4 +28,5 @@ module MetaTagsHelper
       }
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
