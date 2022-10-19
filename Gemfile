@@ -46,6 +46,7 @@ gem 'bootsnap', require: false
 gem 'sassc-rails'
 
 gem 'bulma-rails', '~> 0.9.3'
+gem 'meta-tags'
 gem 'octokit', '~> 4.0'
 gem 'omniauth'
 gem 'omniauth-github'
