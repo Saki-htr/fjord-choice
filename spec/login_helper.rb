@@ -2,7 +2,6 @@
 
 module LoginHelper
   def login_as(user)
-    OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(
       user.provider,
       uid: user.uid,
