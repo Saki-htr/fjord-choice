@@ -36,7 +36,7 @@ main.has-background-white-bis
               tr
                 td.cell-center = link_to url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'cell-center'
                   figure.image.is-48x48.is-inline-block.img_wrap
-                    = image_tag user.image_url, size: '30x30', class: 'is-rounded'
+                    = image_tag user.image_url, alt: 'user_icon', size: '30x30', class: 'is-rounded'
                   = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'ml-2 text-color'
                 td.cell-center
                   .has-text-centered
