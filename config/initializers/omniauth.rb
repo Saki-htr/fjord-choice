@@ -7,3 +7,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       Rails.application.credentials.github[:client_secret]
   end
 end
+
+OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+}

@@ -6,4 +6,8 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     redirect_to root_path, notice: 'メンバーに追加されました'
   end
+
+  def failure
+    redirect_to root_path, notice: 'キャンセルしました'
+  end
 end
