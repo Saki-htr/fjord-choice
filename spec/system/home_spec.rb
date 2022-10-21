@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ApplicationHelper
 
 RSpec.describe "Home", type: :system do
   let(:user) { create(:user) }
@@ -19,12 +20,12 @@ RSpec.describe "Home", type: :system do
       end
       it 'テーブルに自身のアイコンと名前が表示されていること' do
         login_as user
-        expect(page).to have_link user.name, href: "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+"
-
+        # 名前のリンク確認
+        expect(page).to have_link user.name, href: url_for_pulls(user)
+        # 画像のリンク確認
         find("img[alt='user_icon']").click
         switch_to_window(windows.last)
-        expect(page).to have_current_path "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+"
-
+        expect(page).to have_current_path url_for_pulls(user)
       end
     end
 
