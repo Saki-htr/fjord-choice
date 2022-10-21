@@ -4,7 +4,6 @@ RSpec.describe "Sessions", type: :system do
   describe 'ログイン処理' do
     context '認証が成功したとき' do
       it 'ログインできること' do
-
       end
     end
 
@@ -16,7 +15,7 @@ RSpec.describe "Sessions", type: :system do
 
     context 'ユーザーが認証をキャンセルしたとき' do
       it '認証せずトップページにリダイレクトすること' do
-        
+
       end
     end
   end

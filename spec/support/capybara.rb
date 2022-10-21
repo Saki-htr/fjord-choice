@@ -1,4 +1,5 @@
 require 'webdrivers/chromedriver'
+require_relative '../login_helper'
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
