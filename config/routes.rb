@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   end
   root 'home#index'
   get "/auth/:provider/callback" => "sessions#create"
+  get "/auth/failure" => "sessions#failure"
   resource :retirements, only: %i(create)
 end
