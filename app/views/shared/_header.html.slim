@@ -15,6 +15,6 @@ header.has-background-white-bis
               figure.image.is-48x48.mr-1
                 = image_tag current_user.image_url, class: 'is-rounded'
               .mr-6.my-auto = current_user.name
-              = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button'
+              = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれていいですか?' } }, remote: true, class: 'button'
             - else
               = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }, class: 'button'
