@@ -80,6 +80,6 @@ end
 
 group :test do
   gem 'capybara'
+  # gem 'webdrivers'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
 end
