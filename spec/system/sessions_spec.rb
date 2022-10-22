@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
+
 RSpec.describe 'Sessions', type: :system do
   let(:user) { create(:user) }
-  let(:invalid_user) { github_invalid_mock }
 
   describe 'ログイン処理' do
     context '認証が成功したとき' do
@@ -14,10 +14,8 @@ RSpec.describe 'Sessions', type: :system do
       end
     end
     context '認証が失敗したとき' do
-      it '認証せずトップページにリダイレクトすること' do
-        invalid_user
-        visit root_path
-        click_button 'メンバーに自分を追加する'
+      it 'トップページにリダイレクトすること' do
+        login_as_invalid_user
         expect(page).to have_content('ログインに失敗しました')
       end
     end
