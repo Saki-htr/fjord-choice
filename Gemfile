@@ -80,6 +80,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'webdrivers', '~> 5.0', require: false
   gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
