@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-
-# require 'selenium-webdriver'
 require_relative '../login_helper'
 
 RSpec.configure do |config|
