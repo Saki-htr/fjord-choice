@@ -77,3 +77,9 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'slim_lint'
 end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+end
