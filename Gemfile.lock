@@ -370,6 +370,7 @@ DEPENDENCIES
   rubocop-fjord
   rubocop-rails
   sassc-rails
+  selenium-webdriver
   slim-rails
   slim_lint
   sprockets-rails
