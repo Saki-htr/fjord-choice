@@ -1,13 +1,13 @@
-require 'rails_helper'
-include ApplicationHelper
+# frozen_string_literal: true
 
-RSpec.describe "Home", type: :system do
-  let!(:issue) { create(:issue)} # userにassignされたissue
-  let!(:pull_request) { create(:pull_request)} # userにreview requestされたPR
+require 'rails_helper'
+
+RSpec.describe 'Home', type: :system do
+  let!(:issue) { create(:issue) } # userにassignされたissue
+  let!(:pull_request) { create(:pull_request) } # userにreview requestされたPR
   let(:user) { create(:user) }
 
   describe 'メンバー一覧表示' do
-
     context '誰もログインしていないとき' do
       it '「まだ誰も登録していません」と表示されること' do
         visit root_path

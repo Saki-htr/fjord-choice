@@ -65,4 +65,5 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include LoginHelper
   config.include OmniauthMocks
+  config.include ApplicationHelper
 end

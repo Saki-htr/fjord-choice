@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Retirements", type: :system do
+RSpec.describe 'Retirements', type: :system do
   let(:user) { create(:user) }
 
   describe '退会処理' do
@@ -15,5 +17,4 @@ RSpec.describe "Retirements", type: :system do
       end
     end
   end
-
 end

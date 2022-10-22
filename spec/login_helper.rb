@@ -6,7 +6,8 @@ module LoginHelper
       user.provider,
       uid: user.uid,
       info: { nickname: user.name,
-              image_url: user.image_url})
+              image_url: user.image_url }
+    )
 
     visit root_path
     click_button 'メンバーに自分を追加する'
