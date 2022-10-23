@@ -7,4 +7,9 @@ class HomeController < ApplicationController
   def index
     @users = User.order('LOWER(name)')
   end
+
+  def tos; end
+
+  def pp; end
+
 end
