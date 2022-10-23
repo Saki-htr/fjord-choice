@@ -1,53 +1,52 @@
-main.has-background-white-bis
-  section
-    .container
-      - if flash.notice
-        .notification.has-text-right.is-primary.mt-2
-          = flash.notice
-      - if User.exists?
-        table.table.is-bordered.mx-auto.dropdown-margin
-          thead
-            tr.is-size-5
-              th チームメンバー
-              th
-                .dropdown.is-hoverable.is-up
-                  .dropdown-trigger
-                    span.icon.is-small
-                      i.fas.fa-question-circle.mr-2.icon-color aria-hidden="true"
-                  .dropdown-menu id="dropdown-menu5" role="menu"
-                    .dropdown-content.pt-description-width
-                      .dropdown-item
-                        p これまでアサインされたIssueの合計pt<br>
-                          (※openもclosedも合わせて)
-                span ポイント
-              th
-                .dropdown.is-hoverable.is-up
-                  .dropdown-trigger
-                    span.icon.is-small
-                      i.fas.fa-question-circle.mr-2.icon-color aria-hidden="true"
-                  .dropdown-menu id="dropdown-menu5" role="menu"
-                    .dropdown-content.pr-description-width
-                      .dropdown-item
-                        p 現在、レビューを依頼されているプルリクエスト<br>
-                          (※Approveしたものは表示されません)
-                span レビュー依頼されているプルリクエスト
-          tbody
-            - @users.each do |user|
-              tr
-                td.cell-center = link_to url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'cell-center'
-                  figure.image.is-48x48.is-inline-block.img_wrap
-                    = image_tag user.image_url, alt: 'user_icon', size: '30x30', class: 'is-rounded'
-                  = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'ml-2 text-color'
-                td.cell-center
-                  .has-text-centered
-                    = "#{Issue.total_points(user)}/20"
-                  progress.progress.is-primary.is-small max='20' value='#{Issue.total_points(user)}'
-                td.cell-center
-                  ul.square.ml-5.mt-1
-                    - PullRequest.review_requested(user).each do |pull|
-                      li.line-height = link_to truncate(pull.title, length: 40), url_for_pr(pull), target: :_blank, rel: 'noopener noreferrer', class: 'text-color'
-      - else
-        .has-text-centered.no-user-message
-          .is-size-1
-            i.far.fa-sad-tear
-          | まだ誰も登録していません
+section
+  .container
+    - if flash.notice
+      .notification.has-text-right.is-primary.mt-2
+        = flash.notice
+    - if User.exists?
+      table.table.is-bordered.mx-auto.dropdown-margin
+        thead
+          tr.is-size-5
+            th チームメンバー
+            th
+              .dropdown.is-hoverable.is-up
+                .dropdown-trigger
+                  span.icon.is-small
+                    i.fas.fa-question-circle.mr-2.icon-color aria-hidden="true"
+                .dropdown-menu id="dropdown-menu5" role="menu"
+                  .dropdown-content.pt-description-width
+                    .dropdown-item
+                      p これまでアサインされたIssueの合計pt<br>
+                        (※openもclosedも合わせて)
+              span ポイント
+            th
+              .dropdown.is-hoverable.is-up
+                .dropdown-trigger
+                  span.icon.is-small
+                    i.fas.fa-question-circle.mr-2.icon-color aria-hidden="true"
+                .dropdown-menu id="dropdown-menu5" role="menu"
+                  .dropdown-content.pr-description-width
+                    .dropdown-item
+                      p 現在、レビューを依頼されているプルリクエスト<br>
+                        (※Approveしたものは表示されません)
+              span レビュー依頼されているプルリクエスト
+        tbody
+          - @users.each do |user|
+            tr
+              td.cell-center = link_to url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'cell-center'
+                figure.image.is-48x48.is-inline-block.img_wrap
+                  = image_tag user.image_url, alt: 'user_icon', size: '30x30', class: 'is-rounded'
+                = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'ml-2 text-color'
+              td.cell-center
+                .has-text-centered
+                  = "#{Issue.total_points(user)}/20"
+                progress.progress.is-primary.is-small max='20' value='#{Issue.total_points(user)}'
+              td.cell-center
+                ul.square.ml-5.mt-1
+                  - PullRequest.review_requested(user).each do |pull|
+                    li.line-height = link_to truncate(pull.title, length: 40), url_for_pr(pull), target: :_blank, rel: 'noopener noreferrer', class: 'text-color'
+    - else
+      .has-text-centered.no-user-message
+        .is-size-1
+          i.far.fa-sad-tear
+        | まだ誰も登録していません
