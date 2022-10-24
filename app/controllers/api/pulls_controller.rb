@@ -9,7 +9,7 @@ class API::PullsController < ApplicationController
     if pull_request.update!(pull_params)
       head :created
     else
-      head :unprocessable_entity #=> 422
+      head :unprocessable_entity
     end
   end
 
