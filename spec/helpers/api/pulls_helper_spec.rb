@@ -3,15 +3,15 @@
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
-# the Api::PullsHelper. For example:
+# the API::PullsHelper. For example:
 #
-# describe Api::PullsHelper do
+# describe API::PullsHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       expect(helper.concat_strings("this","that")).to eq("this that")
 #     end
 #   end
 # end
-# RSpec.describe Api::PullsHelper, type: :helper do
+# RSpec.describe API::PullsHelper, type: :helper do
 #   pending "add some examples to (or delete) #{__FILE__}"
 # end
