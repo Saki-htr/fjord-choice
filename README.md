@@ -41,6 +41,17 @@ issueには完成までにかかる時間に応じてポイントが振られる
 2. これまでアサインされたIssueの合計ポイント
 3. 現在レビュー依頼されているPull Request
 
+## 使用技術
+- [Ruby 3.1.2](https://www.ruby-lang.org/ja/)
+- [Ruby on Rails 7.0.4](https://rubyonrails.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Heroku](https://jp.heroku.com/home)
+- [GitHubActions](https://docs.github.com/ja/actions)
+  - (bootcampアプリに置かせてもらうワークフローファイルのリンクを貼っておく)
+- [GitHub OAuth Apps](https://docs.github.com/ja/developers/apps/getting-started-with-apps/about-apps#oauth-apps-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+- [BULMA](https://bulma.io/)
+
+
 ## 利用方法
 ### 環境変数の設定
 
@@ -51,8 +62,17 @@ issueには完成までにかかる時間に応じてポイントが振られる
 |FJORD_CHOICE_TOKEN| [fjordllc/bootcampリポジトリ](https://github.com/fjordllc/bootcamp)からIssue/Pull Requestのデータを受信するためのトークン|
 
 ### インストール
+```bash
+$ bin/setup
+$ bin/rails server
+```
 
+### Test/Formatter & Lint
 
+```bash
+$ bundle exec rspec
+$ bin/lint
+```
 
 
 
