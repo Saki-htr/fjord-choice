@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-class Api::IssuesController < ApplicationController
+class API::IssuesController < ApplicationController
   protect_from_forgery except: :create
   before_action :authenticate, only: [:create]
 
   def create
     issue = Issue.find_or_create_by(number: issue_params[:number])
     if issue.update!(point: point, assignee_uids: issue_params[:assignee_uids])
-      head :created #=> 201
+      head :created
     else
-      head :unprocessable_entity #=> 422
+      head :unprocessable_entity
     end
   end
 

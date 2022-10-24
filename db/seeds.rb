@@ -20,7 +20,7 @@ if Rails.env.development? || Rails.env.production?
     uid: 33_394_676,
     image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
   )
-  12.times do |n|
+  9.times do |n|
     User.create!(
       name: "テスト太郎#{n + 1}",
       provider: 'github',
@@ -73,12 +73,12 @@ if Rails.env.development? || Rails.env.production?
     state: 'open',
     reviewer_uids: [69_446_373]
   )
-  5.times do |n|
-    PullRequest.create!(
-      title: "プルリクエストのタイトル#{n}",
-      number: 1000 + n,
-      state: 'open',
-      reviewer_uids: [1_111_111_111 + n]
-    )
-  end
+  # 5.times do |n|
+  #   PullRequest.create!(
+  #     title: "プルリクエストのタイトル#{n}",
+  #     number: 1000 + n,
+  #     state: 'open',
+  #     reviewer_uids: [1_111_111_111 + n]
+  #   )
+  # end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::PullsController < ApplicationController
+class API::PullsController < ApplicationController
   protect_from_forgery except: :create
   before_action :authenticate, only: [:create]
 
@@ -9,7 +9,7 @@ class Api::PullsController < ApplicationController
     if pull_request.update!(pull_params)
       head :created
     else
-      head :unprocessable_entity #=> 422
+      head :unprocessable_entity
     end
   end
 

@@ -35,7 +35,7 @@ RSpec.describe 'Home', type: :system do
       end
 
       it '自身にレビュー依頼されているプルリクエストのタイトルが表示され、GitHubへのリンクが付いていること' do
-        expect(page).to have_link pull_request.title, href: url_for_pr(pull_request)
+        expect(page).to have_link pull_request.title, href: url_for_pull(pull_request)
       end
     end
 
@@ -50,7 +50,7 @@ RSpec.describe 'Home', type: :system do
       end
 
       it '自身にレビュー依頼されているプルリクエストのタイトルが表示されていないこと' do
-        expect(page).to have_no_link pull_request.title, href: url_for_pr(pull_request)
+        expect(page).to have_no_link pull_request.title, href: url_for_pull(pull_request)
       end
     end
   end

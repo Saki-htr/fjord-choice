@@ -44,7 +44,7 @@ section
               td.cell-center
                 ul.square.ml-5.mt-1
                   - PullRequest.review_requested(user).each do |pull|
-                    li.line-height = link_to truncate(pull.title, length: 40), url_for_pr(pull), target: :_blank, rel: 'noopener noreferrer', class: 'text-color'
+                    li.line-height = link_to truncate(pull.title, length: 40), url_for_pull(pull), target: :_blank, rel: 'noopener noreferrer', class: 'text-color'
     - else
       .has-text-centered.no-user-message
         .is-size-1

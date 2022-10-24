@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Api::Pulls', type: :request do
+RSpec.describe 'API::Pulls', type: :request do
   let(:token) { ENV['FJORD_CHOICE_TOKEN'] }
   let(:invalid_token) { '無効なトークン' }
   let(:pull_params) do

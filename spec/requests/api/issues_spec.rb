@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Api::Issues', type: :request do
+RSpec.describe 'API::Issues', type: :request do
   let(:token) { ENV['FJORD_CHOICE_TOKEN'] }
   let(:invalid_token) { '無効なトークン' }
   let(:issue_params) do
