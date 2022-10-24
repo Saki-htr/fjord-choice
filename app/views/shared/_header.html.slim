@@ -3,7 +3,8 @@ header.has-background-white-bis
     nav.navbar.has-background-white-bis
       .navbar-brand
         .navbar-item
-          = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
+          = link_to root_path, class: 'img_wrap'
+            = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
       .navbar-menu
         .navbar-start
           .navbar-item
