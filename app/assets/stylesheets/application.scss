@@ -17,9 +17,18 @@
 @charset 'utf-8';
 
 $navbar-item-img-max-height: 100px;
-$footer-padding: 2rem 1.5rem 3rem;
 $dropdown-menu-min-width: 19rem;
 $link: #006656;
 $modal-card-body-padding: 40px;
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
 
 @import 'bulma';

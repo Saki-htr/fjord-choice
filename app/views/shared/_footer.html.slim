@@ -1,11 +1,11 @@
-footer.footer.has-background-white-bis
-  .container.pt-5.footer-line
+footer.footer.has-background-white-bis.footer-line
+  .container
     .has-text-centered
       = link_to '利用規約', tos_path, class: 'mr-4 text-color'
       = link_to 'プライバシーポリシー', pp_path, class: 'text-color'
       .mt-4
-        = link_to 'https://github.com/Saki-htr/fjord-choice', class: 'mr-4' do
+        = link_to 'https://github.com/Saki-htr/fjord-choice', target: :_blank, rel: 'noopener noreferrer', class: 'mr-4' do
           i.fab.fa-github.is-size-4.icon-color
-        = link_to 'https://twitter.com/Saki_ht3150', class: 'mr-4' do
+        = link_to 'https://twitter.com/Saki_ht3150', target: :_blank, rel: 'noopener noreferrer', class: 'mr-4' do
           i.fab.fa-twitter.is-size-4.icon-color
         | 2022 ©Saki-htr

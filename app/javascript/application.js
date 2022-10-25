@@ -2,3 +2,4 @@
 import '@hotwired/turbo-rails'
 import 'controllers'
 import 'custom/modal'
+import 'custom/burger_menu'

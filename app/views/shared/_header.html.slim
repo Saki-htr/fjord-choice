@@ -1,19 +1,24 @@
-header.has-background-white-bis
-  .container.header-line
+header.has-background-white-bis.header-line
+  .container
     nav.navbar.has-background-white-bis
       .navbar-brand
         .navbar-item
-          = link_to root_path, class: 'img_wrap'
-            = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
-      .navbar-menu
+          h1
+            = link_to root_path, class: 'img_wrap'
+              = image_tag 'service-logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
+        .navbar-item.is-hidden-desktop
+          - if logged_in?
+            figure.image.is-48x48.mr-1.icon-image
+              = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
+      .navbar-menu id="navMenu"
         .navbar-start
           .navbar-item
             i.fas.fa-question-circle.is-size-4.mr-1.js-modal-trigger.icon-color data-target="show-modal"
-            h1.is-size-6 このサービスについて
+            p.is-size-6 このサービスについて
         .navbar-end
           .navbar-item
             - if logged_in?
-              figure.image.is-48x48.mr-1
+              figure.image.is-48x48.mr-1.icon-image
                 = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
               .mr-6.my-auto = current_user.name
               = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれていいですか?' } }, remote: true, class: 'button'
