@@ -10,12 +10,16 @@ header.has-background-white-bis.header-line
           - if logged_in?
             figure.image.is-48x48.mr-1.icon-image
               = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
-      .navbar-menu
+        a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false"
+          span aria-hidden="true"
+          span aria-hidden="true"
+          span aria-hidden="true"
+      .navbar-menu id="navMenu"
         .navbar-start
           .navbar-item
             i.fas.fa-question-circle.is-size-4.mr-1.js-modal-trigger.icon-color data-target="show-modal"
             p.is-size-6 このサービスについて
-        .navbar-end.
+        .navbar-end
           .navbar-item
             - if logged_in?
               figure.image.is-48x48.mr-1.icon-image
