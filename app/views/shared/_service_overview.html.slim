@@ -10,10 +10,11 @@
     section.modal-card-body
       .content
         p
-          | フィヨルドブートキャンプのシステム開発プラクティスに取り組んでいるチームメンバーの状況を見える化するサービスです。<br>
+          = link_to 'フィヨルドブートキャンプ', 'https://bootcamp.fjord.jp/welcome', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
+          | のシステム開発プラクティスに取り組んでいるチームメンバーの状況を見える化するサービスです。<br>
           <br>
           | 他のチームメンバーの、
-        .notification.is-primary.is-light.has-text-weight-semibold
+        .notification.is-warning.is-light.has-text-weight-semibold
           ul.square.ml-5.my-2
             li これまで作成したPull Requestの一覧のGitHubリンク
             li これまでアサインされたIssueの合計ポイント
@@ -21,6 +22,6 @@
         p を知ることができます。<br>
         p
           i.fas.fa-exclamation-triangle.has-text-danger.mr-1
-          = link_to 'fjordllc/bootcampリポジトリ', 'https://github.com/fjordllc/bootcamp', class: 'repo-link-color'
+          = link_to 'fjordllc/bootcampリポジトリ', 'https://github.com/fjordllc/bootcamp', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
           | のコラボレーターの方のみ、GitHub認証でメンバー登録をお願いいたします。
           button.modal-close.is-large aria-label="close"
