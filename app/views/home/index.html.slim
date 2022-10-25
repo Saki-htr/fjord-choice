@@ -11,7 +11,7 @@ section
             th
               .dropdown.is-hoverable.is-up
                 .dropdown-trigger
-                  span.icon.is-small
+                  span.icon.is-small.is-hidden-mobile
                     i.fas.fa-question-circle.mr-2.icon-color aria-hidden="true"
                 .dropdown-menu id="dropdown-menu5" role="menu"
                   .dropdown-content.pt-description-width
@@ -19,7 +19,7 @@ section
                       p これまでアサインされたIssueの合計pt<br>
                         (※openもclosedも合わせて)
               span ポイント
-            th
+            th.is-hidden-mobile
               .dropdown.is-hoverable.is-up
                 .dropdown-trigger
                   span.icon.is-small
@@ -36,12 +36,12 @@ section
               td.cell-center = link_to url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'cell-center'
                 figure.image.is-48x48.is-inline-block.img_wrap
                   = image_tag user.image_url, alt: 'user_icon', size: '30x30', class: 'is-rounded'
-                = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'ml-2 text-color is-hidden-mobile'
+                = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'ml-2 text-color'
               td.cell-center
                 .has-text-centered
                   = "#{Issue.total_points(user)}/20"
                 progress.progress.is-primary.is-small max='20' value='#{Issue.total_points(user)}'
-              td.cell-center
+              td.cell-center.is-hidden-mobile
                 ul.square.ml-5.mt-1
                   - if PullRequest.review_requested(user).empty?
                     p.has-text-grey

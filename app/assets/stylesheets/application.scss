@@ -22,4 +22,14 @@ $dropdown-menu-min-width: 19rem;
 $link: #006656;
 $modal-card-body-padding: 40px;
 
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 @import 'bulma';
