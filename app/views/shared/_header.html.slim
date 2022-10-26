@@ -8,15 +8,22 @@ header.has-background-white-bis.header-line
               = image_tag 'service-logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
         .navbar-item.is-hidden-desktop
           - if logged_in?
-            figure.image.is-48x48.mr-1.icon-image
-              = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
+            .question
+              i.fas.fa-question-circle.is-size-1.mr-1.js-modal-trigger.icon-color data-target="show-modal"
+              p.is-size-6 About
+            .login-icon
+              figure.image.is-48x48.icon-image
+                = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
+              p.mr-6.my-auto = current_user.name
       .navbar-menu id="navMenu"
         .navbar-end
           .navbar-item
-            i.fas.fa-question-circle.is-size-1.mr-1.js-modal-trigger.icon-color data-target="show-modal"
-            p.is-size-6 About
+            .question
+              i.fas.fa-question-circle.is-size-1.mr-1.js-modal-trigger.icon-color data-target="show-modal"
+              p.is-size-6 About
           .navbar-item
-            - if logged_in?
-              figure.image.is-48x48.mr-1.icon-image
-                = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
-              .mr-6.my-auto = current_user.name
+            .login-icon
+              - if logged_in?
+                figure.image.is-48x48.mr-1.icon-image
+                  = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
+                .mr-6.my-auto = current_user.name
