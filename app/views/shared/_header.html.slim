@@ -7,16 +7,16 @@ header.has-background-white-bis.header-line
             = link_to root_path, class: 'img_wrap'
               = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
           - if logged_in?
-          .navbar-item.is-hidden-desktop
-            .question
-              i.fas.fa-question-circle.is-size-3.mr-1.js-modal-trigger.icon-color data-target="show-modal"
-              p.is-size-6 About
+            .navbar-item.is-hidden-desktop
+              .question
+                i.fas.fa-question-circle.is-size-3.mr-1.js-modal-trigger.icon-color data-target="show-modal"
+                p.is-size-6 About
           - if logged_in?
-          .navbar-item.is-hidden-desktop
-            .login-icon
-              figure.image.is-32x32
-                = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
-              p.my-auto = current_user.name
+            .navbar-item.is-hidden-desktop
+              .login-icon
+                figure.image.is-32x32
+                  = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
+                p.my-auto = current_user.name
       .navbar-menu
         .navbar-end
           - if logged_in?
