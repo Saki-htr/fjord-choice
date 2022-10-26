@@ -38,6 +38,8 @@ a:hover {
   text-decoration: underline;
 }
 
-
-
-
+@media (max-width: 767.98px) {
+  .table, .usage {
+    width: calc(100vw - 2rem);
+  }
+}
