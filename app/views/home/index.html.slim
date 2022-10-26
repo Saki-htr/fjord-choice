@@ -8,7 +8,7 @@ section
     - if User.exists?
       table.table.is-bordered.mx-auto.dropdown-margin
         thead
-          tr.is-size-5
+          tr.is-size-7
             th チームメンバー
             th
               .dropdown.is-hoverable.is-up
@@ -34,10 +34,10 @@ section
               span レビュー依頼されているプルリクエスト
         tbody
           - @users.each do |user|
-            tr
+            tr.is-size-7
               td.cell-center = link_to url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'cell-center'
-                figure.image.is-48x48.is-inline-block.img_wrap
-                  = image_tag user.image_url, alt: 'user_icon', size: '30x30', class: 'is-rounded'
+                figure.image.is-32x32.is-inline-block.img_wrap
+                  = image_tag user.image_url, alt: 'user_icon', class: 'is-rounded'
                 = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'ml-2 text-color'
               td.cell-center
                 .has-text-centered
