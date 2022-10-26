@@ -38,6 +38,20 @@ a:hover {
   text-decoration: underline;
 }
 
+.member-name {
+  // white-space: nowrap;
+  // width:130px;
+  // display: inline-block;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+}
+
+.nowrap {
+  white-space: nowrap;
+
+}
+
+
 @media (max-width: 767.98px) {
   .table, .usage {
     width: calc(100vw - 2rem);

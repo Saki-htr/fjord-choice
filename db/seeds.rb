@@ -20,6 +20,12 @@ if Rails.env.development? || Rails.env.production?
     uid: 33_394_676,
     image_url: 'https://avatars.githubusercontent.com/u/33394676?v=4'
   )
+  User.create!(
+    name: '名前がとてもとても長いユーザー',
+    provider: 'github',
+    uid: 99_999_999,
+    image_url: 'https://avatars.githubusercontent.com/u/9876542?v=4'
+  )
   9.times do |n|
     User.create!(
       name: "テスト太郎#{n + 1}",
