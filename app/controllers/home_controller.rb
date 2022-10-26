@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   require 'octokit'
 
   def index
-    reset_session
     @users = User.order('LOWER(name)')
   end
 
