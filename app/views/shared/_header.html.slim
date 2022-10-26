@@ -16,7 +16,7 @@ header.has-background-white-bis.header-line
             .login-icon
               figure.image.is-32x32
                 = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
-              p.mr-6.my-auto = current_user.name
+              p.my-auto = current_user.name
       .navbar-menu id="navMenu"
         .navbar-end
           - if logged_in?
@@ -29,4 +29,4 @@ header.has-background-white-bis.header-line
               .login-icon
                 figure.image.is-48x48.mr-1
                   = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
-                .mr-6.my-auto = current_user.name
+                .my-auto = current_user.name
