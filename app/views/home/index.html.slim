@@ -1,7 +1,7 @@
 section
   .container
     - if flash.notice
-      .notification.has-text-right.is-primary.mt-2
+      .notification.has-text-right.is-primary.is-light.mt-2
         = flash.notice
     - if current_user.nil?
       = render 'shared/overview'
@@ -21,7 +21,7 @@ section
                       p これまでアサインされたIssueの合計pt<br>
                         (※openもclosedも合わせて)
               span ポイント
-            th.is-hidden-mobile
+            th
               .dropdown.is-hoverable.is-up
                 .dropdown-trigger
                   span.icon.is-small
@@ -43,7 +43,7 @@ section
                 .has-text-centered
                   = "#{Issue.total_points(user)}/20"
                 progress.progress.is-primary.is-small max='20' value='#{Issue.total_points(user)}'
-              td.cell-center.is-hidden-mobile
+              td.cell-center
                 ul.square.ml-5.mt-1
                   - if PullRequest.review_requested(user).empty?
                     p.has-text-grey
