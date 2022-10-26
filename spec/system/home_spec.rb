@@ -31,7 +31,7 @@ RSpec.describe 'Home', type: :system do
       end
 
       it '自身にアサインされたイシューの合計ポイントが表示されていること' do
-        expect(page).to have_content "#{Issue.total_points(user)}/20"
+        expect(page).to have_content "#{Issue.total_points(user)} / 20"
       end
 
       it '自身にレビュー依頼されているプルリクエストのタイトルが表示され、GitHubへのリンクが付いていること' do
