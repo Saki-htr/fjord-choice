@@ -3,6 +3,8 @@ section
     - if flash.notice
       .notification.has-text-right.is-primary.mt-2
         = flash.notice
+    - if current_user.nil?
+      = render 'shared/overview'
     - if User.exists?
       table.table.is-bordered.mx-auto.dropdown-margin
         thead

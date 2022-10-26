@@ -1,0 +1,17 @@
+p
+  = link_to 'フィヨルドブートキャンプ', 'https://bootcamp.fjord.jp/welcome', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
+  | のシステム開発プラクティスに取り組んでいるチームメンバーの状況を見える化するサービスです。<br>
+  <br>
+  | 他のチームメンバーの、
+.notification.is-warning.is-light
+  ul.square.ml-5.my-2
+    li これまで作成したPull Requestの一覧のGitHubリンク
+    li これまでアサインされたIssueの合計ポイント
+    li 現在レビュー依頼されているPull Request
+p を知ることができます。<br>
+p
+  i.fas.fa-exclamation-triangle.has-text-danger.mr-1
+  = link_to 'fjordllc/bootcampリポジトリ', 'https://github.com/fjordllc/bootcamp', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
+  | のコラボレーターの方のみ、GitHub認証でメンバー登録をお願いいたします。
+
+= button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }, class: 'button'
