@@ -9,10 +9,12 @@ header.has-background-white-bis.header-line
         .navbar-item.is-hidden-desktop
           - if logged_in?
             .question
-              i.fas.fa-question-circle.is-size-1.mr-1.js-modal-trigger.icon-color data-target="show-modal"
+              i.fas.fa-question-circle.is-size-3.mr-1.js-modal-trigger.icon-color data-target="show-modal"
               p.is-size-6 About
+        .navbar-item.is-hidden-desktop
+          - if logged_in?
             .login-icon
-              figure.image.is-48x48.icon-image
+              figure.image.is-32x32.icon-image
                 = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
               p.mr-6.my-auto = current_user.name
       .navbar-menu id="navMenu"
