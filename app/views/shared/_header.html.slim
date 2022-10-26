@@ -17,10 +17,10 @@ header.has-background-white-bis.header-line
               figure.image.is-32x32
                 = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
               p.my-auto = current_user.name
-      .navbar-menu id="navMenu"
+      .navbar-menu
         .navbar-end
           - if logged_in?
-            .navbar-item
+            .navbar-item.is-hidden-touch
               .question
                 i.fas.fa-question-circle.is-size-1.mr-1.js-modal-trigger.icon-color data-target="show-modal"
                 p.is-size-6 About
