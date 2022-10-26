@@ -41,7 +41,7 @@ section
                 = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'ml-2 text-color'
               td.cell-center
                 .has-text-centered
-                  .mb-1 = "#{Issue.total_points(user)}/20"
+                  .mb-1 = "#{Issue.total_points(user)} / 20"
                 progress.progress.is-primary.is-small max='20' value='#{Issue.total_points(user)}'
               td.cell-center
                 ul.square.ml-5.mt-1
