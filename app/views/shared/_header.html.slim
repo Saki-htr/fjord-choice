@@ -5,22 +5,28 @@ header.has-background-white-bis.header-line
         .navbar-item
           h1
             = link_to root_path, class: 'img_wrap'
-              = image_tag 'service-logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
+              = image_tag 'logo.png', alt: 'logo', class: 'py-2 px-2 logo-width'
         .navbar-item.is-hidden-desktop
           - if logged_in?
-            figure.image.is-48x48.mr-1.icon-image
-              = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
-      .navbar-menu id="navMenu"
-        .navbar-start
-          .navbar-item
-            i.fas.fa-question-circle.is-size-4.mr-1.js-modal-trigger.icon-color data-target="show-modal"
-            p.is-size-6 このサービスについて
-        .navbar-end
-          .navbar-item
-            - if logged_in?
-              figure.image.is-48x48.mr-1.icon-image
+            .question
+              i.fas.fa-question-circle.is-size-3.mr-1.js-modal-trigger.icon-color data-target="show-modal"
+              p.is-size-6 About
+        .navbar-item.is-hidden-desktop
+          - if logged_in?
+            .login-icon
+              figure.image.is-32x32
                 = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
-              .mr-6.my-auto = current_user.name
-              = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれていいですか?' } }, remote: true, class: 'button'
-            - else
-              = button_to 'メンバーに自分を追加する', '/auth/github', method: :post, data: { turbo: false }, class: 'button'
+              p.my-auto = current_user.name
+      .navbar-menu id="navMenu"
+        .navbar-end
+          - if logged_in?
+            .navbar-item
+              .question
+                i.fas.fa-question-circle.is-size-1.mr-1.js-modal-trigger.icon-color data-target="show-modal"
+                p.is-size-6 About
+          - if logged_in?
+            .navbar-item
+              .login-icon
+                figure.image.is-48x48.mr-1
+                  = image_tag current_user.image_url, alt: 'nav_user_icon', class: 'is-rounded'
+                .my-auto = current_user.name
