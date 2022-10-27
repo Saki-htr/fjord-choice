@@ -11,4 +11,6 @@ class HomeController < ApplicationController
   def tos; end
 
   def pp; end
+
+  def about; end
 end
