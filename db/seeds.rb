@@ -7,7 +7,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-if Rails.env.development? || Rails.env.production?
+if Rails.env.development? #開発環境でのみ作成
   User.create!(
     name: 'garammasala29',
     provider: 'github',
@@ -79,12 +79,4 @@ if Rails.env.development? || Rails.env.production?
     state: 'open',
     reviewer_uids: [69_446_373]
   )
-  # 5.times do |n|
-  #   PullRequest.create!(
-  #     title: "プルリクエストのタイトル#{n}",
-  #     number: 1000 + n,
-  #     state: 'open',
-  #     reviewer_uids: [1_111_111_111 + n]
-  #   )
-  # end
 end
