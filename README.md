@@ -32,7 +32,7 @@ issueには完成までにかかる時間に応じてポイントが振られる
 システム開発プラクティスに取り組む受講生に、「メンバーに自分を追加する」をクリックしてGitHubアカウントでログインしていただきます。すると、そのユーザーの情報が表に追加されます。
 システム開発を終了したら、「メンバーからはずれる」をクリックしていただきます。すると、退会処理が行われ、そのユーザーの情報が表から削除されます。
 
-[![Image from Gyazo](https://i.gyazo.com/759f8161324769f9cf44960bd0e50b15.gif)](https://gyazo.com/759f8161324769f9cf44960bd0e50b15)
+[![Image from Gyazo](https://i.gyazo.com/19613206deb2292ce3fedd6b3cfa1188.gif)](https://gyazo.com/19613206deb2292ce3fedd6b3cfa1188)
 
 
 
