@@ -2,18 +2,19 @@
   .content
     h2
       | About
-    p
-      | このサービスは、
-      = link_to 'フィヨルドブートキャンプ', 'https://bootcamp.fjord.jp/welcome', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
-      | のシステム開発プラクティスに取り組んでいるチームメンバーの状況を見える化します。<br>
-      <br>
-      | 他のチームメンバーの、
-      ul.square.ml-5.my-2.has-text-weight-semibold
-        li これまで作成したPull Requestの一覧のGitHubリンク
-        li これまでアサインされたIssueの合計ポイント
-        li 現在レビュー依頼されているPull Request
-    p を知ることができます。<br>
-    p.mt-5
-      i.fas.fa-lg.fa-exclamation-triangle.has-text-danger.mr-1
-      = link_to 'fjordllc/bootcampリポジトリ', 'https://github.com/fjordllc/bootcamp', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
-      | のコラボレーターの方のみ、以下のボタンをクリックしてGitHub認証し、メンバー登録をお願いいたします。
+    .px-5
+      p
+        | このサービスは、
+        = link_to 'フィヨルドブートキャンプ', 'https://bootcamp.fjord.jp/welcome', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
+        | のシステム開発プラクティスに取り組んでいるチームメンバーの状況を見える化します。<br>
+        <br>
+        | 他のチームメンバーの、
+        ul.square.ml-5.my-2.has-text-weight-semibold
+          li これまで作成したPull Requestの一覧のGitHubリンク
+          li これまでアサインされたIssueの合計ポイント
+          li 現在レビュー依頼されているPull Request
+      p を知ることができます。<br>
+      p.mt-5
+        i.fas.fa-lg.fa-exclamation-triangle.has-text-danger.mr-1
+        = link_to 'fjordllc/bootcampリポジトリ', 'https://github.com/fjordllc/bootcamp', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
+        | のコラボレーターの方のみ、以下のボタンをクリックしてGitHub認証し、メンバー登録をお願いいたします。
