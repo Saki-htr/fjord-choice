@@ -7,7 +7,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-if Rails.env.development? #開発環境でのみ作成
+if Rails.env.development?
   User.create!(
     name: 'garammasala29',
     provider: 'github',
