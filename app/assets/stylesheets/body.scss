@@ -17,4 +17,17 @@
   color: #009982;
 }
 
+.usage {
+  border-radius: 0.5rem;
+  border: 3px solid #00D1B2;
+  max-width: 61rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .usage {
+    width: calc(100vw - 2rem);
+  }
+}
+
 
