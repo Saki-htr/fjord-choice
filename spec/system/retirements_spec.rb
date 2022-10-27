@@ -11,7 +11,7 @@ RSpec.describe 'Retirements', type: :system do
         login_as user
         click_button 'メンバーからはずれる'
         expect do
-          expect(accept_confirm).to eq '本当にメンバーからはずれていいですか?'
+          expect(accept_confirm).to eq '本当にメンバーからはずれてもいいですか?'
           expect(page).to have_content 'メンバーからはずれました'
         end.to change { User.count }.by(-1)
       end
