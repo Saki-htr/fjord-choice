@@ -4,7 +4,7 @@ section
       - if flash.notice
         .notification.has-text-right.is-primary.is-light.mt-2
           = flash.notice
-      - if current_user.nil?
+      - if not_logged_in?
         = render 'shared/overview'
       - if User.exists?
         table.table.is-bordered.mx-auto.dropdown-margin
