@@ -20,7 +20,8 @@
 /// Bulma
 ///////////////
 
-@import 'sass/base/_all';
+@import 'sass/base/minireset';
+@import 'sass/base/generic';
 @import 'sass/elements/button';
 @import 'sass/elements/container';
 @import 'sass/elements/content';

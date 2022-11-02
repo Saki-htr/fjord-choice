@@ -10,7 +10,7 @@ section.activities
                   .member__icon
                     = link_to url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'member__icon-link'
                       figure.member__icon-image-container.image
-                        = image_tag user.image_url, alt: 'user_icon', class: 'is-rounded member__icon-image'
+                        = image_tag user.image_url, alt: "#{user.name}さんのアイコン画像", class: 'is-rounded member__icon-image'
                   .member__id.is-trancated
                     = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'has-text-color has-nowrap has-text-weight-bold'
                 .points.mt-1
@@ -25,7 +25,7 @@ section.activities
                   h3.review-requests__title
                     | Review Requests (#{PullRequest.review_requested(user).count})
                   - if PullRequest.review_requested(user).empty?
-                    p.review-requests__empty.p-2.is-flex
+                    p.review-requests__empty.p-2.is-flex.has-text-danger.has-text-weight-bold
                       | レビュー依頼はありません
                   - else
                     ul.review-requests__items

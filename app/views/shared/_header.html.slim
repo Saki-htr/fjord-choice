@@ -1,21 +1,21 @@
-header.header.has-background-white-bis.header
+header.header
   .container
     .header__inner
       .header__start
         .header-logo
           = link_to root_path, class: 'header-logo__link'
             = image_tag 'logo.png', alt: 'Fjord Choice のロゴ画像', class: 'header-logo__image'
-      .header__end
-        nav.header__nav
-          ul.header__nav-items
-            li.header-nav-item
-              label.header-nav-item__link.has-text-color(for="modal-about")
-                .header-nav-item__icon
-                  i.fas.fa-question-circle
-                p.header-nav-item__label
-                  | About
+      - if logged_in?
+        .header__end
+          nav.header__nav
+            ul.header__nav-items
+              li.header-nav-item
+                label.header-nav-item__link.has-text-color(for="modal-about")
+                  .header-nav-item__icon
+                    i.fas.fa-question-circle
+                  p.header-nav-item__label
+                    | About
 
-            - if logged_in?
               .header-nav__item
                 = link_to "https://github.com/fjordllc/bootcamp/projects/1?card_filter_query=assignee%3A#{current_user.name}", target: :_blank, rel: 'noopener noreferrer', class: 'header-nav-item__link' do
                   figure.image.header-nav-item__icon
@@ -23,9 +23,10 @@ header.header.has-background-white-bis.header
                   p.header-nav-item__label
                     = current_user.name
 
-input.is-hidden-input#modal-about(type="checkbox")
-.modal-about
-  .modal-about__close
-  .modal-about__inner
-    = render 'shared/about'
-  label.modal-about__overlay(for="modal-about")
+- if logged_in?
+  input.is-hidden-input#modal-about(type="checkbox")
+  .modal-about
+    .modal-about__close
+    .modal-about__inner
+      = render 'shared/about'
+    label.modal-about__overlay(for="modal-about")

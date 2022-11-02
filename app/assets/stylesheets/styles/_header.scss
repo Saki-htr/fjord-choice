@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid #DBDBDB;
+  background-color: $white-bis;
   >.container {
     @include mobile {
       padding-right: 0;
@@ -11,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 3.5rem;
 }
 
 .header__nav-items {
