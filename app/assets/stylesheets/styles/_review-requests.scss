@@ -1,0 +1,39 @@
+.review-requests {
+  @include desktop {
+    width: calc(#{$desktop} - (#{$activities__item-start-width} + 4rem + 2px));
+    font-size: .8125rem;
+  }
+  @include touch {
+    width: calc(100vw - (#{$activities__item-start-width--mobile} + 2rem + 2px));
+    font-size: .75rem;
+  }
+}
+
+.review-requests__item {
+  padding: .375rem .5rem;
+  &:not(:last-child) {
+    border-bottom: dashed 1px $border;
+  }
+  &:nth-child(1):last-child {
+    border-bottom: dashed 1px $border;
+  }
+}
+
+.review-requests__title {
+  background: $shade;
+  padding: .25rem .5rem;
+  font-weight: 700;
+  @include tablet {
+    font-size: .75rem;
+  }
+  @include mobile {
+    font-size: .625rem;
+  }
+}
+
+.review-requests__item-link {
+}
+
+.review-requests__empty {
+
+}

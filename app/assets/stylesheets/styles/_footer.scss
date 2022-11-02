@@ -1,0 +1,19 @@
+.footer {
+  @include tablet {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  @include mobile {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.footer-author-copyright {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: .25rem
+}

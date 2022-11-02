@@ -1,13 +1,21 @@
-footer.footer.has-background-white-bis.footer-line
+footer.footer
   .container
-    .has-text-centered
-      - if logged_in?
-        = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button mb-4'
-      = link_to '利用規約', tos_path, class: 'mr-4 text-color'
-      = link_to 'プライバシーポリシー', pp_path, class: 'text-color'
-      .mt-4
-        = link_to 'https://github.com/Saki-htr/fjord-choice', target: :_blank, rel: 'noopener noreferrer', class: 'mr-4' do
-          i.fab.fa-github.is-size-4.icon-color
-        = link_to 'https://twitter.com/Saki_ht3150', target: :_blank, rel: 'noopener noreferrer', class: 'mr-4' do
-          i.fab.fa-twitter.is-size-4.icon-color
-        | 2022 ©Saki-htr
+    nav.footer-nav
+      ul.footer-nav__items
+        - if logged_in?
+          li.footer-nav__item
+            = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button mb-4'
+        li.footer-nav__item
+          = link_to '利用規約', tos_path, class: 'has-text-color'
+        li.footer-nav__item
+          = link_to 'プライバシーポリシー', pp_path, class: 'has-text-color'
+        li.footer-nav__item
+          = link_to 'fjordllc/bootcamp', 'https://github.com/fjordllc/bootcamp', target: :_blank, rel: 'noopener noreferrer', class: 'has-text-color'
+        li.footer-nav__item.is-icon
+          = link_to 'https://github.com/Saki-htr/fjord-choice', target: :_blank, rel: 'noopener noreferrer', class: 'has-text-color' do
+            i.fab.fa-github
+    small.footer-author-copyright
+      | 2022
+      i.far.fa-copyright
+      = link_to 'https://twitter.com/Saki_ht3150', target: :_blank, rel: 'noopener noreferrer', class: '' do
+        | Saki-htr

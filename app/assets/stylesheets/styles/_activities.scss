@@ -1,0 +1,47 @@
+.activities {
+  @include tablet {
+    margin-top: 2rem;
+  }
+  @include mobile {
+    margin-top: 1rem;
+  }
+}
+
+.activities__list {
+  min-width: 100%;
+}
+
+.activities__item {
+  overflow: hidden;
+  border-radius: .5rem;
+  display: flex;
+  background-color: $scheme-main;
+  border: solid 1px $border;
+  .activities__item + & {
+    margin-top: .75rem;
+  }
+}
+
+.activities__item-start {
+  overflow: hidden;
+  @include tablet {
+    padding: .75rem;
+  }
+  @include mobile {
+    padding: .5rem;
+  }
+  @include desktop {
+    flex: 0 0 $activities__item-start-width;
+    max-width: $activities__item-start-width;
+  }
+  @include touch {
+    flex: 0 0 $activities__item-start-width--mobile;
+    max-width: $activities__item-start-width--mobile;
+  }
+}
+
+.activities__item-end {
+  flex: 1;
+  border-left: dashed 1px $border;
+  overflow: hidden;
+}

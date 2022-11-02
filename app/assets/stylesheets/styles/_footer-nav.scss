@@ -1,0 +1,13 @@
+.footer-nav__items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: .8125rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav__item.is-icon {
+  font-size: 2rem;
+  line-height: 1;
+}

@@ -1,0 +1,35 @@
+.member {
+  display: flex;
+  align-items: center;
+  max-width: 13rem;
+}
+
+.member__id {
+  @include tablet {
+    font-size: .875rem;
+    margin-left: .5rem;
+  }
+  @include mobile {
+    font-size: .75rem;
+    margin-left: .25rem;
+  }
+}
+
+.member__icon-image-container {
+  @include tablet {
+    width: 2rem;
+    height: 2rem;
+  }
+  @include mobile {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.member__icon-image {
+  object-fit: cover;
+  transition: all .2s ease-out;
+  .member__icon-link:hover & {
+    opacity: 0.5;
+  }
+}

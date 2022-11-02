@@ -76,6 +76,7 @@ group :development do
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint'
+  gem 'faraday-retry'
 end
 
 group :test do

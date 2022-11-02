@@ -1,0 +1,11 @@
+.features__items {
+  display: flex;
+  gap: 1rem;
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.features__item {
+  flex: 1;
+}

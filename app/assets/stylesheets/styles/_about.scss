@@ -1,0 +1,66 @@
+.about {
+  background-color: $shade;
+  @include tablet {
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+  }
+  @include mobile {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+}
+
+.about__logo-link {
+  display: inline-block;
+  width: 24rem;
+  max-width: calc(100% - 6rem);
+}
+
+.about__logo-image {
+  width: 100%;
+}
+
+.about__catch-copy {
+  @include tablet {
+    margin-top: 2rem;
+    font-size: 1.75rem;
+  }
+  @include mobile {
+    margin-top: 1.5rem;
+    font-size: .875rem;
+  }
+}
+
+.about__action-attention,
+.about__action-attention a {
+  color: $danger;
+  font-size: .75rem;
+}
+
+.about__body {
+  @include tablet {
+    margin-top: 3rem;
+  }
+  @include mobile {
+    margin-top: 1.5rem;
+  }
+}
+
+.about__action-submit {
+  @include tablet {
+    margin-top: 3rem;
+  }
+  @include mobile {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+}
+
+.about__action-attention {
+  @include tablet {
+    margin-top: 1rem;
+  }
+  @include mobile {
+    margin-top: .5rem;
+  }
+}

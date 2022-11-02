@@ -1,0 +1,49 @@
+.feature {
+  border: solid 1px $border;
+  height: 100%;
+  border-radius: .5rem;
+  background-color: $scheme-main;
+}
+
+.feature__header {
+  background-color: $border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .4375rem .4375rem 0 0;
+  @include tablet {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  @include mobile {
+    padding: .5rem;
+  }
+}
+
+.feature__title {
+  @include tablet {
+    margin-top: .5rem;
+  }
+  @include mobile {
+    margin-left: .25rem;
+    font-size: .875rem;
+  }
+}
+
+.feature__icon {
+  @include tablet {
+    width: 3rem;
+  }
+  @include mobile {
+    width: 1.5rem;
+  }
+}
+
+.feature__body {
+  @include tablet {
+    font-size: .875rem;
+  }
+  @include mobile {
+    font-size: .8125rem;
+  }
+}
