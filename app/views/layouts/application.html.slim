@@ -17,5 +17,8 @@ html
     - if logged_in?
       = render 'shared/header'
     main
+      - if flash.notice
+        .notification.has-text-center.is-primary.is-light.has-text-centered
+          = flash.notice
       = yield
     = render 'shared/footer'
