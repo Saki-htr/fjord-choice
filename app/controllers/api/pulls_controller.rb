@@ -4,7 +4,7 @@ class API::PullsController < APIController
   before_action :authenticate, only: [:create]
 
   def create
-    pull_request = PullRequest.upsert(pull_params, unique_by: :number)
+    PullRequest.upsert(pull_params, unique_by: :number)
     head :created
   end
 
