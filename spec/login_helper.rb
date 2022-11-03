@@ -10,7 +10,7 @@ module LoginHelper
     )
     ensure_browser_size if Capybara.current_driver == :selenium_chrome_headless
     visit root_path
-    click_button 'メンバーに自分を追加する'
+    click_button 'メンバー登録をする'
     @current_user = user
   end
 
@@ -18,7 +18,7 @@ module LoginHelper
     OmniAuth.config.mock_auth[:github] = :invalid_credentails
     ensure_browser_size if Capybara.current_driver == :selenium_chrome_headless
     visit root_path
-    click_button 'メンバーに自分を追加する'
+    click_button 'メンバー登録をする'
   end
 
   def current_user

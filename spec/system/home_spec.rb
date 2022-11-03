@@ -21,7 +21,7 @@ RSpec.describe 'Home', type: :system do
       end
 
       it '自身のアイコンが表示され、作成したプルリクエスト一覧のGitHubリンクが付いていること' do
-        find("img[alt='user_icon']").click
+        find("img[alt='#{user.name}さんのアイコン画像']").click
         switch_to_window(windows.last)
         expect(page).to have_current_path url_for_pulls(user)
       end
