@@ -4,12 +4,8 @@ class API::PullsController < APIController
   before_action :authenticate, only: [:create]
 
   def create
-    pull_request = PullRequest.find_or_create_by(number: pull_params[:number])
-    if pull_request.update!(pull_params)
-      head :created
-    else
-      head :unprocessable_entity
-    end
+    pull_request = PullRequest.upsert(pull_params, unique_by: :number)
+    head :created
   end
 
   private
