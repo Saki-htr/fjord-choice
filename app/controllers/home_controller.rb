@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  require 'octokit'
-
   def index
     @users = User.order('LOWER(name)')
   end
