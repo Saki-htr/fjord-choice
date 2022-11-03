@@ -4,7 +4,7 @@ footer.footer
       ul.footer-nav__items
         - if logged_in?
           li.footer-nav__item
-            = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button mb-4'
+            = link_to 'メンバーからはずれる', retirements_path, data: { turbo_method: :post, turbo_confirm: '本当にメンバーからはずれてもいいですか?' }, class: 'button mb-4'
         li.footer-nav__item
           = link_to '利用規約', tos_path, class: 'has-text-color'
         li.footer-nav__item
@@ -16,6 +16,6 @@ footer.footer
             i.fab.fa-github
     small.footer-author-copyright
       i.far.fa-copyright
-      | 2022
+      | #{Date.today.year}
       = link_to 'https://twitter.com/Saki_ht3150', target: :_blank, rel: 'noopener noreferrer', class: '' do
         | Saki-htr
