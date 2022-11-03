@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class API::PullsController < ApplicationController
-  protect_from_forgery except: :create
+class API::PullsController < APIController
   before_action :authenticate, only: [:create]
 
   def create
