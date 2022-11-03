@@ -1,0 +1,34 @@
+section.activities
+  .container
+    .activities__inner
+      .activities__list
+        .activities__items
+          - users.each do |user|
+            .activities__item
+              .activities__item-start
+                .member
+                  .member__icon
+                    = link_to url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'member__icon-link'
+                      figure.member__icon-image-container.image
+                        = image_tag user.image_url, alt: "#{user.name}さんのアイコン画像", class: 'is-rounded member__icon-image'
+                  .member__id.is-trancated
+                    = link_to user.name, url_for_pulls(user), target: :_blank, rel: 'noopener noreferrer', class: 'has-text-color has-nowrap has-text-weight-bold'
+                .points.mt-1
+                  .points__progress
+                    progress.progress.is-primary.is-small max='20' value='#{Issue.total_points(user)}'
+                  .points__number
+                    .is-size-7.has-nowrap.has-text-right
+                      a(title='これまでアサインされたIssueの合計ポイント(※openもclosedも合わせて)')
+                        | #{Issue.total_points(user)} / 20
+              .activities__item-end
+                .review-requests
+                  h3.review-requests__title
+                    | Review Requests (#{PullRequest.review_requested(user).count})
+                  - if PullRequest.review_requested(user).empty?
+                    p.review-requests__empty.p-2.is-flex.has-text-danger.has-text-weight-bold
+                      | レビュー依頼はありません
+                  - else
+                    ul.review-requests__items
+                      - PullRequest.review_requested(user).each do |pull|
+                        li.review-requests__item
+                          = link_to pull.title, url_for_pull(pull), target: :_blank, rel: 'noopener noreferrer', class: 'has-text-color has-nowrap is-block review-requests__item-link is-trancated'

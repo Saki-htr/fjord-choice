@@ -1,0 +1,49 @@
+section.about.has-background-white
+  .container
+    .about__inner.mx-auto
+      header.about__header
+        h1.about__catch-copy.has-text-centered.has-text-weight-bold
+          = link_to 'フィヨルドブートキャンプ', 'https://bootcamp.fjord.jp/welcome', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
+          | の
+          br.is-hidden-tablet
+          | システム開発プラクティスに
+          br.is-hidden-mobile
+          | 取り組んでいる
+          br.is-hidden-tablet
+          | チームメンバーの状況を見える化
+      .about__body
+        .features
+          .features__items
+            article.features__item
+              .feature
+                header.feature__header
+                  = image_tag('features/pull-requests.svg', class: 'feature__icon')
+                  h3.feature__title.has-text-weight-bold
+                    | Pull Requests
+                .feature__body.px-4.py-3
+                  p
+                    | チームメンバーがこれまで作成した Pull Request を確認。
+            article.features__item
+              .feature
+                header.feature__header
+                  = image_tag('features/review-request.svg', class: 'feature__icon')
+                  h3.feature__title.has-text-weight-bold
+                    | Assigned Issues
+                .feature__body.px-4.py-3
+                  p
+                    | チームメンバーがこれまでアサインされた Issue の合計ポイントを確認。
+            article.features__item
+              .feature
+                header.feature__header
+                  = image_tag('features/assigned-issues.svg', class: 'feature__icon')
+                  h3.feature__title.has-text-weight-bold
+                    | Review Requests
+                .feature__body.px-4.py-3
+                  p
+                    | チームメンバーが現在レビュー依頼されている Pull Request の一覧を確認。
+      - if not_logged_in?
+        .about__action.has-text-centered
+          = button_to 'メンバー登録をする', '/auth/github', method: :post, data: { turbo: false }, class: 'about__action-submit button is-primary is-medium has-text-weight-bold'
+          p.about__action-attention.has-text-weight-bold
+            = link_to 'fjordllc/bootcamp リポジトリ', 'https://github.com/fjordllc/bootcamp', target: :_blank, rel: 'noopener noreferrer'
+            | のコラボレーターの方だけ<br>メンバー登録をお願いします。

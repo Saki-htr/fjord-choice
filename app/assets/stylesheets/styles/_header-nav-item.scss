@@ -1,0 +1,36 @@
+.header-nav-item__icon {
+  font-size: 1.75rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  line-height: 1;
+  transition: all .2s ease-out;
+}
+
+figure.header-nav-item__icon {
+  .header-nav-item__link:hover & {
+    opacity: .5;
+  }
+}
+
+.header-nav-item__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.25rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.header-nav-item__label {
+  font-size: .625rem;
+  margin-top: .125rem;
+  width: 100%;
+  text-align: center;
+  .header-nav-item__link:hover & {
+    color: $link--hover;
+  }
+}

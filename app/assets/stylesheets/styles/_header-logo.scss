@@ -1,0 +1,8 @@
+.header-logo__image {
+  @include tablet {
+    width: 10rem;
+  }
+  @include mobile {
+    width: 9rem;
+  }
+}

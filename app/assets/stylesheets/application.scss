@@ -1,35 +1,44 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
 @charset 'utf-8';
 
-$navbar-item-img-max-height: 100px;
-$dropdown-menu-min-widt: 19rem;
-$footer-padding: 2rem 1.5rem 3rem;
-$link: #006656;
-$modal-card-body-padding: 40px;
+////////////////
+/// Config
+///////////////
 
-body {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
+// Bulma's Variables
+@import 'sass/utilities/initial-variables';
+@import 'sass/utilities/derived-variables';
+// Override Bulma's Variables
+@import 'variables';
 
-main {
-  flex: 1;
-}
+@import 'sass/utilities/functions';
+@import 'sass/utilities/mixins';
+@import 'sass/utilities/controls';
+@import 'sass/utilities/extends';
 
-@import 'bulma';
+
+////////////////
+/// Bulma
+///////////////
+
+@import 'sass/base/minireset';
+@import 'sass/base/generic';
+@import 'sass/elements/button';
+@import 'sass/elements/container';
+@import 'sass/elements/content';
+@import 'sass/elements/icon';
+@import 'sass/elements/image';
+@import 'sass/elements/notification';
+@import 'sass/elements/progress';
+@import 'sass/helpers/_all';
+
+////////////////
+/// Styles
+///////////////
+
+@import 'styles/**/*';
+
+////////////////
+/// Helpers
+///////////////
+
+@import 'helpers/**/*';

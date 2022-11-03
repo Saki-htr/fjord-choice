@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+.has-nowrap {
+  white-space: nowrap;
+}
+
+.is-trancated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.has-text-color {
+  color: #363636;
+  &:hover {
+    color: #009982;
+  }
+}
+
+.is-hidden-input {
+  position: absolute;
+  opacity: 0;
+}

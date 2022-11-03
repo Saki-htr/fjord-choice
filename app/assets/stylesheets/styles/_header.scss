@@ -1,0 +1,19 @@
+.header {
+  background-color: $white-bis;
+  >.container {
+    @include mobile {
+      padding-right: 0;
+    }
+  }
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+}
+
+.header__nav-items {
+  display: flex;
+}

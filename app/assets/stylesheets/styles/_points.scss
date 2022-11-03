@@ -1,0 +1,12 @@
+.points {
+  display: flex;
+  align-items: center;
+}
+
+.points__progress {
+  flex: 1;
+}
+
+.points__number {
+  flex: 0 0 2.75rem;
+}

@@ -1,0 +1,53 @@
+.about {
+  @include tablet {
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+  }
+  @include mobile {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+}
+
+.about__catch-copy {
+  @include tablet {
+    font-size: 1.75rem;
+  }
+  @include mobile {
+    font-size: .875rem;
+  }
+}
+
+.about__action-attention,
+.about__action-attention a {
+  color: $danger;
+  font-size: .75rem;
+}
+
+.about__body {
+  @include tablet {
+    margin-top: 2rem;
+  }
+  @include mobile {
+    margin-top: 1.5rem;
+  }
+}
+
+.about__action-submit {
+  @include tablet {
+    margin-top: 2rem;
+  }
+  @include mobile {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+}
+
+.about__action-attention {
+  @include tablet {
+    margin-top: 1rem;
+  }
+  @include mobile {
+    margin-top: .5rem;
+  }
+}
