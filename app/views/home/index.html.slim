@@ -8,12 +8,11 @@
     .is-size-1
       i.far.fa-sad-tear
     | まだ誰も登録していません
-- if logged_in?
-  = button_to 'メンバーからはずれる', retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button mb-4'
 
-.leave-action
-  .container
-    .leave-action__inner
-      = button_to retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button leave-action__button' do
-        = image_tag('leave/leave.svg', alt: '外れるアイコン', class: 'leave-action__button-icon')
-        | メンバーからはずれる
+- if logged_in?
+  .leave-action
+    .container
+      .leave-action__inner
+        = button_to retirements_path, method: :post, form: { data: { turbo_confirm: '本当にメンバーからはずれてもいいですか?' } }, remote: true, class: 'button leave-action__button' do
+          = image_tag('leave/leave.svg', alt: '外れるアイコン', class: 'leave-action__button-icon')
+          | メンバーからはずれる
