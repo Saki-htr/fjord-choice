@@ -1,0 +1,18 @@
+.leave-action {
+  @include tablet {
+    margin-top: 1.5rem;
+  }
+  @include mobile {
+    margin-top: 1rem;
+  }
+}
+
+.leave-action__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.leave-action__button-icon {
+  width: .875em;
+  margin-right: .5em;
+}
