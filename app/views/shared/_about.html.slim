@@ -1,9 +1,9 @@
 section.about.has-background-white
   .container
-    .about__inner.mx-auto
+    .about__inner
       header.about__header
         h1.about__catch-copy.has-text-centered.has-text-weight-bold
-          = link_to 'フィヨルドブートキャンプ', 'https://bootcamp.fjord.jp/welcome', target: :_blank, rel: 'noopener noreferrer', class: 'repo-link-color'
+          = link_to 'フィヨルドブートキャンプ', 'https://bootcamp.fjord.jp/welcome', target: '_blank', rel: 'noopener noreferrer', class: 'repo-link-color'
           | の
           br.is-hidden-tablet
           | システム開発プラクティスに
@@ -43,7 +43,9 @@ section.about.has-background-white
                     | チームメンバーが現在レビュー依頼されている Pull Request の一覧を確認。
       - if not_logged_in?
         .about__action.has-text-centered
-          = button_to 'メンバー登録をする', '/auth/github', method: :post, data: { turbo: false }, class: 'about__action-submit button is-primary is-medium has-text-weight-bold'
+          = button_to '/auth/github', method: :post, data: { turbo: false }, class: 'about__action-submit button is-primary is-medium has-text-weight-bold' do
+            = image_tag('fbc/pijord.svg', alt: 'ピヨルドの顔', class: 'about__action-submit-image')
+            | メンバー登録をする
           p.about__action-attention.has-text-weight-bold
             = link_to 'fjordllc/bootcamp リポジトリ', 'https://github.com/fjordllc/bootcamp', target: :_blank, rel: 'noopener noreferrer'
             | のコラボレーターの方だけ<br>メンバー登録をお願いします。
