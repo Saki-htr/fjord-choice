@@ -36,11 +36,18 @@
 .about__action-submit {
   @include tablet {
     margin-top: 2rem;
+    min-width: 24rem;
+    height: 3.5rem;
   }
   @include mobile {
     margin-top: 1.5rem;
     width: 100%;
   }
+}
+
+.about__action-submit-image {
+  width: 1.5em;
+  margin-right: .25em;
 }
 
 .about__action-attention {
