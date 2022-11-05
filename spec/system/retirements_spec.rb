@@ -9,7 +9,7 @@ RSpec.describe 'Retirements', type: :system do
     context 'ログインしているとき' do
       it 'セッションとUserモデルのレコードを削除できること' do
         login_as user
-        click_button 'メンバーからはずれる'
+        click_link 'メンバーからはずれる'
         expect do
           expect(accept_confirm).to eq '本当にメンバーからはずれてもいいですか?'
           expect(page).to have_content 'メンバーからはずれました'
