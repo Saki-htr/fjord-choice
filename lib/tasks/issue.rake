@@ -1,6 +1,6 @@
 namespace :issue do
-  desc "Saki-htrのissueのデータをAPIリクエストしてDB保存する"
-  task api_request: :environment do
+  desc "チーム開発に取り組んでいる最中の受講生のissueのデータを、APIリクエストしてDB保存する"
+  task api_issues: :environment do
     client = Octokit::Client.new(client_id: ENV['GITHUB_KEY'], client_secret: ENV['GITHUB_SECRET'])
 
     students = ['hikarook94','fuwa-syugyo'] #ここにwikiにのってる人と休会中の人を入れる
