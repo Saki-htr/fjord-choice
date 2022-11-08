@@ -47,6 +47,7 @@ gem 'sassc-rails'
 
 gem 'bulma-rails', '~> 0.9.3'
 gem 'meta-tags'
+gem 'octokit', '~> 5.0'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
