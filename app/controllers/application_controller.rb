@@ -6,16 +6,20 @@ class ApplicationController < ActionController::Base
   private
 
   def logged_in?
-    !!session[:user_id]
+    !!current_user
   end
 
   def not_logged_in?
-    !!!session[:user_id]
+    !logged_in?
   end
 
   def current_user
     return unless session[:user_id]
 
-    @current_user ||= User.find(session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id])
+    unless @current_user
+      session[:user_id] = nil
+    end
+    @current_user
   end
 end
