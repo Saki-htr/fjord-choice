@@ -13,6 +13,8 @@ namespace :pulls do
     end
 
     open_pulls.each do |pull|
+      next if PullRequest.exists?(number: pull[:number])
+
       new_pull = PullRequest.new
       new_pull.number = pull[:number]
       new_pull.title = pull[:title]
