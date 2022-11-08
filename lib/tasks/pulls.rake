@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :pulls do
-  desc "ステートがopenなプルリクエストのデータを、APIリクエストしてDB保存する"
+  desc 'ステートがopenなプルリクエストのデータを、APIリクエストしてDB保存する'
   task request_api_pulls: :environment do
     client = Octokit::Client.new(client_id: ENV['GITHUB_KEY'], client_secret: ENV['GITHUB_SECRET'])
 
