@@ -4,10 +4,12 @@ class API::PullsController < APIController
   before_action :authenticate, only: [:create]
 
   def create
-    # rubocop:disable Rails/SkipsModelValidations
-    PullRequest.upsert(pull_params, unique_by: :number)
-    # rubocop:enable Rails/SkipsModelValidations
-    head :created
+    pull_request = PullRequest.find_or_create_by(number: pull_params[:number])
+    if pull_request.update!(pull_params)
+      head :created
+    else
+      head :unprocessable_entity
+    end
   end
 
   private
