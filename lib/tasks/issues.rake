@@ -3,7 +3,8 @@ namespace :issues do
   task request_api_issues: :environment do
     client = Octokit::Client.new(client_id: ENV['GITHUB_KEY'], client_secret: ENV['GITHUB_SECRET'])
 
-    students = ['hikarook94','fuwa-syugyo'] #ここにwikiにのってる人と休会中の人を入れる
+
+    students = ['daiki0381', 'keiz1213','shirotamaki', 'fuwa-syugyo', 'pachikuriii', 'hikarook94',  'yamatatsu10969', 'sadanora', 'Nabegon', 'siso25', 'AyakaTakashima', 'yuma-matsui', 'akingo55', 'shucream-p', 'OdenTakashi', 'yuki-snow1823', 'ksmxxxxxx']
 
     # issueもPRも両方入っている
     assigned_issues = students.flat_map  do |student|
