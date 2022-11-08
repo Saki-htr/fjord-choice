@@ -17,9 +17,10 @@ class ApplicationController < ActionController::Base
     return unless session[:user_id]
 
     @current_user ||= User.find_by(id: session[:user_id])
-    unless @current_user
-      session[:user_id] = nil
-    end
-    @current_user
+  # 退会したuserが別端末でアクセスした際にsessionが残っている場合、sessionを削除し、current_userの戻り値をnilにする
+  rescue AcitveRecord::RecordNotFound
+    reset_session
+
+    nil
   end
 end
