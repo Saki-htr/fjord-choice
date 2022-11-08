@@ -1,6 +1,6 @@
 namespace :pulls do
   desc "ステートがopenなプルリクエストのデータを、APIリクエストしてDB保存する"
-  task api_pulls: :environment do
+  task request_api_pulls: :environment do
     client = Octokit::Client.new(client_id: ENV['GITHUB_KEY'], client_secret: ENV['GITHUB_SECRET'])
 
     open_pulls = client.pull_requests('fjordllc/bootcamp', { state: 'open', per_page: 100 })
