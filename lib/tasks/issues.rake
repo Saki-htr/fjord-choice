@@ -1,4 +1,4 @@
-namespace :issue do
+namespace :issues do
   desc "チーム開発に取り組んでいる最中の受講生のissueのデータを、APIリクエストしてDB保存する"
   task request_api_issues: :environment do
     client = Octokit::Client.new(client_id: ENV['GITHUB_KEY'], client_secret: ENV['GITHUB_SECRET'])
