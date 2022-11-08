@@ -2,9 +2,6 @@ footer.footer
   .container
     nav.footer-nav
       ul.footer-nav__items
-        - if logged_in?
-          li.footer-nav__item
-            = link_to 'メンバーからはずれる', retirements_path, data: { turbo_method: :post, turbo_confirm: '本当にメンバーからはずれてもいいですか?' }, class: 'button mb-4'
         li.footer-nav__item
           = link_to '利用規約', tos_path, class: 'has-text-color'
         li.footer-nav__item
