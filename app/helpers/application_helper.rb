@@ -2,10 +2,10 @@
 
 module ApplicationHelper
   def url_for_pulls(user)
-    "https://github.com/Saki-htr/bootcamp_sample/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+"
+    "https://github.com/fjordllc/bootcamp/pulls?q=is%3Apr+assignee%3A#{user.name}+-label%3Arelease+"
   end
 
   def url_for_pull(pull)
-    "https://github.com/Saki-htr/bootcamp_sample/pull/#{pull.number}"
+    "https://github.com/fjordllc/bootcamp/pull/#{pull.number}"
   end
 end
