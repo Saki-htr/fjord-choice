@@ -6,7 +6,7 @@ namespace :issues do
     client = Octokit::Client.new(client_id: ENV['GITHUB_KEY'], client_secret: ENV['GITHUB_SECRET'])
 
     students = %w[daiki0381 keiz1213 shirotamaki fuwa-syugyo pachikuriii hikarook94 yamatatsu10969 sadanora Nabegon siso25
-                  AyakaTakashima yuma-matsui akingo55 shucream-p OdenTakashi yuki-snow1823 ksmxxxxxx]
+                  AyakaTakashima akingo55 shucream-p OdenTakashi ksmxxxxxx]
 
     # issueもPRも両方入っている
     assigned_issues = students.flat_map do |student|
@@ -33,7 +33,6 @@ namespace :issues do
       new_issue.assignee_uids = []
       new_issue.assignee_uids << issue[:assignees][0][:id] # assigneeに入ってる人が1人だけという想定
       new_issue.save!
-      pp new_issue
     end
   end
 end
