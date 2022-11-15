@@ -33,6 +33,8 @@ namespace :issues do
       new_issue.assignee_uids = []
       new_issue.assignee_uids << issue[:assignees][0][:id] # assigneeに入ってる人が1人だけという想定
       new_issue.save!
+
+      pp client.last_response.headers
     end
   end
 end
