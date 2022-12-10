@@ -92,3 +92,11 @@ $ bin/rails server
 $ bundle exec rspec
 $ bin/lint
 ```
+
+# 参考
+- 以下が、フィヨルドブートキャンプの[bootcamp](https://github.com/fjordllc/bootcamp)リポジトリに置いているGitHub Actionsのワークフローファイルです。
+  - [bootcamp/post\-issue\-event\.yml at main · fjordllc/bootcamp](https://github.com/fjordllc/bootcamp/blob/main/.github/workflows/post-issue-event.yml)
+  - [bootcamp/post\-pr\-event\.yml at main · fjordllc/bootcamp](https://github.com/fjordllc/bootcamp/blob/main/.github/workflows/post-pr-event.yml)
+  - [bootcamp/update\_only\_when\_reviewer\_approved\.yml at main · fjordllc/bootcamp](https://github.com/fjordllc/bootcamp/blob/main/.github/workflows/update_only_when_reviewer_approved.yml)
+- 以下は、開発時に検証用に使っていたリポジトリです。
+  - [Saki\-htr/bootcamp\_sample: fjord\-choiceの検証用リポジトリ\(bootcampアプリのFork\)](https://github.com/Saki-htr/bootcamp_sample) 
