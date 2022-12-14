@@ -66,7 +66,6 @@ issueには完成までにかかる時間に応じてポイントが振られる
 - [PostgreSQL](https://www.postgresql.org/)
 - [Heroku](https://jp.heroku.com/home)
 - [GitHubActions](https://docs.github.com/ja/actions)
-  - (bootcampアプリに置かせてもらうワークフローファイルのリンクを貼っておく)
 - [GitHub OAuth Apps](https://docs.github.com/ja/developers/apps/getting-started-with-apps/about-apps#oauth-apps-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 - [BULMA](https://bulma.io/)
 
