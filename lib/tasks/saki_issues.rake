@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :saki_issues do
   desc 'Saki-htrのissueのデータを、APIリクエストしてDB保存する'
   task request_saki_issues: :environment do
@@ -6,7 +8,7 @@ namespace :saki_issues do
     student = %w[Saki-htr]
 
     # issueもPRも両方入っている
-    assigned_issues = student.flat_map do |student|
+    assigned_issues = student.flat_map do |_s|
       client.list_issues('fjordllc/bootcamp', { state: 'all', assignee: student })
     end
 
