@@ -20,10 +20,11 @@ section.activities
                     .is-size-7.has-nowrap.has-text-right
                       a(title='これまでアサインされたIssueの合計ポイント(※openもclosedも合わせて)')
                         | #{Issue.total_points(user)} / 20
-              .leave-action__inner
-                = button_to user_path(user), method: :delete, form: { data: { turbo_confirm: '本当にメンバーから外してもいいですか?' } }, remote: true, class: 'button leave-action__button' do
-                  = image_tag('leave/leave.svg', alt: '外れるアイコン', class: 'leave-action__button-icon')
-                  | メンバーから外す
+              - if current_user.admin?
+                .leave-action__inner
+                  = button_to user_path(user), method: :delete, form: { data: { turbo_confirm: '本当にメンバーから外してもいいですか?' } }, remote: true, class: 'button leave-action__button' do
+                    = image_tag('leave/leave.svg', alt: '外れるアイコン', class: 'leave-action__button-icon')
+                    | メンバーから外す
               .activities__item-end
                 .review-requests
                   h3.review-requests__title

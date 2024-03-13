@@ -40,5 +40,7 @@ module FjordChoice
         helper_specs: false,
         routing_specs: false
     end
+
+    config.admin_names = ENV['ADMIN_NAMES']&.split(',') || []
   end
 end
