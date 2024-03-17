@@ -26,8 +26,4 @@ class User < ApplicationRecord
       User.where.not(name: Rails.application.config.admin_names)
     end
   end
-
-  def admin?
-    Rails.application.config.admin_names.include?(name)
-  end
 end
