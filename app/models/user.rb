@@ -22,7 +22,7 @@ class User < ApplicationRecord
       end
     end
 
-    def student
+    def students
       User.where.not(name: Rails.application.config.admin_names)
     end
   end

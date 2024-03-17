@@ -2,7 +2,7 @@
   = render 'shared/about'
 
 - if User.exists?
-  = render 'shared/activities', users: @users
+  = render 'shared/activities', users: @users, current_user: @current_user
 - else
   .has-text-centered.no-user-message
     .is-size-1
