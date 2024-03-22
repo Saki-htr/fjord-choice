@@ -43,7 +43,7 @@ issueには完成までにかかる時間に応じてポイントが振られる
 
 ![image](https://user-images.githubusercontent.com/58052292/202327994-0f4dc8a1-4bb9-41b3-9d5c-615ec9a769bf.png)
 
-また、管理者権限を持つユーザは Fjord Choice のメンバーを外すことができます。管理者権限は後述の環境変数 `ADMIN_NAMES` によって設定します。
+また、管理者権限を持つユーザは Fjord Choice のメンバーを外すことができます。
 
 [![Image from Gyazo](https://i.gyazo.com/f018a2f9bf2a6366ae77829feae50da8.png)](https://gyazo.com/f018a2f9bf2a6366ae77829feae50da8)
 
@@ -61,7 +61,7 @@ issueには完成までにかかる時間に応じてポイントが振られる
 
     [![Image from Gyazo](https://i.gyazo.com/461a2b293e4f6bc03b09cac84a72f8cc.gif)](https://gyazo.com/461a2b293e4f6bc03b09cac84a72f8cc)
 
-4. 管理者権限を持つユーザは、チームメンバーを外すことができます。また管理者権限のユーザは一覧へは表示されません
+4. 管理者権限を持つユーザは、チームメンバーを外すことができます。また管理者権限のユーザは一覧へは表示されません。
 
     [![Image from Gyazo](https://i.gyazo.com/edcaca13ad8449014bfd2c8ce185f9b2.gif)](https://gyazo.com/edcaca13ad8449014bfd2c8ce185f9b2)
 
@@ -82,7 +82,7 @@ issueには完成までにかかる時間に応じてポイントが振られる
 |  GITHUB_KEY  | GitHub の Client ID|
 |  GITHUB_SECRET  | GitHub の Client Secret|
 |FJORD_CHOICE_TOKEN| [fjordllc/bootcampリポジトリ](https://github.com/fjordllc/bootcamp)からIssue/PullRequestのデータを受信するためのトークン。こちらのwebサービスと、情報を取得したいリポジトリの両方に設定が必要です。|
-|ADMIN_NAMES| Fjord Choice の管理者権限を持つユーザネームです。管理者は Fjord Choice に参加するメンバーを外すことができるようになります。 Github のユーザ名をカンマ区切りで設定します。|
+|ADMIN_NAMES| Fjord Choice の管理者権限を持つユーザ名です。Github のユーザ名をカンマ区切りで設定します。|
 
 ## インストール
 ```bash
