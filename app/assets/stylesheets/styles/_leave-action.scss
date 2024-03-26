@@ -12,7 +12,13 @@
   justify-content: center;
 }
 
+.leave-action__button {
+  font-weight: 800;
+  height: 3rem;
+  padding-inline: 2em;
+  border-radius: .5em;
+}
 .leave-action__button-icon {
-  width: .875em;
+  width: .75em;
   margin-right: .5em;
 }

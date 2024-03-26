@@ -45,3 +45,12 @@
   border-left: dashed 1px $border;
   overflow: hidden;
 }
+
+.activities__item-remove {
+  margin-top: .5rem;
+}
+
+.activities__item-remove-button.button.is-small {
+  font-weight: 800;
+  border-radius: .25rem;
+}
