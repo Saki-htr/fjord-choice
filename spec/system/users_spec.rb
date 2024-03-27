@@ -3,21 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  let(:user) { create(:user) }
-  let(:user2) { create(:user2) }
+  let(:admin) { create(:user) }
+  let(:student) { create(:user2) }
 
   describe 'ユーザ除外処理' do
-    context 'アドミンでログインしているとき' do
+    context '環境変数でアドミンを指定しているとき' do
       it 'Userモデルのレコードを削除できる' do
-        Rails.application.config.admin_names = [user.name]
+        Rails.application.config.admin_names = [admin.name]
         OmniAuth.config.add_mock(
-          user2.provider,
-          uid: user2.uid,
-          info: { nickname: user2.name,
-                  image_url: user2.image_url }
+          student.provider,
+          uid: student.uid,
+          info: { nickname: student.name,
+                  image_url: student.image_url }
         )
 
-        login_as user
+        login_as admin
         click_button 'メンバーからはずす'
         expect do
           expect(accept_confirm).to eq '本当にメンバーからはずしてもいいですか?'
@@ -26,11 +26,11 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
-    context 'アドミンでログインしていないとき' do
+    context '環境変数でアドミンが指定されていないとき' do
       it 'Userモデルのレコードを削除できない' do
         Rails.application.config.admin_names = []
 
-        login_as user
+        login_as admin
         expect(page).not_to have_button('メンバーからはずす')
       end
     end
