@@ -49,8 +49,9 @@ RSpec.describe User, type: :model do
       mock_user(admin)
       Rails.application.config.admin_names = [admin.name]
 
-      expect(User.students).to include(student)
-      expect(User.students).not_to include(admin)
+      students = User.students
+      expect(students).to include(student)
+      expect(students).not_to include(admin)
     end
 
     def mock_user(user)
