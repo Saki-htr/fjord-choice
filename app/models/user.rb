@@ -9,6 +9,8 @@ class User < ApplicationRecord
   end
   validates :uid, uniqueness: { scope: :provider }
 
+  scope :students, -> { where.not(name: Rails.application.config.admin_names) }
+
   class << self
     def find_or_create_from_auth_hash!(auth_hash)
       provider = auth_hash[:provider]
@@ -20,10 +22,6 @@ class User < ApplicationRecord
         user.name = name
         user.image_url = image_url
       end
-    end
-
-    def students
-      User.where.not(name: Rails.application.config.admin_names)
     end
   end
 end
