@@ -40,6 +40,30 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#students' do
+    let(:student) { create(:user) }
+    let(:admin) { create(:user2) }
+
+    it 'student は students に含まれ、admin は students に含まれないこと' do
+      mock_user(student)
+      mock_user(admin)
+      Rails.application.config.admin_names = [admin.name]
+
+      students = User.students
+      expect(students).to include(student)
+      expect(students).not_to include(admin)
+    end
+
+    def mock_user(user)
+      OmniAuth.config.add_mock(
+        user.provider,
+        uid: user.uid,
+        info: { nickname: user.name,
+                image_url: user.image_url }
+      )
+    end
+  end
+
   describe '#find_or_create_from_auth_hash!' do
     let(:user) { create(:user) }
 

@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @users = User.order('LOWER(name)')
+    @users = User.students.order('LOWER(name)')
   end
 
   def tos; end

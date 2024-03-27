@@ -43,22 +43,27 @@ issueには完成までにかかる時間に応じてポイントが振られる
 
 ![image](https://user-images.githubusercontent.com/58052292/202327994-0f4dc8a1-4bb9-41b3-9d5c-615ec9a769bf.png)
 
+また、管理者権限を持つユーザは Fjord Choice のメンバーを外すことができます。
+
+[![Image from Gyazo](https://i.gyazo.com/f018a2f9bf2a6366ae77829feae50da8.png)](https://gyazo.com/f018a2f9bf2a6366ae77829feae50da8)
+
 # 主な機能
 
-このサービスは、以下3つの情報を得ることができます。
+このサービスは、以下4つの情報を得ることができます。
 
 1. チームメンバーのアイコンまたはユーザー名をクリックすると、そのユーザーがこれまでbootcampリポジトリで作成したPullRequest一覧のGitHubリンクにアクセスできます。
 
-
-[![Image from Gyazo](https://i.gyazo.com/0209d248ce4fdd463a2cdd5e27f54889.gif)](https://gyazo.com/0209d248ce4fdd463a2cdd5e27f54889)
+    [![Image from Gyazo](https://i.gyazo.com/0209d248ce4fdd463a2cdd5e27f54889.gif)](https://gyazo.com/0209d248ce4fdd463a2cdd5e27f54889)
 
 2. ユーザー名の下にあるゲージは、これまでbootcampリポジトリでアサインされたIssueの合計ポイントです。**openかclosedか問わず、アサインされた全ての合計**が表示されます。
 
-
 3. 現在チームメンバーに対してレビュー依頼されているPullRequestの数とタイトルが分かります。タイトルをクリックするとそのPullRequestのGitHubリンクにアクセスできます。
 
-[![Image from Gyazo](https://i.gyazo.com/461a2b293e4f6bc03b09cac84a72f8cc.gif)](https://gyazo.com/461a2b293e4f6bc03b09cac84a72f8cc)
+    [![Image from Gyazo](https://i.gyazo.com/461a2b293e4f6bc03b09cac84a72f8cc.gif)](https://gyazo.com/461a2b293e4f6bc03b09cac84a72f8cc)
 
+4. 管理者権限を持つユーザは、チームメンバーを外すことができます。また管理者権限のユーザは一覧へは表示されません。
+
+    [![Image from Gyazo](https://i.gyazo.com/edcaca13ad8449014bfd2c8ce185f9b2.gif)](https://gyazo.com/edcaca13ad8449014bfd2c8ce185f9b2)
 
 # 使用技術
 - [Ruby 3.1.2](https://www.ruby-lang.org/ja/)
@@ -69,7 +74,6 @@ issueには完成までにかかる時間に応じてポイントが振られる
 - [GitHub OAuth Apps](https://docs.github.com/ja/developers/apps/getting-started-with-apps/about-apps#oauth-apps-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 - [BULMA](https://bulma.io/)
 
-
 # 利用方法
 ## 環境変数の設定
 
@@ -78,6 +82,7 @@ issueには完成までにかかる時間に応じてポイントが振られる
 |  GITHUB_KEY  | GitHub の Client ID|
 |  GITHUB_SECRET  | GitHub の Client Secret|
 |FJORD_CHOICE_TOKEN| [fjordllc/bootcampリポジトリ](https://github.com/fjordllc/bootcamp)からIssue/PullRequestのデータを受信するためのトークン。こちらのwebサービスと、情報を取得したいリポジトリの両方に設定が必要です。|
+|ADMIN_NAMES| Fjord Choice の管理者権限を持つユーザ名です。Github のユーザ名をカンマ区切りで設定します。|
 
 ## インストール
 ```bash

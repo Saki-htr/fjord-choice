@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :logged_in?, :not_logged_in?, :current_user
+  helper_method :logged_in?, :not_logged_in?, :current_user, :admin?
 
   private
 
@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
     reset_session
 
     nil
+  end
+
+  def admin?
+    logged_in? ? Rails.application.config.admin_names.include?(current_user.name) : false
   end
 end

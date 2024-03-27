@@ -20,6 +20,10 @@ section.activities
                     .is-size-7.has-nowrap.has-text-right
                       a(title='これまでアサインされたIssueの合計ポイント(※openもclosedも合わせて)')
                         | #{Issue.total_points(user)} / 20
+                - if admin?
+                  .activities__item-remove
+                    = button_to user_path(user), method: :delete, form: { data: { turbo_confirm: '本当にメンバーからはずしてもいいですか?' } }, remote: true, class: 'button activities__item-remove-button is-warning is-small' do
+                      | メンバーからはずす
               .activities__item-end
                 .review-requests
                   h3.review-requests__title
